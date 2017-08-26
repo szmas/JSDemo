@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>pagination分页示例</title>
+  
+  
+  <link rel='stylesheet prefetch' href='http://static.qiakr.com/source/qk.common.min.css?v=5.1'>
+
+  
+  
+</head>
+
+<body>
+  <div class="container">
+	<h2>分页插件 <small>jquery.pagination.js</small></h2>
+	<p>基于 <code>jQuery</code> <code>bootstrap分页UI组件</code> </p>
+	<div class="row">
+		<div class="col-md-12">
+			<h4>所有配置参数</h4>
+			<div>
+				<pre>
+var defaults = {
+	totalData:0,			//数据总条数
+	showData:0,				//每页显示的条数
+	pageCount:9,			//总页数,默认为9
+	current:1,				//当前第几页
+	prevCls:'prev',		//上一页class
+	nextCls:'next',		//下一页class
+	prevContent:'上一页',	//上一页内容
+	nextContent:'下一页',	//下一页内容
+	activeCls:'active',		//当前页选中状态
+	coping:false,			//首页和尾页
+	homePage:'首页',			//首页节点内容
+	endPage:'末页',				//尾页节点内容
+	count:3,				//当前页前后分页个数
+	jump:false,				//跳转到指定页数
+	jumpIptCls:'jump-ipt',	//文本框内容
+	jumpBtnCls:'jump-btn',	//跳转按钮
+	jumpBtn:'跳转',			//跳转按钮文本
+	callback:function(currPageNmu){}	//回调(参数：当前页码)
+};
+				</pre>
+			</div>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col-md-12">
+			<h4>初始化</h4>
+			<pre>
+//HTML
+&lt;div class="nav-box"&gt;
+	&lt;ul class="pagination" id="p1"&gt;&lt;/ul&gt;
+&lt;/div&gt;
+//JS
+$('#p1').pagination({totalData:80, showData:5})
+			</pre>
+			效果
+			<div class="nav-box">
+					<ul class="pagination" id="p1"></ul>
+			</div>
+		</div>
+	</div>
+	
+<div class="row">
+	<div class="col-md-12">
+		<h4>显示'...'和'首页末页'</h4>
+		<pre>
+//HTML
+&lt;div class="nav-box"&gt;
+&lt;ul class="pagination" id="p2"&gt;&lt;/ul&gt;
+&lt;/div&gt;
+//JS
+$('#p2').pagination({totalData:100, showData:5, coping:true})
+		</pre>
+		效果
+		<div class="nav-box">
+				<ul class="pagination" id="p2"></ul>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-12">
+		<h4>回调函数API</h4>
+		<pre>
+//HTML
+&lt;div class="nav-box"&gt;
+&lt;ul class="pagination" id="p3"&gt;&lt;/ul&gt;
+&lt;/div&gt;
+//JS
+$('#p3').pagination({
+totalData:100, 
+showData:5, 
+coping:true,
+callback:function(i){ $('#logBox').append('&lt;p&gt;当前页码为：'+i+'&lt;/p&gt;');}
+}, function(api){
+	$('#logBox').append('&lt;p&gt;*当前页码为：'+api.getCurrent()+'&lt;/p&gt;');
+	$('#logBox').append('&lt;p&gt;*当前总页数：'+api.getTotalPage()+'&lt;/p&gt;');
+})
+		</pre>
+		效果
+		<div id="logBox" style="max-height:200px; overflow-y:scroll; border:1px solid #eee; padding:15px;"></div>
+		<div class="nav-box">
+				<ul class="pagination" id="p3"></ul>
+		</div>
+	</div>
+</div>
+	
+</div>
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
+    <script src="js/index.js"></script>
+
+</body>
+</html>
