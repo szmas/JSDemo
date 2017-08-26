@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+</head>
+<body>
+    <script type="text/javascript">
+
+		
+		//使用函数来定义对象
+		var person=new Object();
+		person.firstname="Bill";
+		person.lastname="Gates";
+		person.age=56;
+		person.eyecolor="blue";
+		
+		
+		
+		
+		//使用对象构造器
+		
+		function Person(firstname,lastname,age,eyecolor)
+		{
+			this.firstname=firstname;
+			this.lastname=lastname;
+			this.age=age;
+			this.eyecolor=eyecolor;
+		}
+		
+		var myFather=new Person("Bill","Gates",56,"blue");
+		var myMother=new Person("Steve","Jobs",48,"green");
+		
+		
+		
+		//对象字面量的简写语法
+        var O = {
+            name: 'jack', age: 18, show: function () {
+                console.log(this.name);
+            }
+        };
+		
+
+		//点号表示法
+        console.log(O.__proto__);// Object 顶级（标配）对象，类似高级语言中的根类
+		console.log(O.name);
+		
+		//括号表示法;
+		console.log(O['name']);
+		O['show']();
+		
+		//O的原型是Object
+		O.constructor.prototype.parentName='WWW';
+		
+		
+
+		//遍历对象的可枚举属性
+		for ( var prop in O ) {
+			// Determine if the property is on the object itself.
+			// (not on the prototype)
+			//属性必须是对象本身的一个成员
+			if ( O.hasOwnProperty( prop ) ) {
+				console.log( "Property : " + prop + " ; value : " + O[ prop ] );
+			}
+			console.log(prop in O);
+		}		
+		
+    </script>
+</body>
+</html>

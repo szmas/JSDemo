@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+</head>
+<body>
+    <script type="text/javascript">
+        //IIFE即Immediately-Invoked Function Expression，立即执行函数表达式
+        (function () {
+            console.log("IIFE，正常执行");
+        })();
+
+
+
+        //1 正常定义函数
+        function f1() {
+            console.log("正常定义f1函数");
+        };
+
+        //4 函数表达式
+        var f2 = function () {
+            console.log("这也被视为函数表达式");
+        };
+
+        //减少作用域查找时间。使用IIFE的一个微小的性能优势是通过匿名函数的参数传递常用全局对象window、document、jQuery，在作用域内引用这些全局对象。JavaScript解释器首先在作用域内查找属性，然后一直沿着链向上查找，直到全局范围。将全局对象放在IIFE作用域内提升js解释器的查找速度和性能。
+        (function (window, document, $) {
+            
+        })(window, document, window.jQuery);
+    </script>
+</body>
+</html>

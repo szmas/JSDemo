@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+</head>
+<body>
+    <script>
+        function randomNum(num) {
+            return Math.floor(Math.random() * (num + 1));
+        };
+        function randomColor16() {
+            //0-255
+            var r = randomNum(255).toString(16);
+            var g = randomNum(255).toString(16);
+            var b = randomNum(255).toString(16);
+            //255的数字转换成十六进制
+            if (r.length < 2) r = "0" + r;
+            if (g.length < 2) g = "0" + g;
+            if (b.length < 2) b = "0" + b;
+            return "#" + r + g + b;
+        };
+
+        for (var i = 0; i < 20; i++) {
+            for (var j = 0; j < 20; j++) {
+
+                var d = document.createElement("div");
+                d.style.position = "absolute";
+                d.style.width = "25px";
+                d.style.height = "25px";
+                d.style.backgroundColor = "#ccc";
+                d.style.left = 25 * j + "px";
+                d.style.top = 25 * i + "px";
+                d.style.border = "1px solid #000";
+                d.onclick = function () { this.style.backgroundColor = randomColor16(); }
+                document.body.appendChild(d);
+            }
+        }
+        var eles = document.getElementsByTagName('div');
+        var count = 0;
+        setInterval(function () {
+            eles[count].onclick();
+            if (count <= 400) count++
+            else count = 0;
+        }, 20);
+    </script>
+</body>
+</html>

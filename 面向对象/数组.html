@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+</head>
+<body>
+    <script type="text/javascript">
+
+		//Array 构造函数
+        var arr=new Array();
+		arr[0]='mas';
+		arr[1]='jarry';
+		
+		//数组字面量
+		var arr2=['mas','jarry'];
+
+		//点号表示法
+        console.log(arr.__proto__);// Object 顶级（标配）对象，类似高级语言中的根类
+		console.log(arr[0]);
+		
+		//括号表示法;
+		console.log(arr2[0]);
+		
+		
+		
+		// Definitely an array!
+		// This is widely considered as the most robust way
+		// to determine if a specific value is an Array.
+		console.log(Object.prototype.toString.call(arr) === "[object Array]");
+		console.log(Object.prototype.toString.call(null));
+		console.log(Object.prototype.toString.call(undefined));
+		
+    </script>
+</body>
+</html>

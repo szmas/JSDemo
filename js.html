@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Hello World</title>
+
+    <!-- CSS for presentation. -->
+    <style>
+        h1 {
+            font-size: 14px;
+            color: hotpink;
+        }
+
+        button {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Hello World</h1>
+    <button>Click Me!</button>
+
+    <!-- JavaScript for interactivity. -->
+    <script>
+        var x;
+        console.log(x === undefined); // true
+        // Get a handle on the first button element in the document.
+        var button = document.querySelector("button");
+
+        // If a user clicks on it, say hello!
+        button.addEventListener("click", function (ev) {
+            alert("Hello");
+        }, false);
+
+        // Define a null value.
+        var foo = null;
+
+        // Two ways to achieve an undefined value.
+        var bar1 = undefined;
+        var bar2;
+
+        console.log(foo == undefined);
+        console.log(bar1 == undefined);
+
+
+
+        for (var i = 0; i < 5; i++) {
+            setTimeout(function () {
+                alert(i);
+            }, i * 100);
+        }
+
+    </script>
+</body>
+</html>

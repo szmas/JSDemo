@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <script src="../Scripts/jquery/jquery.min.js"></script>
+</head>
+<body>
+    <script type="text/javascript">
+
+        //静态方法
+        $.extend({
+            log: function (msg) {
+                console.log(msg);
+            }
+        });
+
+        $.logs = function (msg) {
+            console.log(msg);
+        }
+
+        $.log("msg");
+        $.logs('msg');
+
+
+        //扩展对象的属性
+        var o1 = { a: 1 };
+        var o2 = { b: 2 };
+        var o3 = { c: 3 };
+        var def = {};
+        $.extend(def, o1, o2, o3);
+    </script>
+</body>
+</html>

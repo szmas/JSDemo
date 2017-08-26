@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="validation.js"></script>
+    <style type="text/css">
+        body {
+            padding: 0;
+            margin: 0;
+            font-family: 'Microsoft YaHei';
+        }
+
+        span.lt {
+            display: inline-block;
+            width: 100px;
+            text-align: right;
+            margin-right: 10px;
+        }
+
+        input {
+            line-height: 24px;
+            padding: 2px 10px;
+            border: 1px #d9d9d9 solid;
+        }
+
+            input:focus {
+                border-color: #03a9f4;
+                box-shadow: 0 0 15px #03a9f4;
+            }
+
+        .msg {
+            color: red;
+            padding-left: 8px;
+        }
+
+        .btn {
+            text-align: center;
+        }
+
+        #myform {
+            width: 400px;
+        }
+    </style>
+</head>
+<body>
+    <form id="myform" action="http:;//wwww.baidu.com">
+
+        <p>
+            <span class="lt">用户名：</span><span><input type="text" name="name" /></span>
+        </p>
+        <p>
+            <span class="lt">密码：</span><span><input type="password" name="pwd" /></span>
+        </p>
+        <p>
+            <span class="lt">确认密码：</span><span><input type="password" name="repwd" /></span>
+        </p>
+        <p>
+            <span class="lt">邮箱：</span><span><input type="text" name="email" /></span>
+        </p>
+        <p>
+            <span class="lt">手机：</span><span><input type="text" name="tel" /></span>
+        </p>
+        <p>
+            <span class="lt">生日：</span><span><input type="text" name="date" /></span>
+        <p>
+        <p>
+
+        </p>
+        <div class="btn">
+            <input type="submit" value="提交" />
+        </div>
+    </form>
+
+    <script type="text/javascript">
+
+        $(function () {
+            $("#myform").checkForm();
+        });
+
+    </script>
+</body>
+</html>

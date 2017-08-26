@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>浏览器事件加载</title>
+</head>
+<body>
+
+    <script type="text/javascript">
+
+        //当初始HTML文档被完全加载和解析时，DOMContentLoaded 事件被触发，而无需等待样式表、图像和子框架完成加载。
+
+        if (document.addEventListener) {
+            document.addEventListener('DOMContentLoaded', function (event) {
+                console.log("DOMContentLoaded");
+            }, false);
+        }
+
+        if (document.attachEvent) {
+            // 确保当页面是在iframe中加载时，事件依旧会被安全触发
+            document.attachEvent('onreadystatechange', function () {
+                if (document.readyState == 'complete') {
+                    console.log("onreadystatechange");
+                }
+            });
+
+            // 如果是IE且页面不在iframe中时，轮询调用doScroll 方法检测DOM是否加载完毕
+            if (document.documentElement.doScroll && typeof window.frameElement === "undefined") {
+                try {
+                    //因为这条代码在DOM加载完毕之前执行时会抛出错误(throw an error)。
+                    document.documentElement.doScroll('left');
+                }
+                catch (error) {
+                    console.log('doScroll');
+                };
+            }
+        }
+
+        window.onload = function () {
+            console.log("window.load");
+        }
+
+    </script>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+
+    <script type="text/javascript">
+        $(function () {
+
+            console.log("ready");
+
+            $(window).on('load', function () {
+                console.log("load");
+            });
+        });
+
+
+    </script>
+</body>
+</html>

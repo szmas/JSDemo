@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+</head>
+<body>
+    <script type="text/javascript">
+        var str1 = "Hello";
+        var str2 = new String("Hello");
+
+        console.log(typeof 1);//number
+        console.log(typeof (true));//boolean
+        console.log(typeof str1);//string
+        console.log(typeof str2);//object
+        console.log(typeof ([1, 2, 3]));//object
+        console.log(typeof Date);//function
+        console.log(typeof new Date());//function
+        console.log(typeof undefined);//undefined
+        console.log(typeof null);//object
+        console.log(typeof zhangguo);//undefined
+
+        /*
+        
+        
+        1)、数字类型， typeof 返回的值是 number。比如说：typeof(1)，返回值是number
+        2)、字符串类型， typeof 返回的值是 string。比如typeof("123")返回值是string。 
+        3)、布尔类型， typeof 返回的值是 boolean 。比如typeof(true)返回值是boolean。
+        4)、对象、数组、null 返回的值是 object 。比如typeof(window)，typeof(document)，typeof(null)返回的值都是object。
+        5)、函数类型，返回的值是 function。比如：typeof(eval)，typeof(Date)返回的值都是function。
+        6)、不存在的变量、函数或者undefined，将返回undefined。比如：typeof(abc)、typeof(undefined)都返回undefined。
+
+    </script>
+</body>
+</html>

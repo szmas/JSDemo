@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <script src="../Scripts/jquery-easyui-1.4.5/jquery.min.js"></script>
+    <style>
+        html, body {
+            padding: 0;
+            margin: 0;
+        }
+
+        .d1 {
+            width: 100px;
+            height: 100px;
+            padding: 10px;
+            border: 10px solid #ccc;
+            margin: 100px;
+        }
+    </style>
+</head>
+<body>
+    <p style="height:200px;">
+    </p>
+    <div class="d1">
+    </div>
+
+    <script>
+        console.log($('.d1').width() + " " + $('.d1').height());//content-box
+        console.log($('.d1').innerWidth() + " " + $('.d1').innerHeight());//padding-box  clientWidth/clientHeight
+        console.log($('.d1').outerWidth() + " " + $('.d1').outerHeight());//border-box   offsetWidth/offsetHeight
+
+        console.log(document.querySelector('.d1').clientWidth);//innerWidth
+        console.log(document.querySelector('.d1').clientHeight);//innerHeight
+
+        console.log(document.querySelector('.d1').offsetWidth);//outerWidth
+        console.log(document.querySelector('.d1').offsetHeight);//outerHeight
+
+        /*
+          position()方法不接受参数，用来获取匹配元素中第一个元素的相对于定位父级的坐标
+
+　　      position()返回一个包含top和left属性的对象，相当于javascript中的offsetTop和offsetLeft
+        */
+        console.log($('.d1').position().top);//offsetTop  不包括自身margin
+        console.log($('.d1').position().left);//offsetLeft 不包括自身margin
+
+        /*
+        offset()方法可以接受一个包含top和left属性的对象，用整数指明元素的新顶部和左边坐标
+        */
+        console.log($('.d1').offset().top);//offsetTop  包括自身margin
+        console.log($('.d1').offset().left);//offsetLeft 包括自身margin
+
+        /*
+        scrollTop()/scrollLeft()方法不带参数时，用来获取匹配元素集合中第一个元素的当前水平或垂直滚动条位置
+        */
+        console.log($('body').scrollTop());//scrollTop  
+        console.log($('body').scrollLeft());//scrollLeft 
+    </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <script src="../Scripts/jquery/jquery.min.js"></script>
+    <style type="text/css">
+        body {
+            margin: 0;
+            padding: 0;
+          
+        }
+        html {
+         
+        }
+    </style>
+</head>
+<body>
+    <button>按钮1</button><br />
+    <button>按钮2</button><br />
+   
+    <script type="text/javascript">
+
+        ; (function (method) {
+            method(window, window.document, jQuery);
+        }(function (win, doc, $) {
+            $.fn.extend({
+
+                superPlus: function (options) {
+                    var defaluts = {};
+                    //使用用户的参数覆盖默认参数
+                    $.extend(defaluts, options)
+
+                    this.each(function () {
+                        $(this).width(300);
+                    });
+                }
+            });
+        }));
+
+
+        $('button').superPlus();
+    </script>
+</body>
+</html>

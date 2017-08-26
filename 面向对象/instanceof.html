@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+</head>
+<body>
+    <script>
+
+        var str1 = "Hello";
+        var str2 = new String("Hello");
+
+        console.log(str1 instanceof String);   //string false
+        console.log(str2 instanceof String);  //object true
+
+        console.log(1 instanceof Number); //false
+
+        function Foo() { };
+
+        var f1 = new Foo();
+        console.log(f1 instanceof Foo);//true
+
+        /*
+        instanceof 运算符与 typeof 运算符相似，用于识别正在处理的对象的类型。
+        与 typeof 方法不同的是，instanceof 方法要求开发者明确地确认对象为某特定类型。
+        
+        使用 typeof 运算符时采用引用类型存储值会出现一个问题，无论引用的是什么类型的对象，它都返回 "object"。
+
+        instanceof用于判断某个对象是否被另一个函数构造。
+        */
+        
+    </script>
+</body>
+</html>

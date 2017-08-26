@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+</head>
+<body>
+    <script type="text/javascript">
+
+		//函数声明
+        function color( person, greeting ) {
+			var text = greeting + ", " + person;
+			console.log( text );
+		};
+		
+		color('QQ','3055');
+		
+		//函数表达式
+		var greet = function( person, greeting ) {
+			var text = greeting + ", " + person;
+			console.log( text );
+		};
+		
+		greet('QQ','3055');
+		
+		
+		//立即调用函数表达式（IIFE）
+		(function() {
+			var foo = "Hello world";
+			console.log(foo);
+		})();
+		
+		
+		//回调函数
+		var myFn = function( fn ) {
+			var result = fn();
+			console.log( result );
+		};
+
+		// Logs "hello world"
+		myFn( function() {
+			return "hello world";
+		});
+		
+		
+    </script>
+</body>
+</html>

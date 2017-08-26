@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+</head>
+<body>
+    <script>
+
+        /*构造函数*/
+        //可以简单的认为是一个类型的定义
+        //实例化
+        function Point(x, y) {
+            // 用new关键词调用 这个this代表Point对象本身  否则是windows
+            this.x = x;
+            this.y = y;
+        }
+
+        //原型链
+        Point.prototype.toString = function () {
+            return '(' + this.x + ', ' + this.y + ')';
+        };
+        //得到X
+        Point.prototype.GetX = function () {
+            return this.x;
+        }
+        //得到Y
+        Point.prototype.GetY = function () {
+            return this.y;
+        }
+
+        //通过new关键字调用构造函数，创建一个对象p
+        var p = new Point(1, 2);//Point
+        p.toString();
+        p.GetX();
+        p.GetY();
+
+        var p2 = Point(10, 10);//this是windows
+
+    </script>
+</body>
+</html>

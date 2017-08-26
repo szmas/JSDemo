@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <script src="../Scripts/jquery/jquery.min.js"></script>
+    <style>
+        p, span {
+            display: inline-block;
+            width: 60px;
+            height: 30px;
+            line-height: 30px;
+            color: #fff;
+            background-color: #0f9ae0;
+            border-color: #0f9ae0;
+            text-align: center;
+            font-family: 'Microsoft YaHei';
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="d">
+        <p>
+            1
+        </p>
+        <p>
+            2
+        </p>
+        <p>
+            3
+        </p>
+    </div>
+    <div class="d">
+        <span>
+            1
+        </span>
+        <span>
+            2
+        </span>
+        <span>
+            3
+        </span>
+    </div>
+
+    <script type="text/javascript">
+
+        $(function () {
+            for (var i = 0; i < document.getElementsByTagName('p').length; i++) {
+                document.getElementsByTagName('p')[i].onclick = function () {
+                    alert(i);
+                }
+            }
+
+            for (var i = 0; i < document.getElementsByTagName('span').length; i++) {
+                document.getElementsByTagName('span')[i].onclick = (function (n) {
+
+                    return function () {
+                        alert(n);
+                    };
+                })(i)
+            }
+
+        });
+    </script>
+</body>
+</html>

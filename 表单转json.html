@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js" type="text/javascript"></script>
+</head>
+<body>
+    <form id="myForm">
+
+        <input name="ID" /><br />
+        <input name="Name" /><br />
+        <input name="Age" /><br />
+        <input name="Money" /><br />
+
+        <input type="submit" id="btnSave" value="提交" />
+
+        <script type="text/javascript">
+
+            (function ($) {
+                $.fn.serializeJson = function () {
+                    var serializeObj = {};
+                    $(this.serializeArray()).each(function () {
+                        serializeObj[this.name] = this.value;
+                    });
+                    return serializeObj;
+                };
+            })(jQuery);
+
+            $(function () {
+
+                $("#btnSave").click(function () {
+                    var json = JSON.stringify($("#myForm").serializeJson());
+                    console.log(json);
+                    return false;
+                });
+            });
+
+        </script>
+    </form>
+</body>
+</html>

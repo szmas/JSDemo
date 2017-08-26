@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <script src="../Scripts/jquery/jquery.min.js"></script>
+</head>
+<body>
+    <div class="d1">block</div>
+    <script type="text/javascript">
+
+        //IIFE
+        ; (function ($) {
+            $.fn.extend({
+                ishow: function () {
+                    this.css('display', 'block');
+                    return this;
+                }
+            });
+        })(jQuery);
+        $('.d1').ishow();
+
+
+        ; (function (method) {
+            method(window, window.document, jQuery);
+        }(function (win, doc, $) {
+            console.log("这是一个私有的块级作用域，IIFE");
+
+            $.fn.yourPluginName = function (options) {
+
+            }
+        }));
+
+
+        //jQuery.YourPluginName-1.5.js 源代码
+
+        //jQuery.YourPluginName-1.5.min.js 压缩代码
+    </script>
+</body>
+</html>

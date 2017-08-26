@@ -1,0 +1,175 @@
+﻿<!DOCTYPE html>
+<!-- 使用HTML5 DOCTYPE 不区分大小写 -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <!--width：viewport宽度；height：viewport 高度(通常可以不设置)；initial-scale：初始缩放比例；maximum-scale：最大缩放比例；minimum-scale：最小缩放比例；user-scalable：是否允许缩放(yes/no)-->
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=1" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><!--声明文档使用的字符编码(GBK，UTF-8)-->
+    <title>手机事件触发</title>
+    <!--keywords(页面关键词)：-->
+    <meta name="keywords" content="your keywords" />
+    <!--description(页面描述)：-->
+    <meta name="description" content="your description" />
+    <!--author(网页作者)：-->
+    <meta name="author" content="author name" />
+    <!-- ps：如果网页没有提供robots，搜索引擎认为网页的robots属性为all(index和follow -->
+    <meta name="robots" content="index,follow" />
+
+    <!--忽略将页面中的数字识别为电话号码(ios设备容易出现)-->
+    <meta name="format-detection" content="telephone=no" />
+    <!--忽略页面中对邮箱地址的识别(android设备容易出现)-->
+    <meta name="format-detection" content="email=no" />
+    <!--允许全屏浏览页面的标签-->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <!--定义状态栏样式为暗黑色-->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <!--页创建快捷方式到桌面时，其图标变为我们自己定义的图标-->
+    <link rel="apple-touch-icon-precomposed" href="//st.360buyimg.com/m/images/apple-touch-icon.png?v=jd201705182030" />
+
+    <meta http-equiv="Expires" content="-1">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Pragma" content="no-cache">
+
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <style type="text/css">
+        html {
+            font-size: 100%; /*10÷16×100=62.5%   1rem=10px*/
+            /*长时间按住页面出现闪退*/
+            -webkit-touch-callout: none;
+            /*IOS/Android触摸元素时出现半透明灰色遮罩*/
+            -webkit-tab-highlight-color: rgba(255,255,255,0.4);
+        }
+
+        html, body, form, fieldset, p, div, h1, h2, h3, h4, h5, h6 {
+            /*旋转屏幕时，调整字体大小*/
+            -webkit-text-size-adjust: 300%;
+        }
+
+        body {
+            /*上下拉动滚动条时卡顿*/
+            -webkit-overflow-scrolling: touch;
+            overflow-scrolling: touch;
+            /*禁止复制，选中文本*/
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -khtml-user-select: none;
+            user-select: none;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>一.单位(px,em,rem)</h1>
+    <p>
+        1.px：屏幕设备物理上能显示出的最小的一个点，不同设备上点的长宽，比例不一定相同；
+    </p><p>
+        2.em/rem：相同点：都是一个相对大小的值；不同点：em是相对父级元素，rem是相对html(默认值视浏览器而定，Chrome的默认为16px)；
+    </p><p>
+        rem单位在移动端前端开发很流行。rem单位确实好处蛮多的，它是相对于根节点，让我们整个网站单位可以统一。还可以让我们的字体更好的自适应网站的大小，但是，你用过了就知道，它会出现一个问题：用Chrome浏览器打开你做的网站的时候，有时候会出现字体很大的情况。但是刷新一下页面就好了。
+    <p>
+        之所以会出现这种情况，原因是因为我们为了计算方便，将原本默认1rem=16px修改1rem=10px；因此，我们在html中通常做了如下设置：
+    </p>
+    <script type="text/javascript">
+
+        $(function () {
+
+            var timer;
+            //触控开始时触发，类似于mousedown
+            $(document).on('touchstart', function (e) {
+                console.log('touchstart');
+            });
+
+            //触控点在屏幕上移动时触发，类似于mousemove
+            $(document).on('touchmove', function (e) {
+
+                var t = e.originalEvent.touches;//多点触控
+
+                var _touch = t[0];
+
+                //clientX  /  clientY→触控点相对浏览器窗口的位置
+                var s1 = "1=>clientX:" + _touch.clientX + " clientY:" + _touch.clientY;
+
+                //pageX  / pageY→触控点相对页面的位置
+                var s2 = "1=>pageX:" + _touch.pageX + " pageY:" + _touch.pageY;
+
+                //pageX  / screenY→触控点相对屏幕的位置
+                var s3 = "1=>scrennX:" + _touch.screenX + " screenY:" + _touch.screenY;
+
+                //target→当前的DOM元素
+                var targer = _touch.targer;
+
+                $('body').append(s1 + "<br/>");
+                $('body').append(s2 + "<br/>");
+                $('body').append(s3 + "<br/>");
+
+                console.log('touchmove');
+            });
+
+            //触控结束时触发，类似于mouseup
+            $(document).on('touchend', function (e) {
+                console.log('touchend');
+            });
+
+            //更高级别的事情发生时触发，比如在游戏中突然来电话，就会触发touchcancel事件，
+            //并且在touchcancel时保存当前游戏的状态信息
+            $(document).on('touchcancel', function (e) {
+                console.log('touchcancel');
+            });
+
+
+            $(window).on('devicemotion', function (e) {
+
+                var acceleration = e.originalEvent.accelerationIncludingGravity;
+
+                $('body').append("devicemotion=>x:" + acceleration.x + " y:" + acceleration.y + " z:" + acceleration.z + "<br/>");
+            });
+
+            $(window).on("orientationchange", function () {
+                //回调事件
+
+                alert("翻转了" + window.orientation);
+            })
+
+
+        });
+
+    </script>
+
+    <script type="text/javascript">
+        var SHAKE_THRESHOLD = 3000;
+        var last_update = 0;
+        var x = y = z = last_x = last_y = last_z = 0;
+        function init() {
+            if (window.DeviceMotionEvent) {
+                window.addEventListener('devicemotion', deviceMotionHandler, false);
+            } else {
+                alert('not support mobile event');
+            }
+        }
+        function deviceMotionHandler(eventData) {
+
+            //捕捉重力加速度
+            var acceleration = eventData.accelerationIncludingGravity;
+
+            var curTime = new Date().getTime();
+            if ((curTime - last_update) > 100) {
+                var diffTime = curTime - last_update;
+                last_update = curTime;
+                x = acceleration.x;
+                y = acceleration.y;
+                z = acceleration.z;
+                var speed = Math.abs(x + y + z - last_x - last_y - last_z) / diffTime * 10000;
+                if (speed > SHAKE_THRESHOLD) {
+                    alert("摇动了");
+                }
+                last_x = x;
+                last_y = y;
+                last_z = z;
+            }
+        }
+        init();
+    </script>
+
+</body>
+</html>

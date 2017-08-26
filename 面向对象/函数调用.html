@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+</head>
+<body>
+    <script type="text/javascript">
+
+        function show(name) {
+            console.log(this + " " + name);
+        }
+
+        //调用一个对象的一个方法，以另一个对象替换当前对象
+        /*
+
+        call([thisObj[,args])
+
+        hisObj 可选项。将被用作当前对象的对象。args 将被传递方法参数序列。
+        */
+
+        show.call(window, 'jack');//this就是window,参数值就是jack
+
+        //应用某一对象的一个方法，用另一个对象替换当前对象，与call类似。
+        //如 func.call(func1,var1,var2,var3)对应的apply写法为：func.apply(func1,[var1,var2,var3])
+        /*
+
+        call([thisObj[,args])
+
+        hisObj 可选项。将被用作当前对象的对象。args 将被传递方法参数序列。
+        */
+        show.apply(window, ['jack']);
+
+        // call 与apply 区别 当参数明确时可用call, 当参数不明确时可用apply给合arguments
+        //call和apply操作符可以随意改变this指向
+
+
+        /*
+        
+
+        1)、fun(x,y);
+
+        2)、obj.fun(x,y);
+
+        3)、fun.apply(obj,[x,y]);
+
+        4)、fun.call(obj,x,y);
+
+        第1，2种调用的方式最终将转换成3，4方法，也就是说1，2只是一种简化的语法糖，那么this就是apply与obj的第1个参数，指向调用时的上下文。
+        
+        
+        */
+    </script>
+</body>
+</html>

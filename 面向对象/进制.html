@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+</head>
+<body>
+    <script type="text/javascript">
+        //十进制转二进制，八进制，十六进制
+        var a = 110;
+        var bin = a.toString(2);
+        console.log(bin);
+        var dex = a.toString(8);
+        console.log(dex);
+        var hex = a.toString(16);
+        console.log(hex);
+
+        //十六进制，八进制，二进制转十进制
+        var hex = '56e7';
+        var v = parseInt(hex, 16);
+        console.log(v);
+        var dex = '53347';
+        var v2 = parseInt(dex, 8);
+        console.log(v2);
+        var bin = '101011011100111';
+        var v3 = parseInt(bin, 2);
+        console.log(v3);
+
+
+        //获取中文的Unicode编码
+        var code = '我'.charCodeAt();
+        console.log(code);
+        //编码转中文
+        var chars = String.fromCharCode(code);
+        console.log(chars);
+    </script>
+</body>
+</html>
