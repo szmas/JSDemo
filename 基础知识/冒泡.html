@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>冒泡</title>
+    <script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+
+</head>
+
+<body>
+
+    <input type="button" id="btn" value="冒泡" />
+    <div id="dv">
+        <input type="button" id="btn2" value="捕获" />
+    </div>
+    <a id="lnk" href="http://www.baidu.com">默认事件</a>
+    <script>
+        $(function () {
+
+            $('#btn').click(function () {
+                console.log('#btn.click');
+                return false; //jQuery阻止冒泡  //e.stopPropagation();//js阻止冒泡
+            });
+
+            //jQuery只支持冒泡
+            $(document).click(function () {
+                console.log('document.click');
+            });
+
+
+            //默认事件
+
+            $('#lnk').click(function (e) {
+                //return false;//也可以阻止默认事件 还会阻止冒泡
+
+                //兼容火狐  不支持window.event
+                var event = window.event || e.originalEvent;//jquery事件中原生事件对象
+
+                //事件触发源头的元素
+                var tar = event.srcElement || event.target;
+
+                //IE10以上
+                if (event.preventDefault)
+                    event.preventDefault();//阻止默认事件  //event.preventDefault() //js 阻止默认事件
+                else
+                    event.returnValue = false;//IE10及以下中阻止函数器默认动作的方式
+            });
+        });
+
+
+        window.onload = function () {
+
+            //捕获
+            var btn2 = document.getElementById('btn2');
+
+
+            //所有主流浏览器，除了 IE 8 及更早 IE版本
+            if (btn2.addEventListener) {
+
+                btn2.addEventListener("click", function (e) {
+                    console.log('#btn2.click');
+                    e.stopPropagation();//js阻止冒泡
+                }, true);
+
+            } else {
+                //非主流浏览器 IE8及以下
+                btn2.attachEvent('onclick', function (e) {
+                    console.log('#btn2.click');
+                    e.cancelBubble = true;//IE8 js阻止冒泡
+                });
+            }
+
+
+            //捕获
+            var dv = document.getElementById('dv');
+
+
+            if (dv.addEventListener) {
+
+                dv.addEventListener('click', function (e) {
+                    console.log('#dv.click');
+                }, true);
+
+            } else {
+
+                dv.attachEvent('onclick', function (e) {
+                    console.log('#dv.click');
+                });
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>
