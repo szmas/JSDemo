@@ -28,9 +28,8 @@
                     $(this).blur();
                 });
 
-                console.log(isPass);
-
-                return false;
+                options.callback.call(this,isPass);
+				return false;
             });
 
             // 验证方法

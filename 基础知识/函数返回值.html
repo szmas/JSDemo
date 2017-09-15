@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <script>
+
+        function show() {
+            return false;
+        }
+		
+		function show2() {
+            return;
+        }
+		
+		function show3() {
+            throw new Error('抛出异常');
+			throw "异常错误";
+        }
+
+        var d1 = show();//true
+		var d2 = show2();//undefined
+
+		
+		var d3 = show3();//抛出异常，js终止运行
+		
+        console.log('long');
+    </script>
+</body>
+</html>

@@ -45,7 +45,7 @@
     </style>
 </head>
 <body>
-    <form id="myform" action="http:;//wwww.baidu.com">
+    <form id="myform" action="http://wwww.baidu.com">
 
         <p>
             <span class="lt">用户名：</span><span><input type="text" name="name" /></span>
@@ -76,7 +76,11 @@
     <script type="text/javascript">
 
         $(function () {
-            $("#myform").checkForm();
+            $("#myform").checkForm({callback:function(flag){
+					console.log(flag);
+					$(this).submit();
+					return flag;
+			}});
         });
 
     </script>

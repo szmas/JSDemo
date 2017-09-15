@@ -3,6 +3,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
+	 <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 </head>
 <body>
     <div id="test" style="position: fixed; height: 100px; width: 100px; background-color: pink;"></div>
@@ -14,10 +15,9 @@
             test.style.display = 'none';
         }
         document.oncontextmenu = function (e) {
-            debugger;
             e = e || event;
-            test.style.left = e.clientX + 'px';
-            test.style.top = e.clientY + 'px';
+            test.style.left = e.clientX -$('#test').width()/2+ 'px';
+            test.style.top = e.clientY -$('#test').height()/2+ 'px';
             //注意，由于加法、减法的优先级高于大于、小于的优先级，所以不用加括号，详细情况移步至此
             if (document.documentElement.clientHeight - e.clientY < test.offsetHeight) {
                 test.style.top = e.clientY - test.offsetHeight + 'px';

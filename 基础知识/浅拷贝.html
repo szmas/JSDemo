@@ -1,0 +1,183 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>浅拷贝</title>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js" type="text/javascript"></script>
+</head>
+<body>
+    <p>
+        JavaScript存储对象都是存地址的，所以浅复制会导致 a 和 b 指向同一块内存地址
+        数组的赋值其实相当于给了索引，改变其中一个变量其他引用都会改变
+    </p>
+    <p>
+        所以我们可以指出对数组、对象、对象数组进行简单赋值运算只是创建了一份原内容的引用，指向的仍然是同一块内存区域，
+        修改时会对应修改原内容，而有时候我们并不需要这种模式，这就需要对内容进行深拷贝。
+    </p>
+    <script>
+
+        //浅拷贝
+
+        var arr_a = [1, 2, 3];
+        var arr_b = arr_a;
+        arr_b[0] = 4;
+
+        console.log(arr_a);
+        console.log(arr_b);
+        //arr_a为4 2 3
+        //arr_b为4 2 3
+
+
+        //方法一：遍历复制
+
+        //这种方法简单粗暴，但是利用JS本身的函数我们可以更加便捷地实现这个操作。
+
+        var arr = ["a", "b"], arrCopy = [];
+        for (var item in arr) arrCopy[item] = arr[item];
+        arrCopy[1] = "c";
+        arr   // => ["a", "b"]
+        arrCopy   // => ["a", "c"]
+
+        //考虑伪多维数组可以写成函数形式：
+        function arrDeepCopy(source) {
+            var sourceCopy = [];
+            for (var item in source) sourceCopy[item] = typeof source[item] === 'object' ? arrDeepCopy(source[item]) : source[item];
+            return sourceCopy;
+        }
+
+
+        //方法二：slice() 方法可从已有的数组中返回选定的元素。
+        // arrayObject.slice(start,end) start从零开始
+        //方法返回一个新的数组，包含从 start 到 end （不包括该元素）的 arrayObject 中的元素。该方法并不会修改数组，而是返回一个子数组。
+
+        var arr_c = arr_a.slice(0);
+        arr_c[0] = 5;
+
+        console.log(arr_a);
+        console.log(arr_c);
+
+
+        //方法三：concat() 方法用于连接两个或多个数组。
+        //该方法不会改变现有的数组，而仅仅会返回被连接数组的一个副本。
+
+
+        var arr_d = arr_a.concat();
+        arr_d[0] = 6;
+
+        console.log(arr_a);
+        console.log(arr_d);
+
+
+        //assgin 虽然说assgin也是深拷贝，但是他只是第一层深拷贝，第二层之后还是进行浅拷贝
+
+        var arr_e = Object.assign({}, arr_a);
+        arr_e[0] = 7;
+
+        console.log(arr_a);
+        console.log(arr_e);
+
+    </script>
+
+    <script>
+
+        //对象的深拷贝对象的深拷贝
+
+        //简单的赋值运算只是创建了一份浅拷贝。
+
+        var obj = { "a": 1, "b": 2 };
+
+        var objCopy = obj;
+
+        objCopy.a = 3;
+
+        console.log(obj);
+        console.log(objCopy);
+
+
+        var objDeepCopy = function (source) {
+            var sourceCopy = {};
+            for (var item in source) sourceCopy[item] = source[item];
+            return sourceCopy;
+        }
+
+
+        var objCopy = objDeepCopy(obj);
+        objCopy.a = 33;
+
+
+        console.log(obj);
+        console.log(objCopy);
+
+
+        //复杂结构的对象
+
+        var obj2 = { "a": { "a1": ["a11", "a12"], "a2": 1 }, "b": 2 };
+
+        var objDeepCopy = function (source) {
+            var sourceCopy = {};
+            for (var item in source) sourceCopy[item] = typeof source[item] === 'object' ? objDeepCopy(source[item]) : source[item];
+            return sourceCopy;
+        }
+
+        var objCopy = objDeepCopy(obj2);
+        objCopy.a.a1[1] = "a13";
+
+
+        console.log(obj2);   // => { "a": { "a1": ["a11", "a12"], "a2": 1 }, "b": 2 }
+        console.log(objCopy);   // => { "a": { "a1": ["a11", "a13"], "a2": 1 }, "b": 2 }
+
+
+
+        //这是一个由对象、数组杂合成的奇葩数组
+
+        var obj3 = [{ "a": { "a1": ["a11", "a12"], "a2": 1 }, "b": 2 }, ["c", { "d": 4, "e": 5 }]];
+
+
+        var objDeepCopy = function (source) {
+            var sourceCopy = source instanceof Array ? [] : {};
+            for (var item in source) {
+                sourceCopy[item] = typeof source[item] === 'object' ? objDeepCopy(source[item]) : source[item];
+            }
+            return sourceCopy;
+        }
+        var objCopy = objDeepCopy(obj3);
+        objCopy[0].a.a1[1] = "a13";
+        objCopy[1][1].e = "6";
+        console.log(obj3)   // => [{ "a": { "a1": ["a11", "a12"], "a2": 1 }, "b": 2 }, ["c", { "d": 4, "e": 5 }]]
+        console.log(objCopy)   // => [{ "a": { "a1": ["a11", "a13"], "a2": 1 }, "b": 2 }, ["c", { "d": 4, "e": 6 }]]
+
+
+        //使用jQuery.extend方法 默认只深拷贝第一层，其他都是浅拷贝
+        var obj4 = { c: 3 };
+        $.extend(obj4, obj);
+        obj4.a = "a13";
+
+        console.log(obj)
+        console.log(obj4)
+
+
+
+        //Boolean类型 指示是否深度合并对象，默认为false。
+        var obj4 = {};
+        $.extend(true, obj4, obj3);
+
+        obj4[0].a.a1[1] = "aaaaaaaaaa";
+        obj4[1][1].e = "666666666666";
+
+        console.log(obj3)
+        console.log(obj4)
+
+
+
+
+        //使用JSON.stringify方法
+        var obj5 = JSON.parse(JSON.stringify(obj3));
+        obj5[0].a.a1[1] = "aaaaaaaaaa";
+        obj5[1][1].e = "666666666666";
+
+        console.log(obj3)
+        console.log(obj5)
+
+
+    </script>
+</body>
+</html>

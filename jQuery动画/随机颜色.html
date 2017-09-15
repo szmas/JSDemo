@@ -20,9 +20,11 @@
             if (b.length < 2) b = "0" + b;
             return "#" + r + g + b;
         };
-
-        for (var i = 0; i < 20; i++) {
-            for (var j = 0; j < 20; j++) {
+		
+		var row=30;
+		var col=20;
+        for (var i = 0; i < col; i++) {
+            for (var j = 0; j < row; j++) {
 
                 var d = document.createElement("div");
                 d.style.position = "absolute";
@@ -39,10 +41,12 @@
         var eles = document.getElementsByTagName('div');
         var count = 0;
         setInterval(function () {
-            eles[count].onclick();
-            if (count <= 400) count++
-            else count = 0;
-        }, 20);
+			if (count >= row*col){ count=0;}
+
+			eles[count].onclick(); 
+			count++;
+
+        }, 10);
     </script>
 </body>
 </html>

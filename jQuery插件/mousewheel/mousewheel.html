@@ -3,8 +3,8 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
-    <script src="../../Scripts/jquery/jquery.min.js"></script>
-    <script src="//cdn.bootcss.com/jquery-mousewheel/3.1.13/jquery.mousewheel.js"></script>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="http://cdn.bootcss.com/jquery-mousewheel/3.1.13/jquery.mousewheel.js"></script>
     <style>
         .mousewheel_example {
             height: 1080px;
@@ -12,15 +12,16 @@
     </style>
 </head>
 <body>
-    <div class="mousewheel_example"></div>
+    <div class="mousewheel_example">
+	</div>
     <script type="text/javascript">
         $(function () {
             $('div.mousewheel_example')
                 .bind('mousewheel', function (event, delta, deltaX, deltaY) {
 
                     var dir = delta > 0 ? 'Up' : 'Down';
-                    $(this).text(dir + ' at a velocity of ' + delta);
-                    return false;
+                    $(this).text(dir + ' at a velocity of ' + delta+'x：'+deltaX+' y：'+deltaY);
+                    return true;
                 });
         });
 

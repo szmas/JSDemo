@@ -14,9 +14,11 @@
 
         //解决手机端报错定位问题
         window.onerror = function (sMsg, sUrl, sLine) {
-            alert(sMsg + "\r\n" + sUrl + "\r\n" + sLine);
+            alert("出错详情.\n"+"消息:"+sMsg+"\nURL:"+sUrl+"\n出错行号:"+sLine);
+			
+			//return true； 屏蔽所有错误
         }
-        f
+		fn();
 
     </script>
 
