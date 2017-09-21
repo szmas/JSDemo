@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+    <script type="text/javascript">
+
+
+        //ÅÐ¶ÏIE7\8 ¼æÈÝÐÔ¼ì²â
+        var isIE = !!window.ActiveXObject;
+        var isIE6 = isIE && !window.XMLHttpRequest;
+        var isIE8 = isIE && !!document.documentMode;
+        var isIE7 = isIE && !isIE6 && !isIE8;
+
+        if (isIE8 || isIE7) {
+            document.attachEvent("onclick", function () {
+
+            })
+        } else {
+            document.addEventListener("click", function () {
+
+            })
+        }
+
+    </script>
+</body>
+</html>

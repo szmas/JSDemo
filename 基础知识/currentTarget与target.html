@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+    currentTarget	Element	只读	其事件处理程序当前正在处理事件的那个元素（currentTarget始终===this,即处理事件的元素）<br />
+    target	Element	只读	直接事件目标，真正触发事件的目标
+
+    <div class="main">
+        <p>
+            <input type="button" name="btn" value="触发" />
+        </p>
+    </div>
+
+    <script type="text/javascript">
+
+        document.querySelector('.main').onclick = function (e) {
+
+            //而target则只是包含事件的实际目标。
+            console.log(e.target);
+
+            //在事件处理程序内部，对象this始终等于currentTarget的值，
+            console.log(e.currentTarget);
+
+            console.log(this);
+
+            console.log(event.CAPTURING_PHASE); //1
+            console.log(event.AT_TARGET); //2
+            console.log(event.BUBBLING_PHASE); //3
+        }
+
+
+
+    </script>
+</body>
+</html>

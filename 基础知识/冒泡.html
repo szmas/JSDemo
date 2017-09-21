@@ -9,7 +9,19 @@
 </head>
 
 <body>
-
+    <div>
+        事件传播的顺序对应浏览器的两种事件流模型：捕获型事件流和冒泡型事件流。<br />
+        冒泡型事件流：事件的传播是从最特定的事件目标到最不特定的事件目标。即从DOM树的叶子到根。【推荐】 <br />
+        捕获型事件流：事件的传播是从最不特定的事件目标到最特定的事件目标。即从DOM树的根到叶子。
+        <br />
+        由于IE8及更早版本只支持事件冒泡,所以通过attachEvent()添加的事件处理程序都会被添加到冒泡阶段<br />
+        IE11只支持addEventListener！<br />
+        IE9，IE10对attachEvent和addEventListener都支持！<br />
+        TE8及以下版本只支持attachEvent！<br />
+    </div>
+    <div>
+        不会冒泡:获得输入焦点的focus事件和失去输入焦点的blur事件。
+    </div>
     <input type="button" id="btn" value="冒泡" />
     <div id="dv">
         <input type="button" id="btn2" value="捕获" />
@@ -35,16 +47,16 @@
                 //return false;//也可以阻止默认事件 还会阻止冒泡
 
                 //兼容火狐  不支持window.event
-                var event = window.event || e.originalEvent;//jquery事件中原生事件对象
+                var event = window.event || e.originalEvent; //jquery事件中原生事件对象
 
                 //事件触发源头的元素
                 var tar = event.srcElement || event.target;
 
                 //IE10以上
                 if (event.preventDefault)
-                    event.preventDefault();//阻止默认事件  //event.preventDefault() //js 阻止默认事件
+                    event.preventDefault(); //阻止默认事件  //event.preventDefault() //js 阻止默认事件
                 else
-                    event.returnValue = false;//IE10及以下中阻止函数器默认动作的方式
+                    event.returnValue = false; //IE10及以下中阻止函数器默认动作的方式
             });
         });
 
@@ -60,14 +72,14 @@
 
                 btn2.addEventListener("click", function (e) {
                     console.log('#btn2.click');
-                    e.stopPropagation();//js阻止冒泡
+                    e.stopPropagation(); //js阻止冒泡
                 }, true);
 
             } else {
                 //非主流浏览器 IE8及以下
                 btn2.attachEvent('onclick', function (e) {
                     console.log('#btn2.click');
-                    e.cancelBubble = true;//IE8 js阻止冒泡
+                    e.cancelBubble = true; //IE8 js阻止冒泡
                 });
             }
 
@@ -89,7 +101,6 @@
                 });
             }
         }
-
 
     </script>
 </body>

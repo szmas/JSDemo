@@ -1,0 +1,116 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Zepto-touch</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=0" />
+    <script src="Zepto/zepto.js"></script>
+    <script src="touch.code.baidu.com/touch-0.2.14.min.js"></script>
+    <script src="Zepto/debug.min.js"></script>
+    <style>
+        html, body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, p, blockquote, th, td {
+            margin: 0;
+            padding: 0;
+        }
+
+        img, body, html {
+            border: 0;
+        }
+
+        address, caption, cite, code, dfn, em, strong, th, var {
+            font-style: normal;
+            font-weight: normal;
+        }
+
+        ol, ul {
+            list-style: none;
+        }
+
+        caption, th {
+            text-align: left;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-size: 100%;
+        }
+
+        q:before, q:after {
+            content: '';
+        }
+
+        html, body {
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <script type="text/javascript">
+
+
+
+        $(function () {
+
+            console.log = function (msg) {
+                debug.success(msg);
+            };
+
+            //滑动事件
+            touch.on(document, 'swipe', function () {
+                console.log('滑动事件');
+            });
+
+
+            //向左滑动事件
+            touch.on(document, 'swipeleft', function () {
+                console.log('向左滑动事件');
+            });
+
+            //向右滑动事件
+            touch.on(document, 'swiperight', function () {
+                console.log('向右滑动事件');
+            });
+
+            //向上滑动事件
+            touch.on(document, 'swipeup', function () {
+                console.log('向上滑动事件');
+            });
+
+            //向下滑动事件
+            touch.on(document, 'swipedown', function () {
+                console.log('向下滑动事件');
+            });
+
+
+
+            //屏幕单击事件
+            touch.on(document, 'tap', function () {
+                console.log('屏幕单击事件');
+            });
+
+            //屏幕双击事件
+            touch.on(document, 'doubletap', function () {
+                console.log('屏幕双击事件');
+            });
+
+
+
+            //长按事件
+            touch.on(document, 'hold', function () {
+                console.log('长按事件');
+            });
+
+            //放大
+            touch.on(document, 'pinchout', function () {
+                console.log('放大');
+            });
+
+
+            //收缩
+            touch.on(document, 'pinchin', function () {
+                console.log('缩放手势');
+            });
+
+        });
+    </script>
+</body>
+</html>

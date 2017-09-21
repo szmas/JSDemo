@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <ul id="color-list">
+        <li>red</li>
+        <li>orange</li>
+        <li>yellow</li>
+        <li>green</li>
+        <li>blue</li>
+        <li>indigo</li>
+        <li>purple</li>
+    </ul>
+    <input type="button" id="eleAdd" value="添加元素" />
+    <p>
+        事件代理的原理用到的就是事件冒泡和目标元素，把事件处理器添加到父元素，等待子元素事件冒泡，
+        并且父元素能够通过target（IE为srcElement）判断是哪个子元素，从而做相应处理。<br />
+        关于target更多内容请参考javaScript事件（四）event的公共成员（属性和方法） 下面举例来说明。
+    </p>
+
+    <p>
+        总结一下事件代理的好处：<br />
+
+        将多个事件处理器减少到一个，因为事件处理器要驻留内存，这样就提高了性能。<br />
+        想象如果有一个100行的表格，对比传统的为每个单元格绑定事件处理器的方式和事件代理（即table上添加一个事件处理器），不难得出结论，事件代理确实避免了一些潜在的风险，提高了性能。
+        DOM更新无需重新绑定事件处理器，因为事件代理对不同子元素可采用不同处理方法。如果新增其他子元素（a,span,div等），<br />
+        直接修改事件代理的事件处理函数即可，不需要重新绑定处理器，不需要再次循环遍历。
+    </p>
+    <script type="text/javascript">
+        $(function () {
+            $('#color-list').bind('click', function (e) {
+                var targetElement = e.target || e.srcElement;
+                if (targetElement.nodeName.toLowerCase() == 'li') {
+                    console.log(targetElement.innerHTML);
+                }
+            });
+
+            $('#eleAdd').bind('click', function (e) {
+                $('#color-list').append('<li>vue.js</li>');
+            });
+        });
+    </script>
+</body>
+
+</html>
