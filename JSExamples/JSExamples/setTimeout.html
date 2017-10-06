@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+</head>
+<body>
+    <input type="button" id="btn" value="点击" />
+    <input type="button" id="btn2" value="点击" />
+    <input type="button" id="btn3" value="点击" />
+    <script>
+
+        function doSomeThing() {
+            for (var i = 0; i < 20000; i++) {
+                var e = document.createElement('div');
+                e.id = 'd1';
+                e.className = 'dd';
+                e.innerText = 'QQ';
+                e.setAttribute('_el', "qqq");
+                document.body.appendChild(e);
+                document.body.removeChild(e);
+            }
+        }
+
+        $('#btn').click(function () {
+            var t = new Date();
+            //100微秒后加入列队
+            setTimeout(function () {
+                console.log(new Date() - t);
+            }, 100);
+            doSomeThing();
+        });
+
+        $('#btn2').click(function () {
+            var t = new Date();
+            setTimeout(function fn() {
+                console.log(new Date() - t);
+                doSomeThing();
+                setTimeout(fn, 1000);
+                t = new Date();
+            }, 1000);
+
+        });
+
+        $('#btn3').click(function () {
+            var t = new Date();
+            setInterval(function fn() {
+                console.log(new Date()-t);
+                doSomeThing();
+                //t = new Date();
+            }, 1000);
+
+        });
+
+    </script>
+</body>
+</html>

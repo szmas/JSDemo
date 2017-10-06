@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+</head>
+<body>
+    <p id="p1"></p>
+
+    <img src="sleepimg.aspx" id="img" />
+    <script>
+
+        //访问父页面的元素
+        var parentDoc = parent.document;
+        parentDoc.getElementById('p1').innerHTML = "我是父页面";
+        parentDoc.body.style.backgroundColor = "#ddd";
+
+        if (document.addEventListener) {
+            document.addEventListener('DOMContentLoaded', function (event) {
+                console.log("文档加载完成");
+            }, false);
+        } else {
+            //兼容ie8
+            document.attachEvent('onreadystatechange', function () {
+                if (document.readyState == 'interactive') {
+                    console.log("文档加载完成");
+                }
+            });
+        }
+
+    </script>
+</body>
+</html>

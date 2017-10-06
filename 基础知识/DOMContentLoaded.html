@@ -19,6 +19,16 @@
         if (document.attachEvent) {
             // 确保当页面是在iframe中加载时，事件依旧会被安全触发
             document.attachEvent('onreadystatechange', function () {
+
+                /*
+                
+                uninitialized（未初始化）：对象存在但尚未初始化；
+                loading（正在加载）：对象正在加载数据；
+                loaded（加载完毕）：对象加载数据完成；
+                interactive（交互）：可以操作对象，但还没有完全加载；
+                complete（完成）：对象已经加载完毕；
+                
+                */
                 if (document.readyState == 'complete') {
                     console.log("onreadystatechange");
                 }

@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+</head>
+<body>
+    <p id="p1"></p>
+    <iframe src="childIframe.html" id="iframe" frameborder="0"></iframe>
+    <script>
+        var iframe = document.getElementById('iframe');
+
+        //访问子页面的元素
+        var childDoc = iframe.contentWindow || iframe.contentDocument;
+
+        childDoc = childDoc.document || childDoc;
+
+        if (childDoc.addEventListener) {
+            childDoc.addEventListener('DOMContentLoaded', function (event) {
+                console.log("文档加载完成");
+
+                childDoc.body.style.backgroundColor = '#ccc';
+
+                childDoc.getElementById('p1').innerText = "我是子页面";
+
+            }, false);
+        } else {
+            //兼容ie8
+            childDoc.attachEvent('onreadystatechange', function () {
+                if (childDoc.readyState == 'interactive') {
+                    console.log("文档加载完成");
+
+                    childDoc.body.style.backgroundColor = '#ccc';
+
+                    childDoc.getElementById('p1').innerText = "我是子页面";
+                }
+            });
+        }
+
+        iframe.onload = function () {
+            console.log('全部加载完成');
+        }
+
+    </script>
+</body>
+</html>

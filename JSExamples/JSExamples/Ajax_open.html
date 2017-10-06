@@ -1,0 +1,96 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+</head>
+<body>
+    <p>
+        当window.open为用户触发事件内部或者加载时，不会被拦截，一旦将弹出代码移动到ajax或者一段异步代码内部，马上就出现被拦截的表现了。
+    </p>
+    <input id="btnOpen" type="button" value="打开新窗口" />
+    <script type="text/javascript">
+
+        $(function () {
+
+            //自动打开open会被拦截
+            //window.open('jsonp.html', '_blank');
+
+
+            //拦截
+            setTimeout(function () {
+                //window.open('jsonp.html', '_blank');
+            }, 0);
+
+
+            //拦截
+            //var openPage = window.open('about:blank', '_blank');
+            //openPage.location = 'jsonp.html';
+
+            //拦截
+            //newWin('jsonp.html', 'openWin');
+
+            $('#btnOpen').click(function () {
+
+                //ajax事件中window.open
+
+                //不会拦截
+                //dialog();
+
+                autoOpenWin();
+            });
+
+
+
+            function autoOpenWin() {
+
+                $.ajax({
+                    url: 'jsonp.aspx',
+                    type: 'POST',
+                    dataType: 'json',
+                    data: { param1: 'value1' },
+                    success: function (data) {
+
+                        //会拦截
+                        //var openPage = window.open('about:blank', '_blank');
+                        //openPage.location = 'jsonp.html';
+
+                        //会拦截
+                        //newWin('jsonp.html', 'openWin');
+                    }
+                })
+
+            }
+
+            //ajax打开新窗体
+            function dialog() {
+                var popup = window.open('about:blank', '_blank');  //先发起弹窗（因为是用户触发，所以不会被拦截）
+                $.ajax({
+                    url: 'jsonp.aspx',
+                    type: 'POST',
+                    dataType: 'json',
+                    data: { param1: 'value1' },
+                    success: function (data) {
+                        popup.location = 'jsonp.html';  //在重定向页面链接
+                    }
+                })
+            }
+
+            //创建A标签，自动点击事件
+            function newWin(url, id) {
+                var a = document.createElement('a');
+                a.setAttribute('href', url);
+                a.setAttribute('target', '_blank');
+                a.setAttribute('id', id);
+                // 防止反复添加
+                if (!document.getElementById(id)) document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+            }
+
+        });
+
+    </script>
+</body>
+</html>
