@@ -57,7 +57,14 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="i.mas.com\location.hash_c.html" />
+    <Content Include="i.mas.com\proxy.html" />
+    <Content Include="i.mas.com\test.html" />
+    <Content Include="i.mas.com\window.name.html" />
+    <Content Include="v.mas.com\window.name_b.html" />
+    <Content Include="v.mas.com\location.hash_b.html" />
     <Content Include="函数节流.html" />
+    <Content Include="i.mas.com\location.hash.html" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

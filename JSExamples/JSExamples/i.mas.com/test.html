@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+</head>
+<body>
+    <script type="text/javascript">
+
+        iframe = document.createElement('iframe');
+        iframe.style.display = 'none';
+        var state = 0;
+
+        iframe.onload = function () {
+            if (state === 1) {
+                console.log(iframe.contentWindow.name);
+                iframe.contentWindow.document.write('');
+                iframe.contentWindow.close();
+                document.body.removeChild(iframe);
+            } else if (state === 0) {
+                state = 1;
+                iframe.contentWindow.location = 'proxy.html';
+            }
+        };
+
+        iframe.src = 'http://v.mas.com/window.name_b.html';
+        document.body.appendChild(iframe);
+    </script>
+</body>
+</html>

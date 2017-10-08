@@ -1,0 +1,16 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+</head>
+<body>
+    <script>
+        // 监听b.html传来的hash值
+        window.onhashchange = function () {
+            // 再通过操作同域a.html的js回调，将结果传回
+            window.parent.parent.onCallback('hello: ' + location.hash.replace('#user=', ''));
+        };
+    </script>
+</body>
+</html>

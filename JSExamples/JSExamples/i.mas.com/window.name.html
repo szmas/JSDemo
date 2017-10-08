@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+</head>
+<body>
+    <p>
+        四、 window.name + iframe跨域<br>
+
+        window.name属性的独特之处：name值在不同的页面（甚至不同域名）加载后依旧存在，并且可以支持非常长的 name 值（2MB）。
+    </p>
+    <script>
+        var proxy = function (url, callback) {
+            var state = 0;
+            var iframe = document.createElement('iframe');
+
+            // 加载跨域页面
+            iframe.src = url;
+            iframe.style.display = 'none';
+
+            // onload事件会触发2次，第1次加载跨域页，并留存数据于window.name
+            iframe.onload = function () {
+                if (state === 1) {
+                    // 第2次onload(同域proxy页)成功后，读取同域window.name中数据
+                    callback(iframe.contentWindow.name);
+                    destoryFrame();
+
+                } else if (state === 0) {
+                    // 第1次onload(跨域页)成功后，切换到同域代理页面
+                    iframe.contentWindow.location = 'http://i.mas.com/proxy.html';
+                    state = 1;
+                }
+            };
+
+            document.body.appendChild(iframe);
+
+            // 获取数据以后销毁这个iframe，释放内存；这也保证了安全（不被其他域frame js访问）
+            function destoryFrame() {
+                iframe.contentWindow.document.write('');
+                iframe.contentWindow.close();
+                document.body.removeChild(iframe);
+            }
+        };
+
+        // 请求跨域b页面数据
+        proxy('http://v.mas.com/window.name_b.html', function (data) {
+            alert(data);
+        });
+    </script>
+</body>
+</html>
