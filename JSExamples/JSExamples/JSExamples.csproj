@@ -61,6 +61,8 @@
     <Content Include="i.mas.com\proxy.html" />
     <Content Include="i.mas.com\test.html" />
     <Content Include="i.mas.com\window.name.html" />
+    <Content Include="iframe\iframeTest.html" />
+    <Content Include="form\SendIframe.aspx" />
     <Content Include="v.mas.com\window.name_b.html" />
     <Content Include="v.mas.com\location.hash_b.html" />
     <Content Include="函数节流.html" />
@@ -74,53 +76,60 @@
     <Content Include="Ajax_open.html" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="childIframe.html" />
-    <Content Include="GetForm.aspx" />
+    <Content Include="iframe\childIframe.html" />
+    <Content Include="form\GetForm.aspx" />
     <Content Include="Global.asax" />
     <Content Include="i.mas.com\index.html" />
-    <Content Include="i.mas.com\iframe跨域.html" />
-    <Content Include="iframe操作.html" />
-    <Content Include="jsonp.aspx" />
-    <Content Include="jsonp.html" />
-    <Content Include="SendForm.aspx" />
+    <Content Include="i.mas.com\document.domain.html" />
+    <Content Include="iframe\iframe父子操作.html" />
+    <Content Include="jsonp\jsonp.aspx" />
+    <Content Include="jsonp\jsonp.html" />
+    <Content Include="form\SendForm.aspx" />
     <Content Include="setTimeout.html" />
-    <Content Include="sleepImg.aspx" />
-    <Content Include="v.mas.com\index.html" />
+    <Content Include="iframe\sleepImg.aspx" />
+    <Content Include="v.mas.com\document.domain.html" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GetForm.aspx.cs">
+    <Compile Include="form\GetForm.aspx.cs">
       <DependentUpon>GetForm.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="GetForm.aspx.designer.cs">
+    <Compile Include="form\GetForm.aspx.designer.cs">
       <DependentUpon>GetForm.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="jsonp.aspx.cs">
+    <Compile Include="jsonp\jsonp.aspx.cs">
       <DependentUpon>jsonp.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="jsonp.aspx.designer.cs">
+    <Compile Include="jsonp\jsonp.aspx.designer.cs">
       <DependentUpon>jsonp.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SendForm.aspx.cs">
+    <Compile Include="form\SendForm.aspx.cs">
       <DependentUpon>SendForm.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="SendForm.aspx.designer.cs">
+    <Compile Include="form\SendForm.aspx.designer.cs">
       <DependentUpon>SendForm.aspx</DependentUpon>
     </Compile>
-    <Compile Include="sleepImg.aspx.cs">
+    <Compile Include="form\SendIframe.aspx.cs">
+      <DependentUpon>SendIframe.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="form\SendIframe.aspx.designer.cs">
+      <DependentUpon>SendIframe.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="iframe\sleepImg.aspx.cs">
       <DependentUpon>sleepImg.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="sleepImg.aspx.designer.cs">
+    <Compile Include="iframe\sleepImg.aspx.designer.cs">
       <DependentUpon>sleepImg.aspx</DependentUpon>
     </Compile>
   </ItemGroup>

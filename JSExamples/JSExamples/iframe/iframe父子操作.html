@@ -5,7 +5,7 @@
     <title></title>
 </head>
 <body>
-    
+
     <p id="p1"></p>
     <iframe src="childIframe.html" id="iframe" frameborder="0"></iframe>
     <script>
@@ -14,22 +14,25 @@
         //访问子页面的元素
         var childDoc = iframe.contentWindow || iframe.contentDocument;
 
-        childDoc = childDoc.document || childDoc;
+
 
         if (childDoc.addEventListener) {
             childDoc.addEventListener('DOMContentLoaded', function (event) {
                 console.log("文档加载完成");
 
-                childDoc.body.style.backgroundColor = '#ccc';
+                childDoc = childDoc.document || childDoc;
 
+                childDoc.body.style.backgroundColor = '#ccc';
                 childDoc.getElementById('p1').innerText = "我是子页面";
 
             }, false);
         } else {
             //兼容ie8
-            childDoc.attachEvent('onreadystatechange', function () {
-                if (childDoc.readyState == 'interactive') {
+            iframe.attachEvent('onreadystatechange', function () {
+                if (iframe.readyState == 'interactive') {
                     console.log("文档加载完成");
+
+                    childDoc = childDoc.document || childDoc;
 
                     childDoc.body.style.backgroundColor = '#ccc';
 

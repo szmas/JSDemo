@@ -27,14 +27,14 @@
             var script = document.createElement('script');
             script.type = 'text/javascript';
             script.async = 'async';//异步加载，立即执行
-            script.src = 'http://v.77mv.com.cn/jsonp.aspx?callback=myfuns';
+            script.src = 'http://v.77mv.com.cn/jsonp/jsonp.aspx?callback=myfuns';
             document.body.appendChild(script);
 
 
             //jQuery版
             $.ajax({
                 type: "get",
-                url: 'http://v.77mv.com.cn/jsonp.aspx',
+                url: 'http://v.77mv.com.cn/jsonp/jsonp.aspx',
                 dataType: "jsonp",//格式为jsonp  http://i.77mv.com.cn/jsonp.aspx?callback=myfun&_=1493023085839
                 jsonp: 'callback',//重写回调函数的参数名 ?callback=
                 jsonpCallback: "myfun",//回调函数名  ?callback=myfun
