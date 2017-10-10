@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <script src="http://libs.baidu.com/jquery/1.9.1/jquery.js"></script>
+    <style>
+        .filename {
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" name="txtfileName" class="filename" />
+    <input type="file" multiple="multiple" name="txtfile" class="file" />
+
+    <script>
+        $(function () {
+
+            function clearInputFile(f) {
+                if (f.value) {
+                    try {
+                        f.value = ''; //for IE11, latest Chrome/Firefox/Opera...
+                    } catch (err) {
+                    }
+                    if (f.value) { //for IE5 ~ IE10
+                        var form = document.createElement('form'), ref = f.nextSibling, p = f.parentNode;
+                        form.appendChild(f);
+                        form.reset();
+                        p.insertBefore(f, ref);
+                    }
+                }
+            }
+
+            $('.file').on('change', function () {
+
+                //IE10才支持
+                // 实例化一个表单数据对象
+                var formData = new FormData();
+
+                var file = this.files;
+                // 遍历图片文件列表，插入到表单数据中
+                for (var i = 0; i < file.length; i++) {
+                    // 文件名称，文件对象
+                    formData.append(file[i].name, file[i]);
+                }
+
+                formData.append('username', 'mas');
+                formData.append('pwd', '123456');
+
+                $.ajax({
+                    type: "post",
+                    url: 'fileupload.ashx',
+                    dataType: "json",//格式为jsonp
+                    data: formData,
+                    /**
+                   *必须false才会自动加上正确的Content-Type
+                   */
+                    contentType: false,
+                    /**
+                   * 必须false才会避开jQuery对 formdata 的默认处理
+                   * XMLHttpRequest会对 formdata 进行正确的处理
+                   */
+                    processData: false,
+                    beforeSend: function (XMLHttpRequest) {
+
+                    },
+                    success: function (context, textStatus) {
+                        $('.filename').val(context.Message);
+                        console.log(context);
+                    },
+                    complete: function (XMLHttpRequest, textStatus) {
+
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    }
+                });
+
+                clearInputFile(this);
+            });
+
+        });
+
+    </script>
+</body>
+</html>

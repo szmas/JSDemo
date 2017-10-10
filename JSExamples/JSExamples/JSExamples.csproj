@@ -57,21 +57,25 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="form\ajaxFormUpload.html" />
+    <Content Include="form\ajaxUpload.html" />
+    <Content Include="form\uploadIframe.aspx" />
     <Content Include="i.mas.com\location.hash_c.html" />
     <Content Include="i.mas.com\proxy.html" />
     <Content Include="i.mas.com\test.html" />
     <Content Include="i.mas.com\window.name.html" />
     <Content Include="iframe\DOMContentLoaded.html" />
-    <Content Include="iframe\ietest.html" />
-    <Content Include="iframe\iframeTest.html" />
+    <Content Include="iframe\ie8test.html" />
+    <Content Include="iframe\iframeOnload.html" />
     <Content Include="form\SendIframe.aspx" />
-    <Content Include="iframe\qc.html" />
-    <Content Include="iframe\qc_iframe.html" />
+    <Content Include="iframe\doScroll.html" />
+    <Content Include="iframe\doScroll_iframe.html" />
     <Content Include="iframe\sleepImg2.aspx" />
     <Content Include="v.mas.com\window.name_b.html" />
     <Content Include="v.mas.com\location.hash_b.html" />
     <Content Include="函数节流.html" />
     <Content Include="i.mas.com\location.hash.html" />
+    <Content Include="form\fileupload.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -98,12 +102,22 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="form\fileupload.ashx.cs">
+      <DependentUpon>fileupload.ashx</DependentUpon>
+    </Compile>
     <Compile Include="form\GetForm.aspx.cs">
       <DependentUpon>GetForm.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="form\GetForm.aspx.designer.cs">
       <DependentUpon>GetForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="form\uploadIframe.aspx.cs">
+      <DependentUpon>uploadIframe.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="form\uploadIframe.aspx.designer.cs">
+      <DependentUpon>uploadIframe.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -148,6 +162,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="uploadfiles\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

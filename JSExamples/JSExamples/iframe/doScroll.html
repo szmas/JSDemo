@@ -6,20 +6,20 @@
     <script src="http://libs.baidu.com/jquery/1.9.1/jquery.js"></script>
 </head>
 <body>
-    <iframe id="myIframe" name="_myIframe" src="qc_iframe.html"></iframe>
+    <iframe id="myIframe" name="_myIframe" src="doScroll_iframe.html"></iframe>
 
     <script>
 
         var iframe = $('#myIframe').get(0).contentWindow;
 
-        var top = window.frameElement == null && document.documentElement;
+        var top = iframe.frameElement == null && iframe.document.documentElement;
 
         if (top && top.doScroll) {
 
             (function () {
                 try {
                     // DOM树未创建完之前调用doScroll会抛出错误
-                    document.documentElement.doScroll('left');
+                    top.doScroll('left');
                 } catch (e) {
                     //延迟再试一次~
                     setTimeout(arguments.callee, 50);

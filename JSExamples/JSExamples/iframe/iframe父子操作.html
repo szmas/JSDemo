@@ -40,12 +40,14 @@
                 }
             });
 
-            if (childDoc.documentElement.doScroll && window.frameElement == null) {
+            var top = childDoc.frameElement == null && childDoc.document.documentElement;
+
+            if (top && top.doScroll) {
 
                 (function () {
                     try {
                         // DOM树未创建完之前调用doScroll会抛出错误
-                        document.documentElement.doScroll('left');
+                        childDoc.document.documentElement.doScroll('left');
                     } catch (e) {
                         //延迟再试一次~
                         setTimeout(arguments.callee, 50);

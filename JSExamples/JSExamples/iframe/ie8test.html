@@ -27,12 +27,14 @@
                 complete（完成）：对象已经加载完毕；
 
                 */
-                if (document.readyState == 'interactive') {
+                if (document.readyState == 'complete') {
                     console.log("onreadystatechange:" + (new Date() - t));
                 }
             });
 
-            if (document.documentElement.doScroll && window.frameElement == null) {
+            var top = window.frameElement == null && window.document.documentElement;
+            //在iframe下，doScroll会失效
+            if (top && top.doScroll) {
 
                 (function () {
                     try {
