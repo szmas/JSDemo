@@ -15,7 +15,7 @@
         var childDoc = iframe.contentWindow || iframe.contentDocument;
 
 
-
+        //IE9,chrome,firefox
         if (childDoc.addEventListener) {
             childDoc.addEventListener('DOMContentLoaded', function (event) {
                 console.log("文档加载完成");
@@ -29,7 +29,7 @@
         } else {
             //兼容ie8
             iframe.attachEvent('onreadystatechange', function () {
-                if (iframe.readyState == 'interactive') {
+                if (iframe.readyState == 'complete') {
                     console.log("文档加载完成");
 
                     childDoc = childDoc.document || childDoc;
@@ -39,6 +39,22 @@
                     childDoc.getElementById('p1').innerText = "我是子页面";
                 }
             });
+
+            if (childDoc.documentElement.doScroll && window.frameElement == null) {
+
+                (function () {
+                    try {
+                        // DOM树未创建完之前调用doScroll会抛出错误
+                        document.documentElement.doScroll('left');
+                    } catch (e) {
+                        //延迟再试一次~
+                        setTimeout(arguments.callee, 50);
+                        return;
+                    }
+                    // 没有错误就表示DOM树创建完毕，然后立马执行用户回调
+                    console.log("文档加载完成2");
+                })();
+            }
         }
 
         iframe.onload = function () {

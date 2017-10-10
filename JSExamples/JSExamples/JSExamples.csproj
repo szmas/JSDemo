@@ -61,8 +61,13 @@
     <Content Include="i.mas.com\proxy.html" />
     <Content Include="i.mas.com\test.html" />
     <Content Include="i.mas.com\window.name.html" />
+    <Content Include="iframe\DOMContentLoaded.html" />
+    <Content Include="iframe\ietest.html" />
     <Content Include="iframe\iframeTest.html" />
     <Content Include="form\SendIframe.aspx" />
+    <Content Include="iframe\qc.html" />
+    <Content Include="iframe\qc_iframe.html" />
+    <Content Include="iframe\sleepImg2.aspx" />
     <Content Include="v.mas.com\window.name_b.html" />
     <Content Include="v.mas.com\location.hash_b.html" />
     <Content Include="函数节流.html" />
@@ -102,6 +107,13 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="iframe\sleepImg2.aspx.cs">
+      <DependentUpon>sleepImg2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="iframe\sleepImg2.aspx.designer.cs">
+      <DependentUpon>sleepImg2.aspx</DependentUpon>
     </Compile>
     <Compile Include="jsonp\jsonp.aspx.cs">
       <DependentUpon>jsonp.aspx</DependentUpon>

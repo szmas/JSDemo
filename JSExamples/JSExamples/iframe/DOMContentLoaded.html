@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <script>var t = new Date()</script>
+    <script src="http://libs.baidu.com/jquery/1.9.1/jquery.js"></script>
+</head>
+<body>
+    <script>
+        function IEContentLoaded(w, fn) {
+            var d = w.document, done = false,
+            // only fire once
+            init = function () {
+                if (!done) {
+                    done = true;
+                    fn();
+                }
+            };
+
+            //IE9支持
+            if (document.addEventListener) {
+                document.addEventListener("DOMContentLoaded", function () {
+                    init();
+                }, false);
+
+            } else {
+                //兼容ie6,7,8浏览器
+                // polling for no errors
+                // 如果是IE且页面不在iframe中时，轮询调用doScroll 方法检测DOM是否加载完毕
+                if (d.documentElement.doScroll && window.frameElement == null) {
+                    //这是为了避免当页面处于iframe中时，doScroll方法会失效
+                    (function () {
+                        try {
+                            // throws errors until after ondocumentready
+                            d.documentElement.doScroll('left');
+                        } catch (e) {
+                            setTimeout(arguments.callee, 50);
+                            return;
+                        }
+                        // no errors, fire
+                        init();
+                    })();
+                }
+                // trying to always fire before onload
+                // 确保当页面是在iframe中加载时，事件依旧会被安全触发
+                d.onreadystatechange = function () {
+                    if (d.readyState == 'complete') {
+                        d.onreadystatechange = null;
+                        init();
+                    }
+                };
+            }
+        }
+
+        IEContentLoaded(window, function () {
+            console.log("doScroll:" + (new Date() - t));
+        });
+
+        $(function () {
+            console.log("ready:" + (new Date() - t));
+        });
+
+    </script>
+    <script src="sleepImg.aspx?t= "></script>
+    <img src="sleepImg2.aspx?t=" />
+</body>
+</html>

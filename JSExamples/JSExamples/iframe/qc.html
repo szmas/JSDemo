@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <script src="http://libs.baidu.com/jquery/1.9.1/jquery.js"></script>
+</head>
+<body>
+    <iframe id="myIframe" name="_myIframe" src="qc_iframe.html"></iframe>
+
+    <script>
+
+        var iframe = $('#myIframe').get(0).contentWindow;
+
+        var top = window.frameElement == null && document.documentElement;
+
+        if (top && top.doScroll) {
+
+            (function () {
+                try {
+                    // DOM树未创建完之前调用doScroll会抛出错误
+                    document.documentElement.doScroll('left');
+                } catch (e) {
+                    //延迟再试一次~
+                    setTimeout(arguments.callee, 50);
+                    return;
+                }
+                // 没有错误就表示DOM树创建完毕，然后立马执行用户回调
+                console.log("doScroll:");
+            })();
+        }
+    </script>
+</body>
+</html>

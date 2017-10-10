@@ -1,0 +1,62 @@
+﻿
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <script>var t = new Date()</script>
+    <script src="http://libs.baidu.com/jquery/1.9.1/jquery.js"></script>
+</head>
+<body>
+
+    <script>
+
+        $(function () {
+            console.log("ready:" + (new Date() - t));
+        });
+
+        if (document.attachEvent) {
+            // 确保当页面是在iframe中加载时，事件依旧会被安全触发
+            document.attachEvent('onreadystatechange', function () {
+                /*
+
+                uninitialized（未初始化）：对象存在但尚未初始化；
+                loading（正在加载）：对象正在加载数据；
+                loaded（加载完毕）：对象加载数据完成；
+                interactive（交互）：可以操作对象，但还没有完全加载；
+                complete（完成）：对象已经加载完毕；
+
+                */
+                if (document.readyState == 'interactive') {
+                    console.log("onreadystatechange:" + (new Date() - t));
+                }
+            });
+
+            if (document.documentElement.doScroll && window.frameElement == null) {
+
+                (function () {
+                    try {
+                        // DOM树未创建完之前调用doScroll会抛出错误
+                        document.documentElement.doScroll('left');
+                    } catch (e) {
+                        //延迟再试一次~
+                        setTimeout(arguments.callee, 50);
+                        return;
+                    }
+                    // 没有错误就表示DOM树创建完毕，然后立马执行用户回调
+                    console.log("doScroll:" + (new Date() - t));
+                })();
+            }
+
+        }
+
+        window.attachEvent('onload', function () {
+            console.log("onload:" + (new Date() - t));
+        });
+
+
+    </script>
+    <script src="sleepImg.aspx?t= "></script>
+    <img src="sleepImg2.aspx?t=" />
+</body>
+</html>

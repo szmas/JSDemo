@@ -3,12 +3,16 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
-    <script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+    <script src="http://libs.baidu.com/jquery/1.9.1/jquery.js"></script>
 </head>
 <body>
     <iframe id="myIframe" name="_myIframe" src="about:blank"></iframe>
     <input type="button" id="btn" value="更改" />
     <script>
+
+        $(function () {
+            console.log('3Q');
+        });
 
         var iframe = document.getElementById('myIframe');
 
@@ -31,7 +35,7 @@
 
             }
 
-            document.getElementById('myIframe').src = 'jsonp.aspx';
+            document.getElementById('myIframe').src = '/jsonp/jsonp.aspx';
         }
 
     </script>

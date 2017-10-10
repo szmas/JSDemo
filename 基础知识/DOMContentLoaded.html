@@ -21,28 +21,41 @@
             document.attachEvent('onreadystatechange', function () {
 
                 /*
-                
+
                 uninitialized（未初始化）：对象存在但尚未初始化；
                 loading（正在加载）：对象正在加载数据；
                 loaded（加载完毕）：对象加载数据完成；
                 interactive（交互）：可以操作对象，但还没有完全加载；
                 complete（完成）：对象已经加载完毕；
-                
+
+
+                onreadystatechange事件可以用于检测DOM是否加载完毕，当document.readyState == 'complete'时，
+                表示DOM加载完成。但是如果页面中有iframe的话，会等到iframe中的所有资源加载完才会变成complete。
+                此时也造成了主页面的延迟。并且，经测试，即使页面中没有iframe， 该方式也与onload相当，
+                依然会等到所有资源下载完毕后才触发。
+
                 */
-                if (document.readyState == 'complete') {
+                if (document.readyState == 'interactive' || document.readyState == 'complete') {
                     console.log("onreadystatechange");
                 }
             });
 
             // 如果是IE且页面不在iframe中时，轮询调用doScroll 方法检测DOM是否加载完毕
             if (document.documentElement.doScroll && typeof window.frameElement === "undefined") {
-                try {
-                    //因为这条代码在DOM加载完毕之前执行时会抛出错误(throw an error)。
-                    document.documentElement.doScroll('left');
-                }
-                catch (error) {
+                (function () {
+                    try {
+                        //因为这条代码在DOM加载完毕之前执行时会抛出错误(throw an error)。
+                        document.documentElement.doScroll('left');
+                    }
+                    catch (error) {
+                        setTimeout(arguments.callee, 50);
+                        return;
+                    };
+
                     console.log('doScroll');
-                };
+                })();
+
+
             }
         }
 
