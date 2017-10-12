@@ -14,31 +14,34 @@
 
 
         $(function () {
-            var count = 0;
+            var oldTop = 0;
             $('body')
-                .bind('mousewheel', function (event, delta, deltaX, deltaY) {
+                .bind('mousewheel', function (ccc, delta, deltaX, deltaY) {
 
                     var top = parseInt($(window).scrollTop() / 500);
 
-                    if (top == count) {
+                    if (delta > 0) {
 
-                        if (delta > 0) {
-
-                            if (top == 0) {
-                                window.history.pushState({ id: top, name: "任老板" }, "任老板", "/html5地址栏改变.html");
-                                count = 0;
-                            } else {
-                                window.history.pushState({ id: top, name: "任老板" }, "任老板", "/任老板/" + top);
-                                count--;
-                            }
-
+                        if (top == 0) {
+                            window.history.pushState({ id: top, name: "任老板" }, "任老板", "/html5地址栏改变.html");
+                            document.title = '任老板煞笔';
+                            oldTop = 0;
                         } else {
 
-                            window.history.pushState({ id: top, name: "任老板" }, "任老板", "/任老板/" + top);
-                            count++;
+                            if (top < oldTop) {
+                                window.history.pushState({ id: top, name: "任老板" }, "任老板", "/任老板/" + top);
+                                document.title = '任老板煞笔' + top;
+                                oldTop = top;
+                            }
                         }
 
-                        document.title = '任老板煞笔' + top;
+
+                    } else {
+                        if (top > oldTop) {
+                            window.history.pushState({ id: top, name: "任老板" }, "任老板", "/任老板/" + top);
+                            document.title = '任老板煞笔' + top;
+                            oldTop = top;
+                        }
 
                     }
                 });
