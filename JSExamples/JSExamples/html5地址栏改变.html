@@ -20,7 +20,11 @@
                     var top = $(window).scrollTop();
 
                     if (delta > 0) {
-                        window.history.pushState({ id: top, name: "任老板" }, "任老板", "/任老板/" + top);
+                        if (top == 0) {
+                            window.history.pushState({ id: top, name: "任老板" }, "任老板", "/任老板/" + top);
+                        } else {
+                            window.history.pushState({ id: top, name: "任老板" }, "任老板", "html5地址栏改变.html");
+                        }
                     } else {
                         window.history.pushState({ id: top, name: "任老板" }, "任老板", "/任老板/" + top);
                     }
