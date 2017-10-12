@@ -14,21 +14,33 @@
 
 
         $(function () {
+            var count = 0;
             $('body')
                 .bind('mousewheel', function (event, delta, deltaX, deltaY) {
 
-                    var top = $(window).scrollTop();
+                    var top = parseInt($(window).scrollTop() / 500);
 
-                    if (delta > 0) {
-                        if (top == 0) {
-                            window.history.pushState({ id: top, name: "任老板" }, "任老板", "/html5地址栏改变.html");
+                    if (top == count) {
+
+                        if (delta > 0) {
+
+                            if (top == 0) {
+                                window.history.pushState({ id: top, name: "任老板" }, "任老板", "/html5地址栏改变.html");
+                                count = 0;
+                            } else {
+                                window.history.pushState({ id: top, name: "任老板" }, "任老板", "/任老板/" + top);
+                                count--;
+                            }
+
                         } else {
+
                             window.history.pushState({ id: top, name: "任老板" }, "任老板", "/任老板/" + top);
+                            count++;
                         }
-                    } else {
-                        window.history.pushState({ id: top, name: "任老板" }, "任老板", "/任老板/" + top);
+
+                        document.title = '任老板煞笔' + top;
+
                     }
-                    document.title = '任老板煞笔' + top;
                 });
         });
 
