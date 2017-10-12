@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+    <script src="http://cdn.bootcss.com/jquery-mousewheel/3.1.13/jquery.mousewheel.js"></script>
+</head>
+<body>
+    <p style="height:10800px;">
+
+    </p>
+    <script>
+
+
+        $(function () {
+            $('body')
+                .bind('mousewheel', function (event, delta, deltaX, deltaY) {
+
+                    var top = $(window).scrollTop();
+
+                    if (delta > 0) {
+                        window.history.pushState({ id: top, name: "任老板" }, "任老板", "/任老板/" + top);
+                    } else {
+                        window.history.pushState({ id: top, name: "任老板" }, "任老板", "/任老板/" + top);
+                    }
+                    document.title = '任老板煞笔';
+                });
+        });
+
+        //IE 10, Chrome 5, Firefox 4, Safari 5 兼容
+
+
+        //var state = {
+        //    id: 2,
+        //    name: "profile"
+        //};
+
+        ////历史记录中添加一条新记录
+        //window.history.pushState(state, "My Profile", "/profile/");
+
+        ////替换历史记录
+        //window.history.replaceState(state, "My Profile2", "/profile/");
+
+        ////浏览器前进，后退的事件
+        //window.addEventListener("popstate", function (e) {
+        //    var state = e.state;
+
+        //});
+
+
+
+    </script>
+</body>
+</html>
