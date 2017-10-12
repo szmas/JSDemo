@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0；
+        }
+        
+        .bar {
+            width: 2px;
+            position: absolute;
+            top: 0;
+            left: 100px;
+            z-index: 1000;
+            background: red;
+            cursor: col-resize;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="bar">
+
+    </div>
+    <script>
+        $(function() {
+
+            var enabledrop = false;
+            var local = {};
+            var eleclone;
+            $('.bar').height($(window).height());
+
+            $('.bar').mousedown(function(e) {
+                enabledrop = true;
+                local = {
+                    left: e.pageX
+                };
+                eleclone = $(this).clone().css('cursor', 'auto');
+                //$('body').append(eleclone);
+            });
+
+            $(document).mousemove(function(e) {
+                if (enabledrop) {
+
+                    $('.bar').css({
+                        left: e.pageX
+                    });
+                }
+
+            });
+
+            $(document).mouseup(function(e) {
+                enabledrop = false;
+                local = {
+                    left: e.pageX
+                };
+                $('.bar').eq(0).css({
+                    left: e.pageX
+                });
+
+                if (eleclone)
+                    eleclone.remove();
+
+                return false;
+            });
+
+            //阻止页面的选择动作，非常重要，当拖拽发生时，如果存在文本选择，会影响拖拽效果
+            $(document).selectstart = function() {
+                return false;
+            }
+        });
+
+    </script>
+</body>
+
+</html>
