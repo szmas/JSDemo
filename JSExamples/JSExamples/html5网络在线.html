@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+</head>
+<body>
+
+    <p hidden>
+        隐藏的
+    </p>
+    <div contenteditable>
+        可编辑的
+    </div>
+
+    <script>
+
+        console.log('网络状态：' + navigator.onLine);
+
+        window.addEventListener('online', function () {
+
+            console.log('在线');
+        }, false);
+
+        window.addEventListener('offline', function () {
+
+            console.log('下线');
+        }, false);
+
+    </script>
+</body>
+</html>

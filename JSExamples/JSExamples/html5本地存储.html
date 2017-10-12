@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+</head>
+<body>
+
+
+    <script>
+
+        //cookie  4KB左右 每个域名50个
+        //IE8 支持 本地存储 （键值对key/value） 存储 5M 的数据
+        //localStorage与sessionStorage的区别
+
+        /*
+        sessionStorage 仅在当前会话下有效
+        localStorage  除非被清除，否则永久保存
+        */
+
+        //设置
+        localStorage.setItem("name", "mas");
+
+        //获取
+        var name = localStorage.getItem('name');
+        console.log(name);
+
+        //删除
+        localStorage.removeItem('name');
+
+        name = localStorage.getItem('name');
+        console.log(name);
+        console.log(localStorage["name"]);
+
+
+        //按索引取值
+        localStorage.key(0);
+
+        //总数
+        var total = localStorage.length;
+
+        //清除所有
+        localStorage.clear();
+
+        //localStorage 的内容被改变
+        window.addEventListener('storage', function (e) {
+            var key = e.key;
+            var old_value = e.oldValue;
+            var new_value = e.newValue;
+            var url = e.url;
+        }, false);
+
+
+
+    </script>
+
+</body>
+</html>

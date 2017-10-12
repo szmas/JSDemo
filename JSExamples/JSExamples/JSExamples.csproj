@@ -60,7 +60,11 @@
     <Content Include="form\ajaxFormUpload.html" />
     <Content Include="form\ajaxUpload.html" />
     <Content Include="form\uploadIframe.aspx" />
+    <Content Include="html5_data-x.html" />
     <Content Include="html5地址栏改变.html" />
+    <Content Include="html5新元素.html" />
+    <Content Include="html5本地存储.html" />
+    <Content Include="html5网络在线.html" />
     <Content Include="i.mas.com\location.hash_c.html" />
     <Content Include="i.mas.com\proxy.html" />
     <Content Include="i.mas.com\test.html" />

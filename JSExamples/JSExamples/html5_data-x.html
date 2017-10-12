@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+</head>
+<body>
+    <p class="p1" data-name="mas">data-* 属性是 HTML 5 的新特性，允许用户在 DOM 中存储自定义信息。</p>
+
+
+    <script>
+
+        $(function () {
+
+
+            //获取data
+            var name = $('.p1').data('name');
+            console.log(name);
+
+
+            //设置data
+            /*
+            原来，标准 JavaScript 直接对 DOM 进行读写（和我们设想的一致），
+            但是 jQuery 不同。jQuery 的内部也维护着一份这些 data 数据。
+            当第一次使用 jQuery 读取时，数据被从 DOM 读到jQuery.cache
+            */
+
+            $('.p1').data('name', 'jack');
+            name = $('.p1').data('name');
+
+            console.log(name);
+
+
+            //原生操作
+            name = document.querySelector('.p1').getAttribute('data-name');
+            console.log(name);
+
+            document.querySelector('.p1').setAttribute('data-name', 'jack');
+
+            name = document.querySelector('.p1').getAttribute('data-name');
+            console.log(name);
+
+
+            //html5
+
+            var dataset = document.querySelector('.p1').dataset;
+            console.log(dataset.name);
+
+            dataset.name = "rose";
+
+            console.log(dataset.name);
+
+        });
+    </script>
+</body>
+</html>
