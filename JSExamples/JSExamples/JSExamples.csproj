@@ -83,6 +83,7 @@
     <Content Include="函数节流.html" />
     <Content Include="i.mas.com\location.hash.html" />
     <Content Include="form\fileupload.ashx" />
+    <Content Include="左侧导航菜单.html" />
     <Content Include="弹窗居中.html" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
