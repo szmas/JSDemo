@@ -1,0 +1,739 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
+    <script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+    <style>
+        html,
+        body, ul, li {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul, li {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        body {
+            font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+            font-size: 13px;
+        }
+
+        ::-webkit-scrollbar {
+            width: 10px;
+            height: 10px;
+            background-color: #F5F5F5;
+        }
+
+        ::-webkit-scrollbar-button {
+        }
+
+        ::-webkit-scrollbar-track {
+            box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+            -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+            border-radius: 10px;
+            background-color: #F5F5F5;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            border-radius: 10px;
+            box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+            -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+            background-color: #bababa;
+        }
+
+            ::-webkit-scrollbar-thumb:hover {
+                background: #676767;
+            }
+
+
+        .main {
+            overflow: hidden;
+        }
+
+            .main .top {
+                height: 60px;
+                background: #007465;
+            }
+
+            .main .left {
+                width: 220px;
+                height: 100%;
+                position: relative;
+                float: left;
+            }
+
+                .main .left .sidebar {
+                    background: #018574;
+                    height: 100%;
+                    overflow: auto;
+                }
+
+                    .main .left .sidebar .tree-node {
+                    }
+
+                        .main .left .sidebar .tree-node .tree-cell-inner.cur {
+                            background: #1b9182;
+                        }
+
+                        .main .left .sidebar .tree-node .tree-cell-inner:hover {
+                            background: #1b9182;
+                        }
+
+                        .main .left .sidebar .tree-node .tree-cell-inner {
+                            padding: 10px;
+                            color: #fff;
+                            position: relative;
+                        }
+
+                            .main .left .sidebar .tree-node .tree-cell-inner a {
+                                color: #fff;
+                            }
+
+                            .main .left .sidebar .tree-node .tree-cell-inner .icon-left {
+                                font-size: 18px;
+                            }
+
+                            .main .left .sidebar .tree-node .tree-cell-inner .icon-right {
+                                position: absolute;
+                                right: 16px;
+                                font-size: 18px;
+                            }
+
+                            .main .left .sidebar .tree-node .tree-cell-inner .tree-cell-text {
+                                padding-left: 6px;
+                            }
+
+                    .main .left .sidebar .sidebar-sub-menu {
+                        display: none;
+                    }
+
+                        .main .left .sidebar .sidebar-sub-menu .tree-cell-inner {
+                            padding: 10px 36px;
+                        }
+
+            .main .sidebar-sub-menu a {
+                color: #fff;
+                display: inline-block;
+                width: 100%;
+                outline: none;
+            }
+
+            .main .right {
+                height: 100%;
+                background: #e1dddd;
+                overflow: hidden;
+                position: relative;
+            }
+
+                .main .right .l-tab-loading {
+                    position: absolute;
+                    z-index: 100;
+                    top: 0;
+                    left: 0;
+                    background: white url(http://i.77mv.com.cn/manage/css/default/res.gif) no-repeat center center;
+                    width: 100%;
+                    height: 100%;
+                    display: none;
+                    cursor: progress;
+                }
+
+            .main .bar {
+                width: 3px;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                left: 220px;
+                z-index: 1000;
+                cursor: col-resize;
+            }
+
+            .main .f-iframe {
+                height: 100%;
+                width: 100%;
+                border: 0;
+                overflow: auto;
+                border-width: 0;
+            }
+    </style>
+
+</head>
+<body>
+    <div class="main">
+        <div class="top"><div style="font-weight: bold;font-size:32px;text-align:center;line-height:60px;">任老板</div></div>
+        <div class="container">
+            <div class="left">
+                <div class="sidebar">
+                    <ul class="sidebar-menu">
+                        <li class="tree-node">
+                            <div class="tree-cell-inner">
+                                <i class="icon-left fa fa-bluetooth"></i>
+                                <span class="tree-cell-text">
+                                    基本用法
+                                </span><i class="icon-right fa fa-caret-right"></i>
+                            </div>
+                            <ul class="sidebar-sub-menu">
+                                <li class="tree-node">
+                                    <a href="http://www.baidu.com" target="mainFrame">
+                                        <div class="tree-cell-inner">
+                                            <i class="icon-left fa fa-bluetooth"></i>
+                                            <span class="tree-cell-text">
+                                                基本用法
+                                            </span>
+
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="tree-node">
+                                    <a href="http://www.qq.com" target="mainFrame">
+                                        <div class="tree-cell-inner">
+                                            <i class="icon-left fa fa-bluetooth"></i>
+                                            <span class="tree-cell-text">
+                                                基本用法
+                                            </span>
+
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="tree-node">
+                                    <a href="http://news.mydrivers.com/" target="mainFrame">
+                                        <div class="tree-cell-inner">
+                                            <i class="icon-left fa fa-bluetooth"></i>
+                                            <span class="tree-cell-text">
+                                                基本用法
+                                            </span>
+
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="tree-node">
+                            <div class="tree-cell-inner">
+                                <i class="icon-left fa fa-bluetooth"></i>
+                                <span class="tree-cell-text">
+                                    基本用法
+                                </span><i class="icon-right fa fa-caret-right"></i>
+                            </div>
+                            <ul class="sidebar-sub-menu">
+                                <li class="tree-node">
+                                    <a href="javascript:;">
+                                        <div class="tree-cell-inner">
+                                            <i class="icon-left fa fa-bluetooth"></i>
+                                            <span class="tree-cell-text">
+                                                基本用法
+                                            </span>
+
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="tree-node">
+                                    <a href="javascript:;">
+                                        <div class="tree-cell-inner">
+                                            <i class="icon-left fa fa-bluetooth"></i>
+                                            <span class="tree-cell-text">
+                                                基本用法
+                                            </span>
+
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="tree-node">
+                                    <a href="javascript:;">
+                                        <div class="tree-cell-inner">
+                                            <i class="icon-left fa fa-bluetooth"></i>
+                                            <span class="tree-cell-text">
+                                                基本用法
+                                            </span>
+
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="tree-node">
+                            <div class="tree-cell-inner">
+                                <i class="icon-left fa fa-bluetooth"></i>
+                                <span class="tree-cell-text">
+                                    基本用法
+                                </span><i class="icon-right fa fa-caret-right"></i>
+                            </div>
+                            <ul class="sidebar-sub-menu">
+                                <li class="tree-node">
+                                    <a href="javascript:;">
+                                        <div class="tree-cell-inner">
+                                            <i class="icon-left fa fa-bluetooth"></i>
+                                            <span class="tree-cell-text">
+                                                基本用法
+                                            </span>
+
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="tree-node">
+                                    <a href="javascript:;">
+                                        <div class="tree-cell-inner">
+                                            <i class="icon-left fa fa-bluetooth"></i>
+                                            <span class="tree-cell-text">
+                                                基本用法
+                                            </span>
+
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="tree-node">
+                                    <a href="javascript:;">
+                                        <div class="tree-cell-inner">
+                                            <i class="icon-left fa fa-bluetooth"></i>
+                                            <span class="tree-cell-text">
+                                                基本用法
+                                            </span>
+
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="tree-node">
+                            <div class="tree-cell-inner">
+                                <i class="icon-left fa fa-bluetooth"></i>
+                                <span class="tree-cell-text">
+                                    基本用法
+                                </span><i class="icon-right fa fa-caret-right"></i>
+                            </div>
+                            <ul class="sidebar-sub-menu">
+                                <li class="tree-node">
+                                    <a href="javascript:;">
+                                        <div class="tree-cell-inner">
+                                            <i class="icon-left fa fa-bluetooth"></i>
+                                            <span class="tree-cell-text">
+                                                基本用法
+                                            </span>
+
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="tree-node">
+                                    <a href="javascript:;">
+                                        <div class="tree-cell-inner">
+                                            <i class="icon-left fa fa-bluetooth"></i>
+                                            <span class="tree-cell-text">
+                                                基本用法
+                                            </span>
+
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="tree-node">
+                                    <a href="javascript:;">
+                                        <div class="tree-cell-inner">
+                                            <i class="icon-left fa fa-bluetooth"></i>
+                                            <span class="tree-cell-text">
+                                                基本用法
+                                            </span>
+
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="tree-node">
+                            <div class="tree-cell-inner">
+                                <i class="icon-left fa fa-bluetooth"></i>
+                                <span class="tree-cell-text">
+                                    基本用法
+                                </span><i class="icon-right fa fa-caret-right"></i>
+                            </div>
+                            <ul class="sidebar-sub-menu">
+                                <li class="tree-node">
+                                    <a href="javascript:;">
+                                        <div class="tree-cell-inner">
+                                            <i class="icon-left fa fa-bluetooth"></i>
+                                            <span class="tree-cell-text">
+                                                基本用法
+                                            </span>
+
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="tree-node">
+                                    <a href="javascript:;">
+                                        <div class="tree-cell-inner">
+                                            <i class="icon-left fa fa-bluetooth"></i>
+                                            <span class="tree-cell-text">
+                                                基本用法
+                                            </span>
+
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="tree-node">
+                                    <a href="javascript:;">
+                                        <div class="tree-cell-inner">
+                                            <i class="icon-left fa fa-bluetooth"></i>
+                                            <span class="tree-cell-text">
+                                                基本用法
+                                            </span>
+
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="tree-node">
+                            <div class="tree-cell-inner">
+                                <i class="icon-left fa fa-bluetooth"></i>
+                                <span class="tree-cell-text">
+                                    基本用法
+                                </span><i class="icon-right fa fa-caret-right"></i>
+                            </div>
+                            <ul class="sidebar-sub-menu">
+                                <li class="tree-node">
+                                    <a href="javascript:;">
+                                        <div class="tree-cell-inner">
+                                            <i class="icon-left fa fa-bluetooth"></i>
+                                            <span class="tree-cell-text">
+                                                基本用法
+                                            </span>
+
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="tree-node">
+                                    <a href="javascript:;">
+                                        <div class="tree-cell-inner">
+                                            <i class="icon-left fa fa-bluetooth"></i>
+                                            <span class="tree-cell-text">
+                                                基本用法
+                                            </span>
+
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="tree-node">
+                                    <a href="javascript:;">
+                                        <div class="tree-cell-inner">
+                                            <i class="icon-left fa fa-bluetooth"></i>
+                                            <span class="tree-cell-text">
+                                                基本用法
+                                            </span>
+
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="tree-node">
+                            <div class="tree-cell-inner">
+                                <i class="icon-left fa fa-bluetooth"></i>
+                                <span class="tree-cell-text">
+                                    基本用法
+                                </span><i class="icon-right fa fa-caret-right"></i>
+                            </div>
+                            <ul class="sidebar-sub-menu">
+                                <li class="tree-node">
+                                    <a href="javascript:;">
+                                        <div class="tree-cell-inner">
+                                            <i class="icon-left fa fa-bluetooth"></i>
+                                            <span class="tree-cell-text">
+                                                基本用法
+                                            </span>
+
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="tree-node">
+                                    <a href="javascript:;">
+                                        <div class="tree-cell-inner">
+                                            <i class="icon-left fa fa-bluetooth"></i>
+                                            <span class="tree-cell-text">
+                                                基本用法
+                                            </span>
+
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="tree-node">
+                                    <a href="javascript:;">
+                                        <div class="tree-cell-inner">
+                                            <i class="icon-left fa fa-bluetooth"></i>
+                                            <span class="tree-cell-text">
+                                                基本用法
+                                            </span>
+
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="tree-node">
+                            <div class="tree-cell-inner">
+                                <i class="icon-left fa fa-bluetooth"></i>
+                                <span class="tree-cell-text">
+                                    基本用法
+                                </span><i class="icon-right fa fa-caret-right"></i>
+                            </div>
+                            <ul class="sidebar-sub-menu">
+                                <li class="tree-node">
+                                    <a href="javascript:;">
+                                        <div class="tree-cell-inner">
+                                            <i class="icon-left fa fa-bluetooth"></i>
+                                            <span class="tree-cell-text">
+                                                基本用法
+                                            </span>
+
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="tree-node">
+                                    <a href="javascript:;">
+                                        <div class="tree-cell-inner">
+                                            <i class="icon-left fa fa-bluetooth"></i>
+                                            <span class="tree-cell-text">
+                                                基本用法
+                                            </span>
+
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="tree-node">
+                                    <a href="javascript:;">
+                                        <div class="tree-cell-inner">
+                                            <i class="icon-left fa fa-bluetooth"></i>
+                                            <span class="tree-cell-text">
+                                                基本用法
+                                            </span>
+
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="tree-node">
+                            <div class="tree-cell-inner">
+                                <i class="icon-left fa fa-bluetooth"></i>
+                                <span class="tree-cell-text">
+                                    基本用法
+                                </span><i class="icon-right fa fa-caret-right"></i>
+                            </div>
+                            <ul class="sidebar-sub-menu">
+                                <li class="tree-node">
+                                    <a href="javascript:;">
+                                        <div class="tree-cell-inner">
+                                            <i class="icon-left fa fa-bluetooth"></i>
+                                            <span class="tree-cell-text">
+                                                基本用法
+                                            </span>
+
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="tree-node">
+                                    <a href="javascript:;">
+                                        <div class="tree-cell-inner">
+                                            <i class="icon-left fa fa-bluetooth"></i>
+                                            <span class="tree-cell-text">
+                                                基本用法
+                                            </span>
+
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="tree-node">
+                                    <a href="javascript:;">
+                                        <div class="tree-cell-inner">
+                                            <i class="icon-left fa fa-bluetooth"></i>
+                                            <span class="tree-cell-text">
+                                                基本用法
+                                            </span>
+
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="tree-node">
+                            <div class="tree-cell-inner">
+                                <i class="icon-left fa fa-bluetooth"></i>
+                                <span class="tree-cell-text">
+                                    基本用法
+                                </span><i class="icon-right fa fa-caret-right"></i>
+                            </div>
+                            <ul class="sidebar-sub-menu">
+                                <li class="tree-node">
+                                    <a href="javascript:;">
+                                        <div class="tree-cell-inner">
+                                            <i class="icon-left fa fa-bluetooth"></i>
+                                            <span class="tree-cell-text">
+                                                基本用法
+                                            </span>
+
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="tree-node">
+                                    <a href="javascript:;">
+                                        <div class="tree-cell-inner">
+                                            <i class="icon-left fa fa-bluetooth"></i>
+                                            <span class="tree-cell-text">
+                                                基本用法
+                                            </span>
+
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="tree-node">
+                                    <a href="javascript:;">
+                                        <div class="tree-cell-inner">
+                                            <i class="icon-left fa fa-bluetooth"></i>
+                                            <span class="tree-cell-text">
+                                                基本用法
+                                            </span>
+
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="bar">
+            </div>
+            <div class="right">
+                <div class="l-tab-loading"></div>
+                <iframe name="mainFrame" src="setTimeout.html" class="f-iframe" frameborder="0"></iframe>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(function () {
+
+            var enabledrop = false;
+            var local = {};
+            var eleclone;
+            $('.main').height($(window).height());
+            $('.container').height($(window).height() - 60);
+            var $mask;
+
+            $('.bar').mousedown(function (e) {
+                enabledrop = true;
+                local = {
+                    left: e.pageX
+                };
+
+                $mask = $('<div style="position:absolute;left:0;top:0;"></div>')
+                    .css({ width: $(window).width(), height: $(window).height() });
+
+                $('body').append($mask);
+            });
+
+            $(document).mousemove(function (e) {
+                if (enabledrop) {
+
+                    $('.bar').css({
+                        left: e.pageX,
+                        background: 'red'
+                    });
+                }
+
+            });
+
+            $(document).mouseup(function (e) {
+                if (enabledrop) {
+                    enabledrop = false;
+                    local = {
+                        left: e.pageX
+                    };
+
+                    $('.bar').css({ background: 'transparent' });
+                    $('.left').width(e.pageX);
+                    $mask.remove();
+                }
+            });
+
+            //阻止页面的选择动作，非常重要，当拖拽发生时，如果存在文本选择，会影响拖拽效果
+            $(document).bind('selectstart', function () {
+                return false;
+            });
+
+            var throttle = function (method, context) {
+                clearTimeout(method.tId);
+                method.tId = setTimeout(function () {
+                    method.call(context);
+                }, 100);
+            };
+
+            var resizeHeight = function () {
+                $('.main').height($(window).height());
+                $('.container').height($(window).height() - 60);
+            };
+
+            $(window).resize(function () {
+
+                throttle(resizeHeight)
+            });
+
+            $('.f-iframe').bind('load', function () {
+                $('.l-tab-loading').hide();
+            });
+
+            $('a').click(function () {
+                var parent = $(this);
+
+                if ($('.f-iframe[_src="' + parent.prop('href') + '"]').length) {
+                    $('.f-iframe').hide();
+                    $('.f-iframe[_src="' + parent.prop('href') + '"]').show();
+                    return false;
+                } else {
+                    $('.l-tab-loading').show();
+
+                    var fclone = $('.f-iframe:eq(0)').clone();
+                    $('.f-iframe').hide();
+
+                    $('.f-iframe').prop('name', '_mainFrame');
+                    fclone.prop('name', 'mainFrame');
+                    $('.right').append(fclone);
+
+                    fclone.attr('_src', parent.prop('href'));
+
+                    fclone.bind('load', function () {
+                        $('.l-tab-loading').hide();
+                    });
+                }
+
+                
+
+            });
+
+            $('.tree-cell-inner').click(function () {
+
+                $('.tree-cell-inner.cur').removeClass('cur');
+                $(this).addClass('cur');
+
+                var parent = $(this).parent();
+
+                //父节点
+                if (parent.is('.tree-node')) {
+                    if (parent.find('.icon-right').hasClass('fa-caret-right')) {
+                        parent.find('.icon-right').removeClass('fa-caret-right').addClass('fa-caret-down');
+                    } else {
+                        parent.find('.icon-right').removeClass('fa-caret-down').addClass('fa-caret-right');
+                    }
+
+                    parent.find('.sidebar-sub-menu').toggle();
+                } else {
+
+                }
+            });
+        });
+
+    </script>
+</body>
+</html>
