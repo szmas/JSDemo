@@ -12,37 +12,55 @@
             padding: 0;
         }
 
-        .left {
-            float: left;
-            width: 300px;
-            height: 100%;
-            background: #9a9a9a;
-        }
-
-        .right {
-            height: 100%;
+        .main {
             overflow: hidden;
-            background: #e1dddd;
         }
 
-        .bar {
-            width: 2px;
-            height: 100%;
-            position: absolute;
-            top: 0;
-            left: 300px;
-            z-index: 1000;
-            cursor: col-resize;
-        }
+            .main .left {
+                width: 300px;
+                height: 100%;
+                background: #9a9a9a;
+                position: relative;
+                float: left;
+            }
+
+            .main .right {
+                height: 100%;
+                background: #e1dddd;
+                overflow: hidden;
+            }
+
+            .main .bar {
+                width: 3px;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                left: 300px;
+                z-index: 1000;
+                cursor: col-resize;
+            }
+
+
+            .main .f-iframe {
+                height: 100%;
+                width: 100%;
+                border: 0;
+                overflow: auto;
+                border-width: 0;
+            }
     </style>
 </head>
 
 <body>
     <div class="main">
-        <div class="left"></div>
+        <div class="left">
+            <iframe src="b.html" class="f-iframe" frameborder="0"></iframe>
+        </div>
         <div class="bar">
         </div>
-        <div class="right"></div>
+        <div class="right">
+            <iframe src="b.html" class="f-iframe" frameborder="0"></iframe>
+        </div>
     </div>
     <script>
         $(function () {
@@ -51,12 +69,18 @@
             var local = {};
             var eleclone;
             $('.main').height($(window).height());
+            var $mask;
 
             $('.bar').mousedown(function (e) {
                 enabledrop = true;
                 local = {
                     left: e.pageX
                 };
+
+                $mask = $('<div style="position:absolute;left:0;top:0;"></div>')
+                    .css({ width: $(window).width(), height: $(window).height() });
+
+                $('body').append($mask);
             });
 
             $(document).mousemove(function (e) {
@@ -66,7 +90,6 @@
                         left: e.pageX,
                         background: 'red'
                     });
-
                 }
 
             });
@@ -80,14 +103,14 @@
 
                     $('.bar').css({ background: 'transparent' });
                     $('.left').width(e.pageX);
+                    $mask.remove();
                 }
-                return false;
             });
 
             //阻止页面的选择动作，非常重要，当拖拽发生时，如果存在文本选择，会影响拖拽效果
-            $(document).selectstart = function () {
+            $(document).bind('selectstart', function () {
                 return false;
-            }
+            });
         });
 
     </script>
