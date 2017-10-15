@@ -58,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="div拖拽宽度.html" />
+    <Content Include="fontanzer.html" />
     <Content Include="form\ajaxFormUpload.html" />
     <Content Include="form\ajaxUpload.html" />
     <Content Include="form\uploadIframe.aspx" />

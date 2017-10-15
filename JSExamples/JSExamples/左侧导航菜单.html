@@ -52,6 +52,9 @@
                 background: #676767;
             }
 
+        .fa-fw {
+            text-align: left;
+        }
 
         .main {
             overflow: hidden;
@@ -90,37 +93,56 @@
                             padding: 10px;
                             color: #fff;
                             position: relative;
+                            text-overflow: ellipsis;
+                            white-space: nowrap;
+                            overflow: hidden;
+                            font-size: 0;
+                            -webkit-text-size-adjust: none;
                         }
 
-                            .main .left .sidebar .tree-node .tree-cell-inner a {
-                                color: #fff;
-                            }
+                        .main .left .sidebar .tree-node .sidebar-sub-menu.second .tree-cell-inner {
+                            padding: 10px 0 10px 52px;
+                        }
 
-                            .main .left .sidebar .tree-node .tree-cell-inner .icon-left {
-                                font-size: 18px;
-                            }
+                        .main .left .sidebar .tree-node .sidebar-sub-menu.third .tree-cell-inner {
+                            padding: 10px 0 10px 73px;
+                        }
 
-                            .main .left .sidebar .tree-node .tree-cell-inner .icon-right {
-                                position: absolute;
-                                right: 16px;
-                                font-size: 18px;
-                            }
+                        .main .left .sidebar .tree-node .sidebar-sub-menu.fourth .tree-cell-inner {
+                            padding: 10px 0 10px 94px;
+                        }
 
-                            .main .left .sidebar .tree-node .tree-cell-inner .tree-cell-text {
-                                padding-left: 6px;
-                            }
+
+                        .main .left .sidebar .tree-node .tree-cell-inner a {
+                            color: #fff;
+                        }
+
+                        .main .left .sidebar .tree-node .tree-cell-inner .icon-left {
+                            font-size: 16px;
+                        }
+
+                        .main .left .sidebar .tree-node .tree-cell-inner .icon-right {
+                            position: absolute;
+                            right: 16px;
+                            font-size: 18px;
+                        }
+
+                        .main .left .sidebar .tree-node .tree-cell-inner .tree-cell-text {
+                            padding-left: 0px;
+                            font-size: 13px;
+                        }
 
                     .main .left .sidebar .sidebar-sub-menu {
                         display: none;
                     }
 
                         .main .left .sidebar .sidebar-sub-menu .tree-cell-inner {
-                            padding: 10px 36px;
+                            padding: 10px 0 10px 31px;
                         }
 
             .main .sidebar-sub-menu a {
                 color: #fff;
-                display: inline-block;
+                display: block;
                 width: 100%;
                 outline: none;
             }
@@ -166,14 +188,14 @@
 </head>
 <body>
     <div class="main">
-        <div class="top"><div style="font-weight: bold;font-size:32px;text-align:center;line-height:60px;">任老板</div></div>
+        <!--<div class="top"><div style="font-weight: bold;font-size:32px;text-align:center;line-height:60px;">任老板</div></div>-->
         <div class="container">
             <div class="left">
                 <div class="sidebar">
                     <ul class="sidebar-menu">
                         <li class="tree-node">
                             <div class="tree-cell-inner">
-                                <i class="icon-left fa fa-bluetooth"></i>
+                                <i class="icon-left fa fa-fw fa-folder"></i>
                                 <span class="tree-cell-text">
                                     基本用法
                                 </span><i class="icon-right fa fa-caret-right"></i>
@@ -182,7 +204,7 @@
                                 <li class="tree-node">
                                     <a href="http://www.baidu.com" target="mainFrame">
                                         <div class="tree-cell-inner">
-                                            <i class="icon-left fa fa-bluetooth"></i>
+                                            <i class="icon-left fa fa-fw fa-file"></i>
                                             <span class="tree-cell-text">
                                                 基本用法
                                             </span>
@@ -193,7 +215,7 @@
                                 <li class="tree-node">
                                     <a href="http://www.qq.com" target="mainFrame">
                                         <div class="tree-cell-inner">
-                                            <i class="icon-left fa fa-bluetooth"></i>
+                                            <i class="icon-left fa fa-fw fa-file"></i>
                                             <span class="tree-cell-text">
                                                 基本用法
                                             </span>
@@ -204,7 +226,7 @@
                                 <li class="tree-node">
                                     <a href="http://news.mydrivers.com/" target="mainFrame">
                                         <div class="tree-cell-inner">
-                                            <i class="icon-left fa fa-bluetooth"></i>
+                                            <i class="icon-left fa fa-fw fa-file"></i>
                                             <span class="tree-cell-text">
                                                 基本用法
                                             </span>
@@ -216,16 +238,16 @@
                         </li>
                         <li class="tree-node">
                             <div class="tree-cell-inner">
-                                <i class="icon-left fa fa-bluetooth"></i>
+                                <i class="icon-left fa fa-fw fa-folder"></i>
                                 <span class="tree-cell-text">
                                     基本用法
                                 </span><i class="icon-right fa fa-caret-right"></i>
                             </div>
                             <ul class="sidebar-sub-menu">
                                 <li class="tree-node">
-                                    <a href="javascript:;">
+                                    <a href="http://www.baidu.com" target="mainFrame">
                                         <div class="tree-cell-inner">
-                                            <i class="icon-left fa fa-bluetooth"></i>
+                                            <i class="icon-left fa fa-fw fa-file"></i>
                                             <span class="tree-cell-text">
                                                 基本用法
                                             </span>
@@ -234,9 +256,9 @@
                                     </a>
                                 </li>
                                 <li class="tree-node">
-                                    <a href="javascript:;">
+                                    <a href="http://www.qq.com" target="mainFrame">
                                         <div class="tree-cell-inner">
-                                            <i class="icon-left fa fa-bluetooth"></i>
+                                            <i class="icon-left fa fa-fw fa-file"></i>
                                             <span class="tree-cell-text">
                                                 基本用法
                                             </span>
@@ -245,9 +267,9 @@
                                     </a>
                                 </li>
                                 <li class="tree-node">
-                                    <a href="javascript:;">
+                                    <a href="http://news.mydrivers.com/" target="mainFrame">
                                         <div class="tree-cell-inner">
-                                            <i class="icon-left fa fa-bluetooth"></i>
+                                            <i class="icon-left fa fa-fw fa-file"></i>
                                             <span class="tree-cell-text">
                                                 基本用法
                                             </span>
@@ -259,16 +281,16 @@
                         </li>
                         <li class="tree-node">
                             <div class="tree-cell-inner">
-                                <i class="icon-left fa fa-bluetooth"></i>
+                                <i class="icon-left fa fa-fw fa-folder"></i>
                                 <span class="tree-cell-text">
                                     基本用法
                                 </span><i class="icon-right fa fa-caret-right"></i>
                             </div>
                             <ul class="sidebar-sub-menu">
                                 <li class="tree-node">
-                                    <a href="javascript:;">
+                                    <a href="http://www.baidu.com" target="mainFrame">
                                         <div class="tree-cell-inner">
-                                            <i class="icon-left fa fa-bluetooth"></i>
+                                            <i class="icon-left fa fa-fw fa-file"></i>
                                             <span class="tree-cell-text">
                                                 基本用法
                                             </span>
@@ -277,9 +299,9 @@
                                     </a>
                                 </li>
                                 <li class="tree-node">
-                                    <a href="javascript:;">
+                                    <a href="http://www.qq.com" target="mainFrame">
                                         <div class="tree-cell-inner">
-                                            <i class="icon-left fa fa-bluetooth"></i>
+                                            <i class="icon-left fa fa-fw fa-file"></i>
                                             <span class="tree-cell-text">
                                                 基本用法
                                             </span>
@@ -288,9 +310,9 @@
                                     </a>
                                 </li>
                                 <li class="tree-node">
-                                    <a href="javascript:;">
+                                    <a href="http://news.mydrivers.com/" target="mainFrame">
                                         <div class="tree-cell-inner">
-                                            <i class="icon-left fa fa-bluetooth"></i>
+                                            <i class="icon-left fa fa-fw fa-file"></i>
                                             <span class="tree-cell-text">
                                                 基本用法
                                             </span>
@@ -302,16 +324,16 @@
                         </li>
                         <li class="tree-node">
                             <div class="tree-cell-inner">
-                                <i class="icon-left fa fa-bluetooth"></i>
+                                <i class="icon-left fa fa-fw fa-folder"></i>
                                 <span class="tree-cell-text">
                                     基本用法
                                 </span><i class="icon-right fa fa-caret-right"></i>
                             </div>
                             <ul class="sidebar-sub-menu">
                                 <li class="tree-node">
-                                    <a href="javascript:;">
+                                    <a href="http://www.baidu.com" target="mainFrame">
                                         <div class="tree-cell-inner">
-                                            <i class="icon-left fa fa-bluetooth"></i>
+                                            <i class="icon-left fa fa-fw fa-file"></i>
                                             <span class="tree-cell-text">
                                                 基本用法
                                             </span>
@@ -320,9 +342,9 @@
                                     </a>
                                 </li>
                                 <li class="tree-node">
-                                    <a href="javascript:;">
+                                    <a href="http://www.qq.com" target="mainFrame">
                                         <div class="tree-cell-inner">
-                                            <i class="icon-left fa fa-bluetooth"></i>
+                                            <i class="icon-left fa fa-fw fa-file"></i>
                                             <span class="tree-cell-text">
                                                 基本用法
                                             </span>
@@ -331,9 +353,9 @@
                                     </a>
                                 </li>
                                 <li class="tree-node">
-                                    <a href="javascript:;">
+                                    <a href="http://news.mydrivers.com/" target="mainFrame">
                                         <div class="tree-cell-inner">
-                                            <i class="icon-left fa fa-bluetooth"></i>
+                                            <i class="icon-left fa fa-fw fa-file"></i>
                                             <span class="tree-cell-text">
                                                 基本用法
                                             </span>
@@ -345,16 +367,16 @@
                         </li>
                         <li class="tree-node">
                             <div class="tree-cell-inner">
-                                <i class="icon-left fa fa-bluetooth"></i>
+                                <i class="icon-left fa fa-fw fa-folder"></i>
                                 <span class="tree-cell-text">
                                     基本用法
                                 </span><i class="icon-right fa fa-caret-right"></i>
                             </div>
                             <ul class="sidebar-sub-menu">
                                 <li class="tree-node">
-                                    <a href="javascript:;">
+                                    <a href="http://www.baidu.com" target="mainFrame">
                                         <div class="tree-cell-inner">
-                                            <i class="icon-left fa fa-bluetooth"></i>
+                                            <i class="icon-left fa fa-fw fa-file"></i>
                                             <span class="tree-cell-text">
                                                 基本用法
                                             </span>
@@ -363,9 +385,9 @@
                                     </a>
                                 </li>
                                 <li class="tree-node">
-                                    <a href="javascript:;">
+                                    <a href="http://www.qq.com" target="mainFrame">
                                         <div class="tree-cell-inner">
-                                            <i class="icon-left fa fa-bluetooth"></i>
+                                            <i class="icon-left fa fa-fw fa-file"></i>
                                             <span class="tree-cell-text">
                                                 基本用法
                                             </span>
@@ -374,9 +396,9 @@
                                     </a>
                                 </li>
                                 <li class="tree-node">
-                                    <a href="javascript:;">
+                                    <a href="http://news.mydrivers.com/" target="mainFrame">
                                         <div class="tree-cell-inner">
-                                            <i class="icon-left fa fa-bluetooth"></i>
+                                            <i class="icon-left fa fa-fw fa-file"></i>
                                             <span class="tree-cell-text">
                                                 基本用法
                                             </span>
@@ -388,16 +410,16 @@
                         </li>
                         <li class="tree-node">
                             <div class="tree-cell-inner">
-                                <i class="icon-left fa fa-bluetooth"></i>
+                                <i class="icon-left fa fa-fw fa-folder"></i>
                                 <span class="tree-cell-text">
                                     基本用法
                                 </span><i class="icon-right fa fa-caret-right"></i>
                             </div>
                             <ul class="sidebar-sub-menu">
                                 <li class="tree-node">
-                                    <a href="javascript:;">
+                                    <a href="http://www.baidu.com" target="mainFrame">
                                         <div class="tree-cell-inner">
-                                            <i class="icon-left fa fa-bluetooth"></i>
+                                            <i class="icon-left fa fa-fw fa-file"></i>
                                             <span class="tree-cell-text">
                                                 基本用法
                                             </span>
@@ -406,9 +428,9 @@
                                     </a>
                                 </li>
                                 <li class="tree-node">
-                                    <a href="javascript:;">
+                                    <a href="http://www.qq.com" target="mainFrame">
                                         <div class="tree-cell-inner">
-                                            <i class="icon-left fa fa-bluetooth"></i>
+                                            <i class="icon-left fa fa-fw fa-file"></i>
                                             <span class="tree-cell-text">
                                                 基本用法
                                             </span>
@@ -417,9 +439,9 @@
                                     </a>
                                 </li>
                                 <li class="tree-node">
-                                    <a href="javascript:;">
+                                    <a href="http://news.mydrivers.com/" target="mainFrame">
                                         <div class="tree-cell-inner">
-                                            <i class="icon-left fa fa-bluetooth"></i>
+                                            <i class="icon-left fa fa-fw fa-file"></i>
                                             <span class="tree-cell-text">
                                                 基本用法
                                             </span>
@@ -431,16 +453,16 @@
                         </li>
                         <li class="tree-node">
                             <div class="tree-cell-inner">
-                                <i class="icon-left fa fa-bluetooth"></i>
+                                <i class="icon-left fa fa-fw fa-folder"></i>
                                 <span class="tree-cell-text">
                                     基本用法
                                 </span><i class="icon-right fa fa-caret-right"></i>
                             </div>
                             <ul class="sidebar-sub-menu">
                                 <li class="tree-node">
-                                    <a href="javascript:;">
+                                    <a href="http://www.baidu.com" target="mainFrame">
                                         <div class="tree-cell-inner">
-                                            <i class="icon-left fa fa-bluetooth"></i>
+                                            <i class="icon-left fa fa-fw fa-file"></i>
                                             <span class="tree-cell-text">
                                                 基本用法
                                             </span>
@@ -449,9 +471,9 @@
                                     </a>
                                 </li>
                                 <li class="tree-node">
-                                    <a href="javascript:;">
+                                    <a href="http://www.qq.com" target="mainFrame">
                                         <div class="tree-cell-inner">
-                                            <i class="icon-left fa fa-bluetooth"></i>
+                                            <i class="icon-left fa fa-fw fa-file"></i>
                                             <span class="tree-cell-text">
                                                 基本用法
                                             </span>
@@ -460,9 +482,9 @@
                                     </a>
                                 </li>
                                 <li class="tree-node">
-                                    <a href="javascript:;">
+                                    <a href="http://news.mydrivers.com/" target="mainFrame">
                                         <div class="tree-cell-inner">
-                                            <i class="icon-left fa fa-bluetooth"></i>
+                                            <i class="icon-left fa fa-fw fa-file"></i>
                                             <span class="tree-cell-text">
                                                 基本用法
                                             </span>
@@ -474,16 +496,16 @@
                         </li>
                         <li class="tree-node">
                             <div class="tree-cell-inner">
-                                <i class="icon-left fa fa-bluetooth"></i>
+                                <i class="icon-left fa fa-fw fa-folder"></i>
                                 <span class="tree-cell-text">
                                     基本用法
                                 </span><i class="icon-right fa fa-caret-right"></i>
                             </div>
                             <ul class="sidebar-sub-menu">
                                 <li class="tree-node">
-                                    <a href="javascript:;">
+                                    <a href="http://www.baidu.com" target="mainFrame">
                                         <div class="tree-cell-inner">
-                                            <i class="icon-left fa fa-bluetooth"></i>
+                                            <i class="icon-left fa fa-fw fa-file"></i>
                                             <span class="tree-cell-text">
                                                 基本用法
                                             </span>
@@ -492,9 +514,9 @@
                                     </a>
                                 </li>
                                 <li class="tree-node">
-                                    <a href="javascript:;">
+                                    <a href="http://www.qq.com" target="mainFrame">
                                         <div class="tree-cell-inner">
-                                            <i class="icon-left fa fa-bluetooth"></i>
+                                            <i class="icon-left fa fa-fw fa-file"></i>
                                             <span class="tree-cell-text">
                                                 基本用法
                                             </span>
@@ -503,9 +525,9 @@
                                     </a>
                                 </li>
                                 <li class="tree-node">
-                                    <a href="javascript:;">
+                                    <a href="http://news.mydrivers.com/" target="mainFrame">
                                         <div class="tree-cell-inner">
-                                            <i class="icon-left fa fa-bluetooth"></i>
+                                            <i class="icon-left fa fa-fw fa-file"></i>
                                             <span class="tree-cell-text">
                                                 基本用法
                                             </span>
@@ -517,16 +539,16 @@
                         </li>
                         <li class="tree-node">
                             <div class="tree-cell-inner">
-                                <i class="icon-left fa fa-bluetooth"></i>
+                                <i class="icon-left fa fa-fw fa-folder"></i>
                                 <span class="tree-cell-text">
                                     基本用法
                                 </span><i class="icon-right fa fa-caret-right"></i>
                             </div>
                             <ul class="sidebar-sub-menu">
                                 <li class="tree-node">
-                                    <a href="javascript:;">
+                                    <a href="http://www.baidu.com" target="mainFrame">
                                         <div class="tree-cell-inner">
-                                            <i class="icon-left fa fa-bluetooth"></i>
+                                            <i class="icon-left fa fa-fw fa-file"></i>
                                             <span class="tree-cell-text">
                                                 基本用法
                                             </span>
@@ -535,9 +557,9 @@
                                     </a>
                                 </li>
                                 <li class="tree-node">
-                                    <a href="javascript:;">
+                                    <a href="http://www.qq.com" target="mainFrame">
                                         <div class="tree-cell-inner">
-                                            <i class="icon-left fa fa-bluetooth"></i>
+                                            <i class="icon-left fa fa-fw fa-file"></i>
                                             <span class="tree-cell-text">
                                                 基本用法
                                             </span>
@@ -546,9 +568,9 @@
                                     </a>
                                 </li>
                                 <li class="tree-node">
-                                    <a href="javascript:;">
+                                    <a href="http://news.mydrivers.com/" target="mainFrame">
                                         <div class="tree-cell-inner">
-                                            <i class="icon-left fa fa-bluetooth"></i>
+                                            <i class="icon-left fa fa-fw fa-file"></i>
                                             <span class="tree-cell-text">
                                                 基本用法
                                             </span>
@@ -560,16 +582,16 @@
                         </li>
                         <li class="tree-node">
                             <div class="tree-cell-inner">
-                                <i class="icon-left fa fa-bluetooth"></i>
+                                <i class="icon-left fa fa-fw fa-folder"></i>
                                 <span class="tree-cell-text">
                                     基本用法
                                 </span><i class="icon-right fa fa-caret-right"></i>
                             </div>
                             <ul class="sidebar-sub-menu">
                                 <li class="tree-node">
-                                    <a href="javascript:;">
+                                    <a href="http://www.baidu.com" target="mainFrame">
                                         <div class="tree-cell-inner">
-                                            <i class="icon-left fa fa-bluetooth"></i>
+                                            <i class="icon-left fa fa-fw fa-file"></i>
                                             <span class="tree-cell-text">
                                                 基本用法
                                             </span>
@@ -578,9 +600,9 @@
                                     </a>
                                 </li>
                                 <li class="tree-node">
-                                    <a href="javascript:;">
+                                    <a href="http://www.baidu.com" target="mainFrame">
                                         <div class="tree-cell-inner">
-                                            <i class="icon-left fa fa-bluetooth"></i>
+                                            <i class="icon-left fa fa-fw fa-file"></i>
                                             <span class="tree-cell-text">
                                                 基本用法
                                             </span>
@@ -589,15 +611,121 @@
                                     </a>
                                 </li>
                                 <li class="tree-node">
-                                    <a href="javascript:;">
-                                        <div class="tree-cell-inner">
-                                            <i class="icon-left fa fa-bluetooth"></i>
-                                            <span class="tree-cell-text">
-                                                基本用法
-                                            </span>
 
-                                        </div>
-                                    </a>
+                                    <div class="tree-cell-inner">
+                                        <i class="icon-left fa fa-fw fa-folder"></i>
+                                        <span class="tree-cell-text">
+                                            基本用法
+                                        </span><i class="icon-right fa fa-caret-right"></i>
+
+                                    </div>
+                                    <ul class="sidebar-sub-menu second">
+                                        <li class="tree-node">
+                                            <a href="http://www.baidu.com" target="mainFrame">
+                                                <div class="tree-cell-inner">
+                                                    <i class="icon-left fa fa-fw fa-file"></i>
+                                                    <span class="tree-cell-text">
+                                                        基本用法
+                                                    </span>
+
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class="tree-node">
+                                            <a href="http://www.baidu.com" target="mainFrame">
+                                                <div class="tree-cell-inner">
+                                                    <i class="icon-left fa fa-fw fa-file"></i>
+                                                    <span class="tree-cell-text">
+                                                        基本用法
+                                                    </span>
+
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class="tree-node">
+
+                                            <div class="tree-cell-inner">
+                                                <i class="icon-left fa fa-fw fa-folder"></i>
+                                                <span class="tree-cell-text">
+                                                    基本用法
+                                                </span>
+                                                <i class="icon-right fa fa-caret-right"></i>
+                                            </div>
+
+                                            <ul class="sidebar-sub-menu third">
+                                                <li class="tree-node">
+                                                    <a href="http://www.baidu.com" target="mainFrame">
+                                                        <div class="tree-cell-inner">
+                                                            <i class="icon-left fa fa-fw fa-file"></i>
+                                                            <span class="tree-cell-text">
+                                                                基本用法
+                                                            </span>
+
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                                <li class="tree-node">
+                                                    <a href="http://www.baidu.com" target="mainFrame">
+                                                        <div class="tree-cell-inner">
+                                                            <i class="icon-left fa fa-fw fa-file"></i>
+                                                            <span class="tree-cell-text">
+                                                                基本用法
+                                                            </span>
+
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                                <li class="tree-node">
+
+                                                    <div class="tree-cell-inner">
+                                                        <i class="icon-left fa fa-fw fa-folder"></i>
+                                                        <span class="tree-cell-text">
+                                                            基本用法
+                                                        </span>
+                                                        <i class="icon-right fa fa-caret-right"></i>
+                                                    </div>
+
+                                                    <ul class="sidebar-sub-menu fourth">
+                                                        <li class="tree-node">
+                                                            <a href="http://www.baidu.com" target="mainFrame">
+                                                                <div class="tree-cell-inner">
+                                                                    <i class="icon-left fa fa-fw fa-file"></i>
+                                                                    <span class="tree-cell-text">
+                                                                        基本用法
+                                                                    </span>
+
+                                                                </div>
+                                                            </a>
+                                                        </li>
+                                                        <li class="tree-node">
+                                                            <a href="http://www.qq.com" target="mainFrame">
+                                                                <div class="tree-cell-inner">
+                                                                    <i class="icon-left fa fa-fw fa-file"></i>
+                                                                    <span class="tree-cell-text">
+                                                                        基本用法
+                                                                    </span>
+
+                                                                </div>
+                                                            </a>
+                                                        </li>
+                                                        <li class="tree-node">
+                                                            <a href="http://news.mydrivers.com/" target="mainFrame">
+                                                                <div class="tree-cell-inner">
+                                                                    <i class="icon-left fa fa-fw fa-file"></i>
+                                                                    <span class="tree-cell-text">
+                                                                        基本用法
+                                                                    </span>
+
+                                                                </div>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+
+                                                </li>
+                                            </ul>
+
+                                        </li>
+                                    </ul>
                                 </li>
                             </ul>
                         </li>
@@ -708,8 +836,6 @@
                     });
                 }
 
-                
-
             });
 
             $('.tree-cell-inner').click(function () {
@@ -721,13 +847,15 @@
 
                 //父节点
                 if (parent.is('.tree-node')) {
-                    if (parent.find('.icon-right').hasClass('fa-caret-right')) {
-                        parent.find('.icon-right').removeClass('fa-caret-right').addClass('fa-caret-down');
+                    if ($(this).children('.icon-right').hasClass('fa-caret-right')) {
+                        $(this).children('.icon-left').removeClass('fa-folder').addClass('fa-folder-open');
+                        $(this).children('.icon-right').removeClass('fa-caret-right').addClass('fa-caret-down');
                     } else {
-                        parent.find('.icon-right').removeClass('fa-caret-down').addClass('fa-caret-right');
+                        $(this).children('.icon-left').removeClass('fa-folder-open').addClass('fa-folder');
+                        $(this).children('.icon-right').removeClass('fa-caret-down').addClass('fa-caret-right');
                     }
 
-                    parent.find('.sidebar-sub-menu').toggle();
+                    parent.children('.sidebar-sub-menu').toggle();
                 } else {
 
                 }
