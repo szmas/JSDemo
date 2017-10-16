@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .drag {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            background: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <div class="drag">
+    </div>
+
+    <script>
+
+        $(function () {
+
+            var enabledrop = false;
+            //鼠标相对于div的位置
+            var _location = {};
+
+            $('.drag').mousedown(function (e) {
+                enabledrop = true;
+                var _offset = $(this).offset()
+                _location = { left: e.pageX - _offset.left, top: e.pageY - _offset.top };
+            });
+
+            $(document).mousemove(function (e) {
+                if (enabledrop) {
+                    $('.drag').css({ left: e.pageX - _location.left, top: e.pageY - _location.top });
+                }
+            });
+
+            $(document).mouseup(function () {
+                enabledrop = false;
+            });
+
+        });
+
+    </script>
+</body>
+</html>
