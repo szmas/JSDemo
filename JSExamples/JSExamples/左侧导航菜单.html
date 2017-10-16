@@ -188,7 +188,7 @@
 </head>
 <body>
     <div class="main">
-        <!--<div class="top"><div style="font-weight: bold;font-size:32px;text-align:center;line-height:60px;">任老板</div></div>-->
+        <div class="top"><div style="font-weight: bold;font-size:32px;text-align:center;line-height:60px;">任老板</div></div>
         <div class="container">
             <div class="left">
                 <div class="sidebar">
@@ -822,7 +822,7 @@
                 } else {
                     $('.l-tab-loading').show();
 
-                    var fclone = $('.f-iframe:eq(0)').clone();
+                    var fclone = $('.f-iframe:visible').clone();
                     $('.f-iframe').hide();
 
                     $('.f-iframe').prop('name', '_mainFrame');
@@ -830,11 +830,14 @@
                     $('.right').append(fclone);
 
                     fclone.attr('_src', parent.prop('href'));
+                    fclone.prop('src', parent.prop('href'));
 
                     fclone.bind('load', function () {
                         $('.l-tab-loading').hide();
                     });
                 }
+
+                return false;
 
             });
 
