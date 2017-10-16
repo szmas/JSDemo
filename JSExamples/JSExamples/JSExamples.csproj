@@ -57,6 +57,10 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="capture事件.html" />
+    <Content Include="css3动画关闭.html" />
+    <Content Include="demo.html" />
+    <Content Include="div拖拽.html" />
     <Content Include="div拖拽宽度.html" />
     <Content Include="fontanzer.html" />
     <Content Include="form\ajaxFormUpload.html" />
@@ -78,6 +82,7 @@
     <Content Include="iframe\doScroll.html" />
     <Content Include="iframe\doScroll_iframe.html" />
     <Content Include="iframe\sleepImg2.aspx" />
+    <Content Include="imageLazyload.html" />
     <Content Include="uploadfiles\bky.png" />
     <Content Include="v.mas.com\window.name_b.html" />
     <Content Include="v.mas.com\location.hash_b.html" />

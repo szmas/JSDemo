@@ -16,6 +16,8 @@
             width: 100px;
             height: 100px;
             background: #ccc;
+            -moz-user-select: none;
+            -webkit-user-select: none;
         }
     </style>
 </head>
@@ -39,12 +41,24 @@
 
             $(document).mousemove(function (e) {
                 if (enabledrop) {
-                    $('.drag').css({ left: e.pageX - _location.left, top: e.pageY - _location.top });
+                    var left = e.pageX - _location.left;
+                    var top = e.pageY - _location.top;
+                    if (left < 0) {
+                        left = 0;
+                    } if (top < 0) {
+                        top = 0;
+                    }
+                    $('.drag').css({ left: left, top: top });
                 }
             });
 
             $(document).mouseup(function () {
                 enabledrop = false;
+            });
+
+            //阻止页面的选择动作，非常重要，当拖拽发生时，如果存在文本选择，会影响拖拽效果
+            $('.drag').bind('selectstart', function () {
+                return false;
             });
 
         });

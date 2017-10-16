@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+        }
+
+        p {
+            height: 400px;
+            background: #ccc;
+        }
+    </style>
+    <script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+</head>
+<body>
+    <p>
+
+    </p><p>
+
+    </p><p>
+
+    </p><p>
+
+    </p>
+    <p>
+        <img src="uploadfiles/bky.png" />
+    </p><p>
+
+    </p><p>
+
+    </p><p>
+
+    </p>
+    <script>
+        $(window).scroll(function () {
+
+            var offset = $('img').offset();
+
+            //可视化区域内
+            if (offset.top < $(window).height() + $(window).scrollTop()) {
+                console.log('在window可视化范围内');
+            }
+        });
+    </script>
+</body>
+</html>

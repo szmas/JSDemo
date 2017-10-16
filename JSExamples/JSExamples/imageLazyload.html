@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+</head>
+<body>
+    <script>
+
+        //提前加载图片，当用户需要查看时可直接从本地缓存中渲染。
+
+
+        /*
+        
+        最常用的图片预加载new Image()原理：设置其src来实现预载，再使用onload方法回调预载完成事件。
+        当浏览器把图片下载到本地后，后续同样的src就可以使用缓存了。
+        
+        */
+
+        var img = new Image();
+        img.src = 'http://i.77mv.com.cn/manage/images/MATRICX.png';
+
+        //兼容ie6
+        if (img.complete) {
+            console.log('complete');
+        }
+
+        img.onload = function () {
+            console.log('load:' + this.width + '*' + this.height);
+        }
+
+        img.onerror = function () {
+            console.log('error');
+        }
+    </script>
+</body>
+</html>

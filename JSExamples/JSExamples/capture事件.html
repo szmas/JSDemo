@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+</head>
+
+<body>
+    <div id="m_Div" style="width:200px;height:200px;border:1px solid #b0bca5;padding:2px">
+        点一下IE的菜单或者按钮看看:)
+        又或者IE窗口外的地方
+    </div>
+    <script>
+
+        //只支持IE
+        document.getElementById("m_Div").onclick = function () {
+            alert('Hello');
+            this.setCapture();
+        }
+
+        if (window.captureEvents) {
+            window.captureEvents();
+        } else {
+            document.getElementById("m_Div").setCapture();
+        }
+    </script>
+
+</body>
+</html>
