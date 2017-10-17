@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+        }
+
+        p {
+            height: 300px;
+        }
+    </style>
+</head>
+<body>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <script>
+        $(function () {
+
+            $(document.body).bind('mousewheel DOMMouseScroll', function (e) {
+                var delta;
+                if (e.originalEvent.wheelDelta)
+                    delta = e.originalEvent.wheelDelta / 120;
+                else
+                    delta = -e.originalEvent.detail / 3;//FF向下滚动是正值，而其他浏览器是负值
+
+                console.log(delta > 0 ? '向上滚动' : '向下滚动');
+            });
+
+        });
+    </script>
+</body>
+</html>
