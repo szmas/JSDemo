@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+</head>
+<body ng-app="myApp">
+    <p>
+        ng-app 指令定义一个 AngularJS 应用程序。<!--<body ng-app="myApp"></body>--><br />
+        ng-model 指令把元素值（比如输入域的值）绑定到应用程序。<input type="text" ng-model="name" /><br />
+        ng-bind 指令把应用程序数据绑定到 HTML 视图。<span ng-bind="quantity * cost"></span> <br />
+        ng-init 指令初始化 AngularJS 应用程序变量。<div ng-init="name='John'"></div><br />
+        AngularJS 表达式写在双大括号内：{{ expression }}。实例 {{ 5 + 5 }} 或 {{ firstName + " " + lastName }}<br />
+    </p>
+    <div ng-init="name='John'">
+        <p>名字 : <input type="text" ng-model="name" /></p>
+        <h1>Hello {{name}}</h1>
+    </div>
+
+    <div ng-controller="myCtrl">
+
+        名: <input type="text" ng-model="firstName" /><br>
+        姓: <input type="text" ng-model="lastName" /><br>
+        <br>
+        姓名: {{firstName + " " + lastName}}
+
+    </div>
+    <script>
+
+        /*
+        AngularJS 模块（Module） 定义了 AngularJS 应用。
+        AngularJS 控制器（Controller） 用于控制 AngularJS 应用。
+        ng-app指令定义了应用, ng-controller 定义了控制器。
+
+        */
+
+        //AngularJS 模块
+        var app = angular.module('myApp', []);
+
+        //AngularJS 控制器
+        app.controller('myCtrl', function ($scope) {
+            $scope.firstName = "John";
+            $scope.lastName = "Doe";
+        });
+    </script>
+</body>
+</html>
