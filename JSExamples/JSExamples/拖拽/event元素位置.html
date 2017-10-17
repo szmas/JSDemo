@@ -18,11 +18,24 @@
             width: 40%;
             height: 60px;
         }
+
+        .target {
+            height: 100px;
+            background: #ccc;
+        }
+
+        .origin {
+            height: 100px;
+            background: #ddd;
+        }
     </style>
 </head>
 <body>
     <div class="drag" id="drag">
     </div>
+    <div class="origin a"></div>
+    <div id="target" class="target"></div>
+    <div id="origin" class="origin b"></div>
     <script>
 
         $(function () {
@@ -48,7 +61,10 @@
                 //IE8不支持e  ff不支持window.event
                 e = e || window.event;
                 //IE8只支持e.srcElement  ff只支持e.target
-                e.srcElement || e.target;
+                e.srcElement || e.target; //事件源
+
+                //
+                e.relatedTarget || e.toElement;
 
                 //IE8不支持e.pageX
                 if (e.pageX)
@@ -58,6 +74,24 @@
                 console.log("鼠标相对于元素的位置：" + e.offsetX + "," + e.offsetY);
                 console.log("鼠标相对于屏幕的位置：" + e.screenX + "," + e.screenY);
             };
+
+
+            document.getElementById('target').onmouseover = function (e) {
+
+                e = e || window.event;
+                relatedTarget = e.relatedTarget || e.fromElement || '';
+                console.log('鼠标来自：' + relatedTarget.className);//鼠标来自哪个元素
+            };
+
+            document.getElementById('target').onmouseout = function (e) {
+
+                e = e || window.event;
+                relatedTarget = e.relatedTarget || e.toElement || '';
+
+                console.log('鼠标去往：' + relatedTarget.className);//鼠标去往哪个元素
+
+            };
+
         });
     </script>
 

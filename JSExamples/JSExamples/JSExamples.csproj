@@ -57,26 +57,32 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="hashchange\css.html" />
+    <Content Include="hashchange\demo.html" />
+    <Content Include="hashchange\http.html" />
+    <Content Include="hashchange\index.html" />
+    <Content Include="hashchange\js.html" />
     <Content Include="pjax\css.html" />
     <Content Include="pjax\http.html" />
     <Content Include="pjax\index.html" />
     <Content Include="pjax\js.html" />
-    <Content Include="伪类去浮动.html" />
+    <Content Include="QQ.html" />
+    <Content Include="伪元素去浮动.html" />
     <Content Include="capture事件.html" />
     <Content Include="css3动画关闭.html" />
     <Content Include="元素在可视化区域.html" />
-    <Content Include="div拖拽.html" />
-    <Content Include="div拖拽宽度.html" />
-    <Content Include="event元素位置.html" />
+    <Content Include="拖拽\div拖拽.html" />
+    <Content Include="拖拽\div拖拽宽度.html" />
+    <Content Include="拖拽\event元素位置.html" />
     <Content Include="fontanzer.html" />
     <Content Include="form\ajaxFormUpload.html" />
     <Content Include="form\ajaxUpload.html" />
     <Content Include="form\uploadIframe.aspx" />
-    <Content Include="html5_data-x.html" />
-    <Content Include="html5地址栏改变.html" />
-    <Content Include="html5新元素.html" />
-    <Content Include="html5本地存储.html" />
-    <Content Include="html5网络在线.html" />
+    <Content Include="html5\html5_data-x.html" />
+    <Content Include="html5\html5地址栏改变.html" />
+    <Content Include="html5\html5新元素.html" />
+    <Content Include="html5\html5本地存储.html" />
+    <Content Include="html5\html5网络在线.html" />
     <Content Include="i.mas.com\location.hash_c.html" />
     <Content Include="i.mas.com\proxy.html" />
     <Content Include="i.mas.com\test.html" />
@@ -95,7 +101,7 @@
     <Content Include="函数节流.html" />
     <Content Include="i.mas.com\location.hash.html" />
     <Content Include="form\fileupload.ashx" />
-    <Content Include="左侧导航菜单.html" />
+    <Content Include="拖拽\左侧导航菜单.html" />
     <Content Include="弹窗居中.html" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

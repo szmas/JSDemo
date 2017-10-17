@@ -1,0 +1,403 @@
+﻿<h1 style="margin: 10px 0px; padding: 0px; font-size: 16px; line-height: 2em; color: rgb(255, 255, 255); background-color: rgb(247, 108, 69); text-indent: 10px;">
+    HTTP
+</h1>
+<h3 style="margin: 10px 0px; padding: 0px; font-size: 16px; line-height: 2em; color: rgb(255, 255, 255); background-color: rgb(247, 108, 69); text-indent: 10px;">
+    1.1 typeof操作符
+</h3>
+<blockquote style="margin: 10px 0px; padding: 5px 10px; background-image: none; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial; border: 2px solid rgb(239, 239, 239); min-height: 35px; line-height: 1.6em; color: rgb(51, 51, 51);">
+    <p style="margin: 10px auto; padding: 0px;">
+        该操作符可以检测某变量是什么数据类型。
+    </p>
+</blockquote>
+<p style="margin: 10px auto; padding: 0px;">
+    typeof返回的值：
+</p>
+<ul style="margin-left: 30px; padding: 0px;" class=" list-paddingleft-2">
+    <li>
+        <p>
+            &quot;undefined&quot; -- 表示这个值没有被定义
+        </p>
+    </li>
+    <li>
+        <p>
+            &quot;string&quot; -- 表示这是一个字符串
+        </p>
+    </li>
+    <li>
+        <p>
+            &quot;number&quot; --表示这是一个数字类型
+        </p>
+    </li>
+    <li>
+        <p>
+            &quot;boolean&quot; --表示是一个布尔型
+        </p>
+    </li>
+    <li>
+        <p>
+            &quot;object&quot; --表示这是一个对象
+        </p>
+    </li>
+    <li>
+        <p>
+            &quot;function &quot; --表示这是一个函数
+        </p>
+    </li>
+</ul>
+<blockquote style="margin: 10px 0px; padding: 5px 10px; background-image: none; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial; border: 2px solid rgb(239, 239, 239); min-height: 35px; line-height: 1.6em; color: rgb(51, 51, 51);">
+    <p style="margin: 10px auto; padding: 0px;">
+        特别：对于null，typeof null 会返回&quot;object&quot;,因为null表示的是一个空对象的引用
+    </p>
+</blockquote>
+<p style="margin: 10px auto; padding: 0px;">
+    typeof使用例子：
+</p>
+<pre class="sourceCode javascript" style="margin-top: 10px; margin-bottom: 10px; padding: 0px; white-space: pre-wrap; word-wrap: break-word;">var str = &quot;hello&quot;;var a;console.log(typeof str)  //&quot;string&quot;console.log(typeof 666)  //&quot;number&quot;console.log(typeof a)  // &quot;undefined&quot;console.log(typeof null)  // &quot;object&quot;</pre>
+<h3 style="margin: 10px 0px; padding: 0px; font-size: 16px; line-height: 2em; color: rgb(255, 255, 255); background-color: rgb(247, 108, 69); text-indent: 10px;">
+    1.2 Undefined类型
+</h3>
+<blockquote style="margin: 10px 0px; padding: 5px 10px; background-image: none; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial; border: 2px solid rgb(239, 239, 239); min-height: 35px; line-height: 1.6em; color: rgb(51, 51, 51);">
+    <p style="margin: 10px auto; padding: 0px;">
+        undefined 类型的值只有一个，undefined。当使用var对变量声明但没有进行初始化的时候默认的值就是undefined。
+    </p>
+</blockquote>
+<pre class="sourceCode javascript" style="margin-top: 10px; margin-bottom: 10px; padding: 0px; white-space: pre-wrap; word-wrap: break-word;">var value ;console.log(typeof value);   // &quot;undefined&quot; //特别:对于没有声明的变量typeof 返回的值也是undefined,例如：//下面的a没被声明console.log(typeof a);    //&quot;undefined&quot;</pre>
+<h3 style="margin: 10px 0px; padding: 0px; font-size: 16px; line-height: 2em; color: rgb(255, 255, 255); background-color: rgb(247, 108, 69); text-indent: 10px;">
+    1.3 Null类型
+</h3>
+<blockquote style="margin: 10px 0px; padding: 5px 10px; background-image: none; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial; border: 2px solid rgb(239, 239, 239); min-height: 35px; line-height: 1.6em; color: rgb(51, 51, 51);">
+    <p style="margin: 10px auto; padding: 0px;">
+        Null类型也是只用一个值null，null是一个空对象指针。所以使用typeof检测时会返回object。
+    </p>
+</blockquote>
+<pre class="sourceCode js" style="margin-top: 10px; margin-bottom: 10px; padding: 0px; white-space: pre-wrap; word-wrap: break-word;">console.log(typeof null);   //&quot;object&quot;</pre>
+<h4 style="margin: 10px 0px; padding: 0px; color: rgb(255, 255, 255); background-color: rgb(8, 138, 94); text-indent: 10px; line-height: 2em;">
+    注意点：
+</h4>
+<p style="margin: 10px auto; padding: 0px;">
+    1.null的使用：在定义的变量将会用来保存一个对象时，那初始化为null，这样我们就知道该变量将来会引用一个对象。
+</p>
+<p style="margin: 10px auto; padding: 0px;">
+    2.实际上undefined值是派生值null的，因此对他们进行相等性测试会返回true：
+</p>
+<pre class="sourceCode js" style="margin-top: 10px; margin-bottom: 10px; padding: 0px; white-space: pre-wrap; word-wrap: break-word;">console.log(null == undefined);  //true</pre>
+<h3 style="margin: 10px 0px; padding: 0px; font-size: 16px; line-height: 2em; color: rgb(255, 255, 255); background-color: rgb(247, 108, 69); text-indent: 10px;">
+    1.4 Boolean类型
+</h3>
+<blockquote style="margin: 10px 0px; padding: 5px 10px; background-image: none; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial; border: 2px solid rgb(239, 239, 239); min-height: 35px; line-height: 1.6em; color: rgb(51, 51, 51);">
+    <p style="margin: 10px auto; padding: 0px;">
+        boolean类型有两个值 true和false，其他类型的值都有与这两个值等价的值，就是说其他类型的值都能转成这两值中的其中一个。通过转型函数Boolean()
+    </p>
+</blockquote>
+<h4 style="margin: 10px 0px; padding: 0px; color: rgb(255, 255, 255); background-color: rgb(8, 138, 94); text-indent: 10px; line-height: 2em;">
+    注意点：
+</h4>
+<p style="margin: 10px auto; padding: 0px;">
+    任何类型的数据都可以调用Boolean()方法，都能返回一个true或false，至于返回什么，有一定的规则，规则如下：
+</p>
+<pre class="sourceCode js" style="margin-top: 10px; margin-bottom: 10px; padding: 0px; white-space: pre-wrap; word-wrap: break-word;">//对于Undefinedconsole.log(Boolean(undefined));  //false//对于String，非空字符串返回true，空字符串返回falseconsole.log(Boolean(&quot;&quot;));   //falseconsole.log(Boolean(&quot;hahaha&quot;));   //true//对于Numble类型，任何非0数字返回true，0和NaN返回falseconsole.log(Boolean(123));  //trueconsole.log(Boolean(0));  //false//对于Object，任何对象都返回trueconsole.log(new Array());  //true</pre>
+<h3 style="margin: 10px 0px; padding: 0px; font-size: 16px; line-height: 2em; color: rgb(255, 255, 255); background-color: rgb(247, 108, 69); text-indent: 10px;">
+    1.5 Number类型
+</h3>
+<blockquote style="margin: 10px 0px; padding: 5px 10px; background-image: none; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial; border: 2px solid rgb(239, 239, 239); min-height: 35px; line-height: 1.6em; color: rgb(51, 51, 51);">
+    <p style="margin: 10px auto; padding: 0px;">
+        Number 类型就是数字的类型，各种数字都是该类型，包含整数，浮点数。
+    </p>
+</blockquote>
+<p style="margin: 10px auto; padding: 0px;">
+    <strong style="margin: 0px; padding: 0px;">常见的数字：</strong>
+</p>
+<pre class="sourceCode javascript" style="margin-top: 10px; margin-bottom: 10px; padding: 0px; white-space: pre-wrap; word-wrap: break-word;">//整数var intNum = 10;//八进制0开头var num1 = 066;//十六进制0x开头var num2 = 0xA;//浮点数var floatNum = 0.6;//极大的数4123000,使用科学表示法e，e6表示10的6次方var floatNum2 = 4.123e6;//最大值Number.MAX_VALUE;   //1.7976931348623157e+308//最小值 Number.MIN_VALUE;   //5e-324//超出最大值时，表示为正无穷Infinity//超出最小值时，表示为负无穷-Infinity//NaN (Not a Number) 非数值NaN//判断非数值的函数isNaN()console.log(isNaN(10))  //falseconsole.log(isNaN(&quot;10&quot;)) //false,isNaN()会尝试将字符串转为数字，此处&quot;10&quot;能转为10console.log(isNaN(&quot;bey&quot;));  //true , &quot;bey&quot;不能被转成数字</pre>
+<h3 style="margin: 10px 0px; padding: 0px; font-size: 16px; line-height: 2em; color: rgb(255, 255, 255); background-color: rgb(247, 108, 69); text-indent: 10px;">
+    1.6 String类型
+</h3>
+<blockquote style="margin: 10px 0px; padding: 5px 10px; background-image: none; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial; border: 2px solid rgb(239, 239, 239); min-height: 35px; line-height: 1.6em; color: rgb(51, 51, 51);">
+    <p style="margin: 10px auto; padding: 0px;">
+        String用于表示由零或多个16位Unicode字符组成的字符序列，即字符串。
+    </p>
+</blockquote>
+<blockquote style="margin: 10px 0px; padding: 5px 10px; background-image: none; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial; border: 2px solid rgb(239, 239, 239); min-height: 35px; line-height: 1.6em; color: rgb(51, 51, 51);">
+    <p style="margin: 10px auto; padding: 0px;">
+        字符串由单引号（&#39; &#39;）或双引号（&quot; &quot;）包含。但首尾不能是不同的引号，比如一单一双。
+    </p>
+</blockquote>
+<h4 style="margin: 10px 0px; padding: 0px; color: rgb(255, 255, 255); background-color: rgb(8, 138, 94); text-indent: 10px; line-height: 2em;">
+    错点:
+</h4>
+<pre class="sourceCode js" style="margin-top: 10px; margin-bottom: 10px; padding: 0px; white-space: pre-wrap; word-wrap: break-word;">//这样会报错var str = &#39;javasritp&quot;;</pre>
+<h4 style="margin: 10px 0px; padding: 0px; color: rgb(255, 255, 255); background-color: rgb(8, 138, 94); text-indent: 10px; line-height: 2em;">
+    特点：
+</h4>
+<p style="margin: 10px auto; padding: 0px;">
+    1.拼接字符串使用&#39;+&#39;号
+</p>
+<pre class="sourceCode js" style="margin-top: 10px; margin-bottom: 10px; padding: 0px; white-space: pre-wrap; word-wrap: break-word;">var str1 = &quot;hello&quot;;var str2 = str1 + &quot;world&quot;;console.log(str2); // &quot;hello world&quot;</pre>
+<p style="margin: 10px auto; padding: 0px;">
+    2.其他类型的数据转换为字符串使用toString()函数
+</p>
+<pre class="sourceCode js" style="margin-top: 10px; margin-bottom: 10px; padding: 0px; white-space: pre-wrap; word-wrap: break-word;">var num = 123;var str = num.toString();  //数字123通过toString转为了字符串console.log(str);  //&quot;123&quot;//使用&quot;&quot;拼接其他数据类型可以转换成Stringvar s = 23+&quot;&quot;;  //&quot;23&quot;</pre>
+<h3 style="margin: 10px 0px; padding: 0px; font-size: 16px; line-height: 2em; color: rgb(255, 255, 255); background-color: rgb(247, 108, 69); text-indent: 10px;">
+    1.7 Object类型
+</h3>
+<blockquote style="margin: 10px 0px; padding: 5px 10px; background-image: none; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial; border: 2px solid rgb(239, 239, 239); min-height: 35px; line-height: 1.6em; color: rgb(51, 51, 51);">
+    <p style="margin: 10px auto; padding: 0px;">
+        ECMAScript中的对象其实就是一组数据和功能的集合。通过new操作符后跟要创建的对象类型的名称来创建。
+    </p>
+</blockquote>
+<pre class="sourceCode js" style="margin-top: 10px; margin-bottom: 10px; padding: 0px; white-space: pre-wrap; word-wrap: break-word;">//创建一个Object对象var  o = new Object();</pre>
+<h4 style="margin: 10px 0px; padding: 0px; color: rgb(255, 255, 255); background-color: rgb(8, 138, 94); text-indent: 10px; line-height: 2em;">
+    关键：
+</h4>
+<blockquote style="margin: 10px 0px; padding: 5px 10px; background-image: none; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial; border: 2px solid rgb(239, 239, 239); min-height: 35px; line-height: 1.6em; color: rgb(51, 51, 51);">
+    <p style="margin: 10px auto; padding: 0px;">
+        这里的Object相当于祖宗一样，创建Object的实例并没有什么用处。他像是java中java.lang.Object 对象一样。
+    </p>
+</blockquote>
+<h4 style="margin: 10px 0px; padding: 0px; color: rgb(255, 255, 255); background-color: rgb(8, 138, 94); text-indent: 10px; line-height: 2em;">
+    特点：
+</h4>
+<p style="margin: 10px auto; padding: 0px;">
+    每个Object类型的实例共有的属性和方法：
+</p>
+<ul style="margin-left: 30px; padding: 0px;" class=" list-paddingleft-2">
+    <li>
+        <p>
+            constructor： 保存着用于创建当前对象的函数。
+        </p>
+    </li>
+    <li>
+        <p>
+            hasOwnProperty：用于检测给定的属性在当前对象的实例中是否存在。
+        </p>
+    </li>
+    <li>
+        <p>
+            isPrototypeOf ： 用于检查传入的对象是否是当前对象的原型
+        </p>
+    </li>
+    <li>
+        <p>
+            propertyIsEnumerble ： 用于检查给定属性能否使用for-in来枚举
+        </p>
+    </li>
+    <li>
+        <p>
+            toLocaleString() : 返回对象的字符串表示。
+        </p>
+    </li>
+    <li>
+        <p>
+            toString() : 返回对象的字符串表示。
+        </p>
+    </li>
+    <li>
+        <p>
+            valueOf() : 返回对象的字符串，数值，或布尔表示。通常和toString() 返回的值相同。
+        </p>
+    </li>
+</ul>
+<h2 style="margin: 10px 0px; padding: 0px; font-size: 21px; line-height: 2em; background-color: rgb(32, 147, 199); color: rgb(255, 255, 255); text-indent: 10px;">
+    四、操作符（运算符）
+</h2>
+<blockquote style="margin: 10px 0px; padding: 5px 10px; background-image: none; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial; border: 2px solid rgb(239, 239, 239); min-height: 35px; line-height: 1.6em; color: rgb(51, 51, 51);">
+    <p style="margin: 10px auto; padding: 0px;">
+        接下来是操作数据值的操作符。包含算术操作符，位操作符，关系操作符，相等操作符。
+    </p>
+</blockquote>
+<h3 style="margin: 10px 0px; padding: 0px; font-size: 16px; line-height: 2em; color: rgb(255, 255, 255); background-color: rgb(247, 108, 69); text-indent: 10px;">
+    1一元操作符
+</h3>
+<blockquote style="margin: 10px 0px; padding: 5px 10px; background-image: none; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial; border: 2px solid rgb(239, 239, 239); min-height: 35px; line-height: 1.6em; color: rgb(51, 51, 51);">
+    <p style="margin: 10px auto; padding: 0px;">
+        只能操作一个值的操作符称为一元操作符。
+    </p>
+</blockquote>
+<h4 style="margin: 10px 0px; padding: 0px; color: rgb(255, 255, 255); background-color: rgb(8, 138, 94); text-indent: 10px; line-height: 2em;">
+    1.1递增与递减：
+</h4>
+<p style="margin: 10px auto; padding: 0px;">
+    <strong style="margin: 0px; padding: 0px;">形式:</strong>&nbsp;这就是自增自减，使用两个加号(++)或两个减号(--)
+</p>
+<pre class="sourceCode js" style="margin-top: 10px; margin-bottom: 10px; padding: 0px; white-space: pre-wrap; word-wrap: break-word;">var num = 5;num++;   //相当于num = num+1; 此时num = 6;num--;   //相当于num = num-1; 此时num = 5;</pre>
+<p style="margin: 10px auto; padding: 0px;">
+    <strong style="margin: 0px; padding: 0px;"><span style="color:#f00">注意点：</span></strong>递增减的前置型（加减号在数值前面）和后置型（加减号在数值后面）；<br />1.没区别的情况：当只有唯一一条递增或递减操作时，前后不影响结果
+</p>
+<pre class="sourceCode js" style="margin-top: 10px; margin-bottom: 10px; padding: 0px; white-space: pre-wrap; word-wrap: break-word;">var num1 = 5;var num2 = 5;num1++;   //执行后num1的值会变成6++num2;   //执行num2的值会变成6</pre>
+<p style="margin: 10px auto; padding: 0px;">
+    2.有区别情况：当操作数在一条语句中进行不仅仅是递增或递减操作时
+</p>
+<pre class="sourceCode js" style="margin-top: 10px; margin-bottom: 10px; padding: 0px; white-space: pre-wrap; word-wrap: break-word;">var val1= 5;var val2 = 5;var val3 = 20;var sum1 = val1-- + val3;   //sum1等于25var sum2 = --val2 + val3;   //sum2等于24//此处的val1 和 val2 的值相同但最后结果不同.//val1是后置，通俗点讲就是放到最后才进行自减操作.所以顺序是原来的val1值(5)和val3相加后赋值给sum1，最后val1才自减。//val2是前置，通俗点讲前置最大，先进行了自减操作。所以顺序是val1自减，后和val3相加最后赋值给sum2</pre>
+<h4 style="margin: 10px 0px; padding: 0px; color: rgb(255, 255, 255); background-color: rgb(8, 138, 94); text-indent: 10px; line-height: 2em;">
+    1.2一元加号和减号
+</h4>
+<p style="margin: 10px auto; padding: 0px;">
+    <strong style="margin: 0px; padding: 0px;">形式：</strong>在一个数值前使用一个加号或减号。
+</p>
+<pre class="sourceCode js" style="margin-top: 10px; margin-bottom: 10px; padding: 0px; white-space: pre-wrap; word-wrap: break-word;">var num = 100;//用+正数还是正数，负数还是负数+num;  //100//用减号就变成相反数-num;  //-100</pre>
+<p style="margin: 10px auto; padding: 0px;">
+    <strong style="margin: 0px; padding: 0px;"><span style="color:#f00">注意点：</span></strong>当操作的不是数字时，使用+,-可以使其执行转换，类似于Number() 函数。
+</p>
+<pre class="sourceCode js" style="margin-top: 10px; margin-bottom: 10px; padding: 0px; white-space: pre-wrap; word-wrap: break-word;">//对于+号var str = &quot;10&quot;;str = +str;  //值会变成数字10var str2 = &quot;hello&quot;;str2 = +str2 //值为NaN，因为不能转为数字var boo = false;boo = +false;  //值变为0//对于-号，也差不多，只是变成相反数var s = &quot;100&quot;;s = -s; //值为-100</pre>
+<h3 style="margin: 10px 0px; padding: 0px; font-size: 16px; line-height: 2em; color: rgb(255, 255, 255); background-color: rgb(247, 108, 69); text-indent: 10px;">
+    2.加性/乘性运算符（加，减,乘，除，取模）
+</h3>
+<p style="margin: 10px auto; padding: 0px;">
+    1.加号（+）：进行加法运算<br />2.减号（-）：进行减法运算<br />3.乘号（*）：进行乘法运算<br />4.除号（/）：进行除法运算<br />5.求模（%）：求余数
+</p>
+<pre class="sourceCode js" style="margin-top: 10px; margin-bottom: 10px; padding: 0px; white-space: pre-wrap; word-wrap: break-word;">30+20;  //5030-10;  //2030*20;  //60030/10;  //325/6 ;  //1`</pre>
+<h3 style="margin: 10px 0px; padding: 0px; font-size: 16px; line-height: 2em; color: rgb(255, 255, 255); background-color: rgb(247, 108, 69); text-indent: 10px;">
+    3.布尔操作符
+</h3>
+<blockquote style="margin: 10px 0px; padding: 5px 10px; background-image: none; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial; border: 2px solid rgb(239, 239, 239); min-height: 35px; line-height: 1.6em; color: rgb(51, 51, 51);">
+    <p style="margin: 10px auto; padding: 0px;">
+        布尔操作符有三个：非，与，或
+    </p>
+</blockquote>
+<h4 style="margin: 10px 0px; padding: 0px; color: rgb(255, 255, 255); background-color: rgb(8, 138, 94); text-indent: 10px; line-height: 2em;">
+    3.1逻辑非
+</h4>
+<p style="margin: 10px auto; padding: 0px;">
+    1.符号：!<br />2.功能：非操作会返回一个布尔值，功能对布尔值取非，即相反。它会对值转成布尔值。
+</p>
+<pre class="sourceCode js" style="margin-top: 10px; margin-bottom: 10px; padding: 0px; white-space: pre-wrap; word-wrap: break-word;">console.log(!false);  //trueconsole.log(!0);  //0的布尔转换是false，进行非操作后就是trueconsole.log(!&quot;hh&quot;)  //非空字符串布尔是true，进行非操作后就是false//小技巧，使用两!!可以类似于Boolean函数，对任何数值进行布尔转换console.log(!!&quot;hello&quot;);  //trueconsole.log(!!0);  //false</pre>
+<h4 style="margin: 10px 0px; padding: 0px; color: rgb(255, 255, 255); background-color: rgb(8, 138, 94); text-indent: 10px; line-height: 2em;">
+    3.2逻辑与
+</h4>
+<p style="margin: 10px auto; padding: 0px;">
+    1.符号：&amp;&amp;<br />2.功能：进行与操作需要两个值，当两个值布尔值都为true时才会返回true，否则返回false，并且它是一个短路操作符（当第一个值为false时，就不用再判断第二个值）
+</p>
+<pre class="sourceCode js" style="margin-top: 10px; margin-bottom: 10px; padding: 0px; white-space: pre-wrap; word-wrap: break-word;">console.log(false&amp;&amp;true); //falseconsole.log(false&amp;&amp;false); //falseconsole.log(true&amp;&amp;false); //falseconsole.log(true&amp;&amp;true); //true</pre>
+<p style="margin: 10px auto; padding: 0px;">
+    3.<strong style="margin: 0px; padding: 0px;"><span style="color:#f00">注意点：</span></strong>&nbsp;&amp;&amp;（与）操作不一定回返回布尔值一下是特殊情况：
+</p>
+<ul style="margin-left: 30px; padding: 0px;" class=" list-paddingleft-2">
+    <li>
+        <p>
+            如果第一个操作数是一个对象的时候，返回第二个操作数
+        </p>
+    </li>
+    <li>
+        <p>
+            如果第一个操作数是null，返回null
+        </p>
+    </li>
+    <li>
+        <p>
+            如果第一个操作数是NaN，返回NaN
+        </p>
+    </li>
+    <li>
+        <p style="margin: 10px auto; padding: 0px;">
+            如果第一个操作数是undefined，返回undefined。
+        </p>
+        <pre class="sourceCode js" style="margin-top: 10px; margin-bottom: 10px; padding: 0px; white-space: pre-wrap; word-wrap: break-word;">//数组对象var arr = new Array();//字符串var str = &#39;hello&#39;;console.log(arr&amp;&amp;str) //&#39;hello&#39;console.log(null&amp;&amp;str) // nullconsole.log(NaN&amp;&amp;str)  //NaNconsole.log(undefined&amp;&amp;str) //undefined</pre>
+    </li>
+</ul>
+<h4 style="margin: 10px 0px; padding: 0px; color: rgb(255, 255, 255); background-color: rgb(8, 138, 94); text-indent: 10px; line-height: 2em;">
+    3.3逻辑或
+</h4>
+<p style="margin: 10px auto; padding: 0px;">
+    1.符号：||<br />2.功能：进行与操作需要两个值，当存在有一个值的布尔值为true则返回true，否则false，或操作也是短路操作符，放当第一个操作值为true时，直接返回true，不用检查第二个操作值。<br /><strong style="margin: 0px; padding: 0px;"><span style="color:#f00">3.注意点：</span></strong>如果有一个操作数不是布尔值， ||（或）操作不一定回返回布尔值一下是特殊情况：
+</p>
+<ul style="margin-left: 30px; padding: 0px;" class=" list-paddingleft-2">
+    <li>
+        <p>
+            如果第一个是对象，则返回第一个操作数
+        </p>
+    </li>
+    <li>
+        <p>
+            如果第一个数是false，则返回第二个数
+        </p>
+    </li>
+    <li>
+        <p>
+            如果两个数都是对象，返回第一个操作数
+        </p>
+    </li>
+    <li>
+        <p>
+            如果两个操作数是NaN，返回NaN
+        </p>
+    </li>
+    <li>
+        <p>
+            如果两操作数是undefined， 返回undefined。
+        </p>
+    </li>
+</ul>
+<pre class="sourceCode js" style="margin-top: 10px; margin-bottom: 10px; padding: 0px; white-space: pre-wrap; word-wrap: break-word;">var arr  = new Array();console.log(arr||&quot;str&quot;);  //返回arr空数组[]console.log(NaN||NaN) ; //NaNconsole.log(false || &quot;str&quot;) //&quot;str&quot;</pre>
+<h3 style="margin: 10px 0px; padding: 0px; font-size: 16px; line-height: 2em; color: rgb(255, 255, 255); background-color: rgb(247, 108, 69); text-indent: 10px;">
+    4 关系操作符
+</h3>
+<p style="margin: 10px auto; padding: 0px;">
+    1.关系操作符有，大于(&gt;)，小于(&lt;)，小于等于(&lt;=)，大于等于(&gt;=)<br /><strong style="margin: 0px; padding: 0px;"><span style="color:#f00">2.注意点：</span></strong>
+</p>
+<pre class="sourceCode js" style="margin-top: 10px; margin-bottom: 10px; padding: 0px; white-space: pre-wrap; word-wrap: break-word;">//1.对于数值转换，直接进行比较，返回true或false34&gt;23;  //true//2.对于两个字符串比较，是通过从前往后逐个比较其字符编码值（ascll码）大小&quot;Biasd&quot;&lt;&quot;adsf&quot;;  //true， 因为B字符编码为66小于a字符编码97//3.对于字符串和数字比较，会将字符串转为数字&quot;23&quot;&lt;3;  //false ， &quot;23&quot;会转成23,然后和3比较&quot;a&quot;&lt;3 //false  , &quot;a&quot;转为NaN，NaN和任何操作数比较都为false</pre>
+<h3 style="margin: 10px 0px; padding: 0px; font-size: 16px; line-height: 2em; color: rgb(255, 255, 255); background-color: rgb(247, 108, 69); text-indent: 10px;">
+    5.相等操作符
+</h3>
+<blockquote style="margin: 10px 0px; padding: 5px 10px; background-image: none; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial; border: 2px solid rgb(239, 239, 239); min-height: 35px; line-height: 1.6em; color: rgb(51, 51, 51);">
+    <p style="margin: 10px auto; padding: 0px;">
+        相等操作符有相等(==)和不相等(!=)，全等(===)和不全等(!==)
+    </p>
+</blockquote>
+<blockquote style="margin: 10px 0px; padding: 5px 10px; background-image: none; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial; border: 2px solid rgb(239, 239, 239); min-height: 35px; line-height: 1.6em; color: rgb(51, 51, 51);">
+    <p style="margin: 10px auto; padding: 0px;">
+        相等和不相等是先转换后比较，而全等和不全等是仅比较不转换
+    </p>
+</blockquote>
+<h4 style="margin: 10px 0px; padding: 0px; color: rgb(255, 255, 255); background-color: rgb(8, 138, 94); text-indent: 10px; line-height: 2em;">
+    5.1相等和不相等转换重点：
+</h4>
+<pre class="sourceCode js" style="margin-top: 10px; margin-bottom: 10px; padding: 0px; white-space: pre-wrap; word-wrap: break-word;">//1.如果有一个操作值为布尔值，则将该布尔值转为数值，true转为1，false转为0true == 1 ;  //true//2.null 和 undefined相等null == undefined ; //true//3.有一个操作数为NaN时，一定返回falseNaN == 1;  //false//4.两个NaN比较也返回falseNaN == NaN ;  //false//5.两个值是对象时，若不是指向同一对象就返回false</pre>
+<h4 style="margin: 10px 0px; padding: 0px; color: rgb(255, 255, 255); background-color: rgb(8, 138, 94); text-indent: 10px; line-height: 2em;">
+    5.2全等和不全等重点：
+</h4>
+<blockquote style="margin: 10px 0px; padding: 5px 10px; background-image: none; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial; border: 2px solid rgb(239, 239, 239); min-height: 35px; line-height: 1.6em; color: rgb(51, 51, 51);">
+    <p style="margin: 10px auto; padding: 0px;">
+        可以看出全等是3个等号，所以比较严格，不会像相等一样进行转换。通俗的说：你不是就不是。
+    </p>
+</blockquote>
+<pre class="sourceCode js" style="margin-top: 10px; margin-bottom: 10px; padding: 0px; white-space: pre-wrap; word-wrap: break-word;">//相等和全等的比较&quot;55&quot; == 55 ;  //true,相等情况下，&quot;55&quot;可以转换&quot;55&quot; === 55 ;  //false,全等情况，&quot;55&quot;不转换为数字，所以数据类型不同，直接返回false//关于null 和 undefined，上面相等比较时时两个值相等，但全等比较就不等null === undefined ;  //false</pre>
+<h3 style="margin: 10px 0px; padding: 0px; font-size: 16px; line-height: 2em; color: rgb(255, 255, 255); background-color: rgb(247, 108, 69); text-indent: 10px;">
+    6.条件操作符(三元操作符)
+</h3>
+<p style="margin: 10px auto; padding: 0px;">
+    1.模板：表达式1?表达式2:表达式3。<br />2.使用说明：当表达式1为true时，返回冒号前的表达式2的结果，false就返回冒号后表达式3
+</p>
+<pre class="sourceCode js" style="margin-top: 10px; margin-bottom: 10px; padding: 0px; white-space: pre-wrap; word-wrap: break-word;">//例子:var num = 3&gt;2?1:0;   //num的值为1</pre>
+<h3 style="margin: 10px 0px; padding: 0px; font-size: 16px; line-height: 2em; color: rgb(255, 255, 255); background-color: rgb(247, 108, 69); text-indent: 10px;">
+    7.赋值操作符
+</h3>
+<h4 style="margin: 10px 0px; padding: 0px; color: rgb(255, 255, 255); background-color: rgb(8, 138, 94); text-indent: 10px; line-height: 2em;">
+    1.简单的赋值操作由（=）号表示
+</h4>
+<pre class="sourceCode js" style="margin-top: 10px; margin-bottom: 10px; padding: 0px; white-space: pre-wrap; word-wrap: break-word;">var val = 10;  //对val赋值为10</pre>
+<h4 style="margin: 10px 0px; padding: 0px; color: rgb(255, 255, 255); background-color: rgb(8, 138, 94); text-indent: 10px; line-height: 2em;">
+    2.复合赋值操作
+</h4>
+<pre class="sourceCode js" style="margin-top: 10px; margin-bottom: 10px; padding: 0px; white-space: pre-wrap; word-wrap: break-word;">var num = 10;num = num+10;//上面那句可以用下面一句替代num += 10;</pre>
+<h3 style="margin: 10px 0px; padding: 0px; font-size: 16px; line-height: 2em; color: rgb(255, 255, 255); background-color: rgb(247, 108, 69); text-indent: 10px;">
+    8.逗号操作符
+</h3>
+<p style="margin: 10px auto; padding: 0px;">
+    1.使用逗号操作符可以在一条语句执行多条操作；<br />2.使用逗号操作符进行赋值，赋值时总会返回表达式最后一项
+</p>
+<pre class="sourceCode js" style="margin-top: 10px; margin-bottom: 10px; padding: 0px; white-space: pre-wrap; word-wrap: break-word;">//同时对三个变量声明并赋值var num=1, num2 = 2 , num3 = 3;//赋值时总会返回表达式最后一项var n = (32,12,5,1,2);   //最后n被赋值为2</pre>
+<h2 style="margin: 10px 0px; padding: 0px; font-size: 21px; line-height: 2em; background-color: rgb(32, 147, 199); color: rgb(255, 255, 255); text-indent: 10px;">
+    五、最后几句
+</h2>
+<blockquote style="margin: 10px 0px; padding: 5px 10px; background-image: none; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial; border: 2px solid rgb(239, 239, 239); min-height: 35px; line-height: 1.6em; color: rgb(51, 51, 51);">
+    <p style="margin: 10px auto; padding: 0px;">
+        这次的博客篇幅比较多介绍数据类型和操作符，可以多看几次，也可以专看注意点，重点等，已经特别标出。看完这里基本概念已经完了。接下来还会继续更新笔记，敬请关注。写一篇博客不容易，花费很多心思，如果觉得写得好，关注一下，给个赞吧，让我有动力继续写博，哈哈。
+    </p>
+</blockquote>
+<blockquote style="margin: 10px 0px; padding: 5px 10px; background-image: none; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial; border: 2px solid rgb(239, 239, 239); min-height: 35px; line-height: 1.6em; color: rgb(51, 51, 51);">
+    <p style="margin: 10px auto; padding: 0px;">
+        本文出自博客园：<a href="http://www.cnblogs.com/Ry-yuan/" class="uri" style="margin: 0px; padding: 0px; outline: none; color: black;">http://www.cnblogs.com/Ry-yuan/</a><br />作者：Ry<br />欢迎转载，转载请标明出处
+    </p>
+</blockquote>
+<script>
+    console.log('http');
+</script>

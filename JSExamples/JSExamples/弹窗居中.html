@@ -92,8 +92,8 @@
 
                 //隐藏滚动条
                 //$('body').css('overflow', 'hidden');
-
-                $show_box.append($(this).clone());
+                var copyImg = $(this).clone();
+                $show_box.append(copyImg);
 
                 $show_box.click(function () {
                     $mask.remove();
@@ -102,7 +102,31 @@
                 });
 
                 $('body').append($show_box);
+
+                $(copyImg).bind('mousewheel DOMMouseScroll', function (e) {
+
+                    var delta;
+                    if (e.originalEvent.wheelDelta)
+                        delta = e.originalEvent.wheelDelta / 120;
+                    else
+                        delta = -e.originalEvent.detail / 3;//FF向下滚动是正值，而其他浏览器是负值
+
+                    var c = 0;
+                    if (delta > 0) {
+                        c -= 50;
+                    } else {
+                        c += 50;
+                    }
+
+                    $(this).css({ width: $(this).width() + c });
+
+                    return false;
+                });
+
             });
+
+
+
 
         });
     </script>

@@ -56,40 +56,48 @@
         <div class="left">
             <ul class="nav">
                 <li>
-                    <a href="http.html" title="HTTP">HTTP</a>
+                    <a href="#http" title="HTTP">HTTP</a>
                 </li>
                 <li>
-                    <a href="css.html" title="CSS">CSS</a>
+                    <a href="#css" title="CSS">CSS</a>
                 </li>
                 <li>
-                    <a href="js.html" title="JS">JS</a>
+                    <a href="#js" title="JS">JS</a>
                 </li>
             </ul>
         </div>
         <div class="container">
-            <p>IE10才支持history.pushState</p>
+            <p>IE8才支持window.hashchange</p>
         </div>
     </div>
 
     <script>
         $(function () {
-            $('.nav a').click(function () {
 
-                var url = $(this).prop('href');
-                var title = $(this).prop('title');
+            var oldContent = $('.container').html();
 
+            if (location.hash) {
+                var url = location.hash.replace(/^#/, '') + '.html';
+                getContent(url);
+            }
+
+            function getContent(url) {
+                console.log(url);
                 $.get(url, {}, function (context, request) {
                     $('.container').html(context);
-                    history.pushState('', title, url);
-                    document.title = title;
                 }, 'text');
+            }
 
-                return false;
-            });
+            $(window).bind('hashchange', function (e) {
+                console.log(e.originalEvent.oldURL);
+                console.log(e.originalEvent.newURL);
 
-            $(window).bind('popstate', function (e) {
-
-                console.log('前进或者后退');
+                var url = location.hash.replace(/^#/, '') + '.html';
+                if (location.hash) {
+                    getContent(url);
+                } else {
+                    $('.container').html(oldContent);
+                }
             });
 
         });
