@@ -21,6 +21,17 @@
     </div>
     <div>
         不会冒泡:获得输入焦点的focus事件和失去输入焦点的blur事件。
+
+        hover (同时绑定 mouseenter和 mouseleave事件)<br/>
+        mouseenter<br />
+        mouseleave<br />
+        blur<br />
+        abort<br />
+        error<br />
+        focus<br />
+        resize<br />
+        load<br />
+        unload<br />
     </div>
     <input type="button" id="btn" value="冒泡" />
     <div id="dv">
@@ -41,15 +52,19 @@
             });
 
 
+            //mouseenter  mouseleave 代表不冒泡，子类不会触发父类的事件
+
+            //focusin focusout 代表冒泡  子类会触发父类的事件
+
             //默认事件
 
             $('#lnk').click(function (e) {
                 //return false;//也可以阻止默认事件 还会阻止冒泡
 
-                //兼容火狐  不支持window.event
+                //兼容火狐  火狐不支持window.event
                 var event = window.event || e.originalEvent; //jquery事件中原生事件对象
 
-                //事件触发源头的元素
+                //事件触发源头的元素  IE8只支持event.srcElement
                 var tar = event.srcElement || event.target;
 
                 //IE10以上
@@ -58,6 +73,14 @@
                 else
                     event.returnValue = false; //IE10及以下中阻止函数器默认动作的方式
             });
+
+
+            document.getElementById('lnk').onclick = function (e) {
+                //兼容IE8,因为IE8没有e的参数
+                e = e || window.event;
+                //IE8只支持e.srcElement
+                var tar = e.srcElement || e.target;
+            }
         });
 
 
@@ -84,7 +107,7 @@
             }
 
 
-            //捕获
+            //捕获  IE8及以下不支持捕获
             var dv = document.getElementById('dv');
 
 

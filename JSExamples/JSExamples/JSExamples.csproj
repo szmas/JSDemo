@@ -57,11 +57,17 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="pjax\css.html" />
+    <Content Include="pjax\http.html" />
+    <Content Include="pjax\index.html" />
+    <Content Include="pjax\js.html" />
+    <Content Include="伪类去浮动.html" />
     <Content Include="capture事件.html" />
     <Content Include="css3动画关闭.html" />
-    <Content Include="demo.html" />
+    <Content Include="元素在可视化区域.html" />
     <Content Include="div拖拽.html" />
     <Content Include="div拖拽宽度.html" />
+    <Content Include="event元素位置.html" />
     <Content Include="fontanzer.html" />
     <Content Include="form\ajaxFormUpload.html" />
     <Content Include="form\ajaxUpload.html" />

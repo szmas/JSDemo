@@ -35,7 +35,8 @@
 
             $('.drag').mousedown(function (e) {
                 enabledrop = true;
-                var _offset = $(this).offset()
+                var _offset = $(this).offset();
+                _location = { left: e.offsetX, top: e.offsetY };
                 _location = { left: e.pageX - _offset.left, top: e.pageY - _offset.top };
             });
 

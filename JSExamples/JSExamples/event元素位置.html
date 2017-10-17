@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .drag {
+            margin: 10px;
+            padding: 10px;
+            border: 10px solid #ddd;
+            width: 40%;
+            height: 60px;
+        }
+    </style>
+</head>
+<body>
+    <div class="drag" id="drag">
+    </div>
+    <script>
+
+        $(function () {
+
+            $('.drag').mousedown(function (e) {
+                //默认事件
+                e.preventDefault();
+
+                //阻止冒泡
+                e.stopPropagation();
+
+                //原生事件对象
+                e.originalEvent;
+
+                console.log("鼠标相对于文档的位置：" + e.pageX + "," + e.pageY);
+                console.log("鼠标相对于文档(不包含滚动条距离)的位置：" + e.clientX + "," + e.clientY);
+                console.log("鼠标相对于元素的位置：" + e.offsetX + "," + e.offsetY);
+                console.log("鼠标相对于屏幕的位置：" + e.screenX + "," + e.screenY);
+            });
+
+            document.getElementById('drag').onmousedown = function (e) {
+
+                //IE8不支持e  ff不支持window.event
+                e = e || window.event;
+                //IE8只支持e.srcElement  ff只支持e.target
+                e.srcElement || e.target;
+
+                //IE8不支持e.pageX
+                if (e.pageX)
+                    console.log("鼠标相对于文档的位置：" + e.pageX + "," + e.pageY);
+
+                console.log("鼠标相对于文档(不包含滚动条距离)的位置：" + e.clientX + "," + e.clientY);
+                console.log("鼠标相对于元素的位置：" + e.offsetX + "," + e.offsetY);
+                console.log("鼠标相对于屏幕的位置：" + e.screenX + "," + e.screenY);
+            };
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box {
+            width: 500px;
+            height: 100px;
+            background-color: #808080;
+        }
+        /* 设置伪类before */
+        .clearfix:before {
+            content: "";
+            display: table;
+        }
+
+        /* 设置伪类after 清除浮动*/
+        .clearfix:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        .box1 {
+            width: 200px;
+            height: 50px;
+            background-color: #0b8eed;
+            margin-top: 20px;
+        }
+
+        .main {
+            width: 500px;
+            background: #ccc;
+        }
+
+            .main .c1 {
+                width: 100px;
+                height: 100px;
+                float: left;
+            }
+
+            .main .c2 {
+                width: 100px;
+                height: 100px;
+                float: left;
+            }
+
+            .main .c3 {
+                width: 100px;
+                height: 100px;
+                float: left;
+            }
+    </style>
+
+</head>
+<body>
+    <div class="box clearfix">
+        <div class="box1 "></div>
+    </div>
+    <div class="main clearfix">
+        <div class="c1">
+        </div><div class="c2">
+        </div><div class="c3">
+        </div>
+    </div>
+</body>
+</html>

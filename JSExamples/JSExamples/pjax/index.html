@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+
+    <script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+    <style>
+        html, body, ul, li {
+            padding: 0;
+            margin: 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        .main {
+        }
+
+            .main .left {
+                width: 200px;
+                float: left;
+            }
+
+        .left .nav {
+            list-style: none;
+        }
+
+            .left .nav li {
+                height: 30px;
+                text-align: center;
+                background: #0094ff;
+            }
+
+                .left .nav li:hover {
+                    background: #1c87d4;
+                }
+
+        .main .container {
+            overflow: hidden;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="left">
+            <ul class="nav">
+                <li>
+                    <a href="http.html" title="HTTP">HTTP</a>
+                </li>
+                <li>
+                    <a href="css.html" title="CSS">CSS</a>
+                </li>
+                <li>
+                    <a href="js.html" title="JS">JS</a>
+                </li>
+            </ul>
+        </div>
+        <div class="container">
+        </div>
+    </div>
+
+    <script>
+        $(function () {
+            $('.nav a').click(function () {
+
+                var url = $(this).prop('href');
+                var title = $(this).prop('title');
+
+                $.get(url, {}, function (context, request) {
+                    $('.container').html(context);
+                    history.pushState('', title, url);
+                    document.title = title;
+                }, 'text')
+
+                return false;
+            });
+        });
+    </script>
+</body>
+</html>

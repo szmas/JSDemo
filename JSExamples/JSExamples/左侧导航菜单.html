@@ -850,13 +850,21 @@
 
                 //父节点
                 if (parent.is('.tree-node')) {
+                    /*
                     if ($(this).children('.icon-right').hasClass('fa-caret-right')) {
                         $(this).children('.icon-left').removeClass('fa-folder').addClass('fa-folder-open');
                         $(this).children('.icon-right').removeClass('fa-caret-right').addClass('fa-caret-down');
                     } else {
                         $(this).children('.icon-left').removeClass('fa-folder-open').addClass('fa-folder');
                         $(this).children('.icon-right').removeClass('fa-caret-down').addClass('fa-caret-right');
-                    }
+                    }*/
+
+                    //两个class之间的互相切换
+                    $(this).children('.icon-right').toggleClass('fa-caret-down');
+                    $(this).children('.icon-right').toggleClass('fa-caret-right');
+
+                    $(this).children('.icon-left').toggleClass('fa-folder-open');
+                    $(this).children('.icon-left').toggleClass('fa-folder');
 
                     parent.children('.sidebar-sub-menu').toggle();
                 } else {
