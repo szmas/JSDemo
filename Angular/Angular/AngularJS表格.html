@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+    <style>
+        table, th, td {
+            border: 1px solid grey;
+            border-collapse: collapse;
+            padding: 5px;
+        }
+
+            table tr:nth-child(odd) {
+                background-color: #f1f1f1;
+            }
+
+            table tr:nth-child(even) {
+                background-color: #ffffff;
+            }
+    </style>
+</head>
+<body>
+    <div ng-app="myApp" ng-controller="customersCtrl">
+        <p>显示序号 ($index)</p>
+        <p>使用 $even 和 $odd</p>
+        <p>使用 uppercase 过滤器转换为大写: </p>
+        <p>排序显示，可以使用 orderBy 过滤器: </p>
+        <table>
+            <tr ng-repeat="x in names | orderBy : 'Country'">
+                <td ng-if="$odd">K{{ $index + 1 }}</td>
+                <td ng-if="$even">N{{ $index + 1 }}</td>
+                <td>{{ x.Name | uppercase }}</td>
+                <td>{{ x.Country }}</td>
+            </tr>
+        </table>
+
+    </div>
+    <script>
+        var app = angular.module('myApp', []);
+        app.controller('customersCtrl', function ($scope, $http) {
+            $http.get("js/data.json")
+            .then(function (result) {
+                $scope.names = result.data.sites;
+            });
+        });
+    </script>
+</body>
+</html>

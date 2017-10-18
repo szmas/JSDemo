@@ -1,10 +1,80 @@
 ﻿<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
+    <script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+    <style>
+        /*未验证通过*/
+        input.ng-invalid {
+            background: #fff;
+            border: 1px solid red;
+            padding: 0;
+            margin: 0;
+            outline: none;
+        }
+        /*验证通过*/
+        input.ng-valid {
+            background: #fff;
+            border: 1px solid green;
+            padding: 0;
+            margin: 0;
+            outline: none;
+        }
+    </style>
 </head>
-<body>
+<body ng-app="myApp">
+    <p>ng-model 指令用于绑定应用程序数据到 HTML 控制器(input, select, textarea)的值。</p>
+    <div ng-controller="myCtrl">
+        <p>ng-model 指令可以将输入域的值与 AngularJS 创建的变量绑定。</p>
+        名字: <input ng-model="name">
+    </div>
 
+    <script>
+        var app = angular.module('myApp', []);
+        app.controller('myCtrl', function ($scope) {
+            $scope.name = "John Doe";
+        });
+    </script>
+
+
+    <div ng-controller="myCtrl">
+        <p>双向绑定，在修改输入域的值时， AngularJS 属性的值也将修改：</p>
+        名字: <input ng-model="name">
+        <h1>你输入了: {{name}}</h1>
+    </div>
+
+    <form name="myForm">
+        <p>验证用户输入</p>
+        Email:
+        <input type="email" name="myAddress" ng-model="text" required>
+        <span ng-show="myForm.myAddress.$error.email">不是一个合法的邮箱地址</span>
+    </form>
+
+    <form name="myForm2" ng-init="myText = 'test@runoob.com'">
+        <p>ng-model 指令可以为应用数据提供状态值(invalid, dirty, touched, error):</p>
+        Email:
+        <p><input type="email" name="myAddress" ng-model="myText" required></p>
+        <h1>状态</h1>
+        <p>Valid: {{myForm.myAddress.$valid}} (如果输入的值是合法的则为 true)。</p>
+        <p>Dirty: {{myForm.myAddress.$dirty}} (如果值改变则为 true)。</p>
+        <p>Touched: {{myForm.myAddress.$touched}} (如果通过触屏点击则为 true)。</p>
+    </form>
+    <form name="myForm3">
+        <p>
+            ng-model 指令基于它们的状态为 HTML 元素提供了 CSS 类：<br />
+            ng-empty <br />
+            ng-not-empty<br />
+            ng-touched  控件已失去焦点<br />
+            ng-untouched 控件未失去焦点<br />
+            ng-valid  验证通过<br />
+            ng-invalid 验证失败<br />
+            ng-dirty 控件输入值已变更<br />
+            ng-pending 任何为满足$asyncValidators的情况<br />
+            ng-pristine 控件为初始状态<br />
+        </p>
+        输入你的名字:
+        <input name="myName" ng-model="myText2" required>
+    </form>
 </body>
 </html>

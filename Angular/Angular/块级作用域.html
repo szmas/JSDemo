@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+</head>
+<body>
+    <p>
+        JavaScript是按块执行的，但是不同块都属于同一个全局作用域，也就是说，块之间的变量和函数是可以共享的。
+    </p>
+    <p>
+        step 1. 读入第一个代码块。<br />
+
+        step 2. 做语法分析，有错则报语法错误（比如括号不匹配等），并跳转到step5。<br />
+
+        step 3. 对var变量和function定义做“预编译处理”（永远不会报错的，因为只解析正确的声明）。<br />
+
+        step 4. 执行代码段，有错则报错（比如变量未定义）。<br />
+
+        step 5. 如果还有下一个代码段，则读入下一个代码段，重复step2。<br />
+
+        step6. 结束。
+    </p>
+    <script>
+        var a = 10;
+        function show() {
+            alert('a=' + a);
+        }
+
+
+        alert(b);
+        print();
+    </script>
+    <script>
+        alert(10);
+
+        show();
+
+        var b = 10;
+
+        function print() {
+            alert(b);
+        }
+    </script>
+</body>
+</html>

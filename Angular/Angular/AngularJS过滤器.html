@@ -1,0 +1,131 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+</head>
+<body ng-app="myApp">
+    <p>
+        过滤器可以使用一个管道字符（|）添加到表达式和指令中。
+    </p>
+
+    <div ng-controller="personCtrl">
+        <p>
+            uppercase 过滤器将字符串格式化为大写：<br />
+            lowercase 过滤器将字符串格式化为小写：
+        </p>
+        <p>姓名为 {{ lastName | uppercase }}</p>
+        <p>姓名为 {{ lastName | lowercase }}</p>
+
+        <script>
+            var app = angular.module('myApp', []);
+            app.controller('personCtrl', function ($scope) {
+                $scope.firstName = "John",
+                $scope.lastName = "Doe",
+                $scope.fullName = function () {
+                    return $scope.firstName + " " + $scope.lastName;
+                }
+            });
+        </script>
+
+    </div>
+
+
+    <div ng-controller="costCtrl">
+        <p>currency 过滤器将数字格式化为货币格式：</p>
+        <input type="number" ng-model="quantity">
+        <input type="number" ng-model="price">
+
+        <p>总价 = {{ (quantity * price) | currency  }}</p>
+
+        <p>
+            date 格式化 {{1490161945000 | date:"yyyy-MM-dd HH:mm:ss"}}
+        </p>
+        <p>
+            number 格式化（保留小数） {{149016.1945000 | number:2}}
+        </p>
+        <p>
+            currency货币格式化 {{ 250 | currency:"RMB ￥ " }}
+        </p>
+        <p>
+            {{"1234567890" | limitTo :6}}  <!--从前面开始截取6位--><br />
+            {{"1234567890" | limitTo:-4}}  <!--从后面开始截取4位-->
+        </p>
+        <p>
+            <!--默认正序asc,倒序添加-负号-->
+            {{ [{"id": 10,"age": 20,"name": "iphone"},{"id": 11,"age": 12,"name": "sunm xing"},{"id": 12,"age": 44,"name": "test abc"}] | orderBy:'-id' }}
+        </p>
+        <script>
+
+            app.controller('costCtrl', function ($scope) {
+                $scope.quantity = 1;
+                $scope.price = 9.99;
+            });
+        </script>
+    </div>
+
+
+
+    <div ng-controller="namesCtrl">
+        <p>orderBy 过滤器根据表达式排列数组：</p>
+        <ul>
+            <li ng-repeat="x in names | orderBy:'country'">
+                {{ x.name + ', ' + x.country }}
+            </li>
+        </ul>
+
+        <script>
+            app.controller('namesCtrl', function ($scope) {
+                $scope.names = [
+                    { name: 'Jani', country: 'Norway' },
+                    { name: 'Hege', country: 'Sweden' },
+                    { name: 'Kai', country: 'Denmark' }
+                ];
+            });
+        </script>
+    </div>
+
+    <div ng-controller="namesCtrl2">
+        <p>
+            输入过滤器可以通过一个管道字符（|）和一个过滤器添加到指令中，该过滤器后跟一个冒号和一个模型名称。<br />
+            filter 过滤器从数组中选择一个子集：
+        </p>
+        <p><input type="text" ng-model="test"></p>
+
+        <ul>
+            <li ng-repeat="x in names | filter:test | orderBy:'country'">
+                {{ (x.name | uppercase) + ', ' + x.country }}
+            </li>
+        </ul>
+
+        <script>
+            app.controller('namesCtrl2', function ($scope) {
+                $scope.names = [
+                    { name: 'Jani', country: 'Norway' },
+                    { name: 'Hege', country: 'Sweden' },
+                    { name: 'Kai', country: 'Denmark' }
+                ];
+            });
+        </script>
+    </div>
+
+    <div ng-controller="myCtrl">
+
+
+        姓名: {{ msg | reverse }}
+
+        <script>
+            app.controller('myCtrl', function ($scope) {
+                $scope.msg = "Runoob";
+            });
+            app.filter('reverse', function () { //可以注入依赖
+                return function (text) {
+                    return text.split("").reverse().join("");
+                }
+            });
+        </script>
+
+    </div>
+</body>
+</html>

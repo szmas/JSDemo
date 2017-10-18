@@ -1,0 +1,158 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+</head>
+<body ng-app="myApp">
+    <p>
+        在 AngularJS 中，服务是一个函数或对象，可在你的 AngularJS 应用中使用。<br />
+        AngularJS 内建了30 多个服务。
+    </p>
+    <div ng-controller="customersCtrl">
+        <p>有个 $location 服务，它可以返回当前页面的 URL 地址。</p>
+        <p> 当前页面的url:</p>
+        <h3>{{myUrl}}</h3>
+    </div>
+
+    <script>
+        var app = angular.module('myApp', []);
+        app.controller('customersCtrl', function ($scope, $location) {
+            $scope.myUrl = $location.absUrl();
+        });
+    </script>
+
+    <div ng-controller="myCtrl">
+        <p>
+            $http 是 AngularJS 应用中最常用的服务。 服务向服务器发送请求，应用响应服务器传送过来的数据。
+        </p>
+        <p>欢迎信息:</p>
+
+        <h6>{{myWelcome}}</h6>
+
+    </div>
+    <script>
+        app.controller('myCtrl', function ($scope, $http) {
+            $http.get("js/data.html").then(function (response) {
+                $scope.myWelcome = response.data;
+            });
+        });
+    </script>
+
+    <div ng-controller="myCtrl">
+        <p>AngularJS $timeout 服务对应了 JS window.setTimeout 函数。</p>
+        <p>两秒后显示信息:</p>
+
+        <h1>{{myHeader}}</h1>
+
+    </div>
+    <script>
+
+        app.controller('myCtrl', function ($scope, $timeout) {
+            $scope.myHeader = "Hello World!";
+            $timeout(function () {
+                $scope.myHeader = "How are you today?";
+            }, 2000);
+        });
+    </script>
+    <div ng-controller="myCtrl">
+        <p>
+            AngularJS $interval 服务对应了 JS window.setInterval 函数。
+        </p>
+        <p>现在时间是:</p>
+
+        <h1>{{theTime}}</h1>
+
+    </div>
+    <script>
+        app.controller('myCtrl', function ($scope, $interval) {
+            $scope.theTime = new Date().toLocaleString();
+            $interval(function () {
+                $scope.theTime = new Date().toLocaleString();
+            }, 1000);
+        });
+    </script>
+
+    <div ng-app="myApp" ng-controller="myCtrl">
+        <p>
+            你可以创建自定义服务，链接到你的模块中：
+        </p>
+        <p>255 的16进制是:</p>
+
+        <h1>{{hex}}</h1>
+
+    </div>
+
+    <script>
+
+        // 注册全局服务（即变量）myService 可以向其添加一些全局使用的函数
+        app.service('hexafy', function () {
+            this.myFunc = function (x) {
+                return x.toString(16);
+            }
+        });
+
+        //向某个控制器传入全局服务对象，此控制器作用域中可调用全局服务对象的方法
+        app.controller('myCtrl', function ($scope, hexafy) {
+            $scope.hex = hexafy.myFunc(255);
+        });
+    </script>
+
+    <div>
+        <p>
+            当你创建了自定义服务，并连接到你的应用上后，你可以在控制器，指令，过滤器或其他服务中使用它。
+
+        </p>
+        在过滤器中使用服务:
+
+        <h1>{{255 | myFormat}}</h1>
+
+    </div>
+
+    <script>
+
+        app.service('hexafy', function () {
+            this.myFunc = function (x) {
+                return x.toString(16);
+            }
+        });
+        app.filter('myFormat', ['hexafy', function (hexafy) {
+            return function (x) {
+                return hexafy.myFunc(x);
+            };
+        }]);
+
+    </script>
+
+
+    <div ng-controller="myCtrl">
+        <p>$watch：持续监听数据上的变化，更新界面</p>
+        <b>请输入姓名：</b><br>
+        <b>姓：</b><input type="text" ng-model="lastName"><br>
+        <b>名：</b><input type="text" ng-model="firstName"><br>
+        <h1>{{ lastName + " " + firstName }}</h1>
+        <h2>{{ fullName }}</h2>
+    </div>
+
+    <script>
+
+        app.controller('myCtrl', function ($scope) {
+            $scope.lastName = "";
+            $scope.firstName = "";
+
+            $scope.getFullName = function () { return $scope.lastName + " " + $scope.firstName; }
+
+            //监听lastName的变化，更新fullName
+            $scope.$watch('lastName', function () {
+                $scope.fullName = $scope.lastName + " " + $scope.firstName;
+            });
+
+            //监听firstName的变化，更新fullName
+            $scope.$watch('firstName', function () {
+                $scope.fullName = $scope.lastName + " " + $scope.firstName;
+            });
+        });
+    </script>
+</body>
+</html>

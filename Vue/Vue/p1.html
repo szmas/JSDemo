@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <script src="https://cdn.bootcss.com/vue/2.4.2/vue.min.js"></script>
+    <style>
+        .class1 {
+            background: #444;
+            color: #eee;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <p>{{ message }}</p>
+
+        <div v-html="htmlmessage"></div>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                message: 'Hello Vue.js!',
+                htmlmessage: '<h1>菜鸟教程</h1>'
+            }
+        })
+    </script>
+
+    <div id="app2">
+        <label for="r1">修改颜色</label><input type="checkbox" v-model="class1" id="r1">
+        <br><br>
+        <div v-bind:class="{'class1': class1}">
+            directiva v-bind:class
+        </div>
+    </div>
+    <script>
+        new Vue({
+            el: '#app2',
+            data: {
+                class1: false
+            }
+        });
+    </script>
+</body>
+</html>
