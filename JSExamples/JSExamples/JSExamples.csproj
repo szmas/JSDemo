@@ -103,6 +103,7 @@
     <Content Include="form\fileupload.ashx" />
     <Content Include="拖拽\左侧导航菜单.html" />
     <Content Include="弹窗居中.html" />
+    <Content Include="正则表达式.html" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

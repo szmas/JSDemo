@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+</head>
+<body>
+    <script>
+        var reg = /\d{3}/;
+
+        console.log(reg.test(1000));
+
+
+        /*
+
+               贪婪量词与非贪婪量词
+
+        */
+
+
+        //它会尽可能多地匹配，默认先匹配整个字符串，然后不匹配在缩小范围继续匹配
+        var reg2 = /\w*123/g;
+
+        console.log(reg2.exec('a123bcdefg123'));
+
+
+
+        /*
+
+        非贪婪量词
+
+        在上面列出的量词后面加个问号（" ?? "  " +? "）
+
+        总是从第一个字符开始向后扩展范围匹配
+
+        */
+
+
+
+        var reg3 = /\w*?123/g;
+
+        console.log(reg3.exec('a123bcdefg123'));//a123
+        console.log(/a*?bb/g.exec("abbaabbaaabbb")); //abb
+
+
+        /*
+
+                分组与引用
+
+        */
+
+        //引用包含 匹配模式引用，匹配的内容引用
+        // \ "后面加数字 用于模式的引用
+        //" $ " 后面加数据 用于匹配的内容引用
+        var reg4 = /(\d)\w{1,2}\1/;
+
+        console.log(reg4.test('3xx3'));
+
+        console.log(RegExp.$_);//3xx3
+        console.log(RegExp.$1);//3
+
+
+
+
+        //并不是所有的分组都能创建引用，" (?: ) "符号只用来分组而不创建引用，如下： \1 不是 引用的 \d 而是 [a-z]
+        var reg5 = /(?:\d)([a-z])\1/;
+
+        console.log(reg5.test('6dd'));
+
+        console.log(RegExp.$_);//6dd
+        console.log(RegExp.$1);//d
+
+
+
+
+
+        //零宽正向断言   匹配后面为n 的字符
+        var reg6 = /java(?=script)/;
+
+        console.log(reg6.test('javascript'));
+
+
+
+        //零宽负向断言 匹配后面不能有n 的字符
+        var reg7 = /java(?!script)/;
+
+        console.log(reg7.test('javascript'));
+
+
+        //修饰符
+
+        /*
+
+        i	执行不区分大小写
+        g	执行全局匹配（查找所有匹配而不是在匹配到第一个就停止）
+        m	执行多行匹配
+
+        */
+
+        var reg8 = /abc/igm;
+
+        console.log('ABC_abC_Abc'.match(reg8));
+
+    </script>
+</body>
+</html>
