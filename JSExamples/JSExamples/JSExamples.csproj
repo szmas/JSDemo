@@ -57,17 +57,18 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="abc.html" />
     <Content Include="hashchange\css.html" />
     <Content Include="hashchange\demo.html" />
     <Content Include="hashchange\http.html" />
     <Content Include="hashchange\index.html" />
     <Content Include="hashchange\js.html" />
+    <Content Include="abc.txt" />
     <Content Include="pjax\css.html" />
     <Content Include="pjax\http.html" />
     <Content Include="pjax\index.html" />
     <Content Include="pjax\js.html" />
     <Content Include="QQ.html" />
-    <Content Include="Regex.aspx" />
     <Content Include="伪元素去浮动.html" />
     <Content Include="capture事件.html" />
     <Content Include="css3动画关闭.html" />
@@ -187,13 +188,6 @@
     </Compile>
     <Compile Include="iframe\sleepImg.aspx.designer.cs">
       <DependentUpon>sleepImg.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Regex.aspx.cs">
-      <DependentUpon>Regex.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Regex.aspx.designer.cs">
-      <DependentUpon>Regex.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
