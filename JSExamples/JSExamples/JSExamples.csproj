@@ -67,6 +67,7 @@
     <Content Include="pjax\index.html" />
     <Content Include="pjax\js.html" />
     <Content Include="QQ.html" />
+    <Content Include="Regex.aspx" />
     <Content Include="伪元素去浮动.html" />
     <Content Include="capture事件.html" />
     <Content Include="css3动画关闭.html" />
@@ -104,6 +105,7 @@
     <Content Include="拖拽\左侧导航菜单.html" />
     <Content Include="弹窗居中.html" />
     <Content Include="正则表达式.html" />
+    <Content Include="滚动条样式.html" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -185,6 +187,13 @@
     </Compile>
     <Compile Include="iframe\sleepImg.aspx.designer.cs">
       <DependentUpon>sleepImg.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Regex.aspx.cs">
+      <DependentUpon>Regex.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Regex.aspx.designer.cs">
+      <DependentUpon>Regex.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
