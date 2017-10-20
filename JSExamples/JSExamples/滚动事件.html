@@ -13,17 +13,25 @@
         p {
             height: 300px;
         }
+
+        div {
+            height: 400px;
+            background: #ddd;
+            overflow: auto;
+        }
     </style>
 </head>
 <body>
-    <p></p>
-    <p></p>
-    <p></p>
-    <p></p>
-    <p></p>
-    <p></p>
-    <p></p>
-    <p></p>
+    <div>
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+    </div>
     <script>
         $(function () {
 
@@ -37,6 +45,10 @@
                 console.log(delta > 0 ? '向上滚动' : '向下滚动');
             });
 
+            //有滚动条的地方才会触发
+            $('div').bind('scroll', function (e) {
+                console.log(e);
+            });
         });
     </script>
 </body>
