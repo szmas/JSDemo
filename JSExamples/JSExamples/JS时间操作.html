@@ -1,0 +1,108 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+</head>
+<body>
+    <script>
+
+        var d = new Date();
+
+
+        /*
+
+        设置当前时间的增加或减少
+
+        */
+
+        console.log("之前：" + d);
+        //设置日期为1分钟以前
+        d.setMinutes(d.getMinutes() - 1);
+        console.log("之后：" + d);
+
+        d = new Date();
+        console.log("之前：" + d);
+        //设置日期为10秒钟以前
+        d.setSeconds(d.getSeconds() - 10);
+        console.log("之后：" + d);
+
+        //设置日期为1分钟以前
+        d = new Date();
+        console.log("之前：" + d);
+        d.setTime(d.getTime() - 1000 * 60);
+        console.log("之后：" + d);
+
+
+        /*
+        协调世界时 (UTC) 是以原子时秒长为基础，在时刻上尽量接近于世界时的一种时间计量系统。
+        协调世界时，又称世界统一时间，世界标准时间，国际协调时间，简称UTC（Universal Coordinated Time）。
+        UTC时间 与 GMT（格林尼治）时间一样。
+
+        格林尼治标准时间（GMT，旧译“格林威治平均时间”或“格林威治标准时间”）是指位于伦敦郊区的皇家格林尼治天文台的标准时间，因为本初子午线被定义在通过那里的经线。
+
+
+        夏令时 夏季人为将时间调快一小时，可以使人早起早睡，减少照明量
+
+
+        */
+
+        d = new Date();
+        //世界标准时间转换为字符串
+        var utc = d.toUTCString();
+        var gmt = d.toGMTString();
+        console.log("UTC:" + utc);
+        console.log("GMT:" + gmt);
+
+        //返回格林威治时间和本地时间之间的时差，以分钟为单位
+        var n = d.getTimezoneOffset();
+        console.log("世界时间与本地时间相差分钟:" + n);
+
+
+
+        //改标准称为 ISO-8601 ，格式为: YYYY-MM-DDTHH:mm:ss.sssZ
+        console.log("ISO格式：" + d.toISOString());
+
+
+
+        //常用格式
+        var currDate = d.getFullYear() + "-" +
+            '00'.substring((d.getMonth() + 1).toString().length) + (d.getMonth() + 1) + "-" +
+            '00'.substring(d.getDate().toString().length) + d.getDate() + " " +
+            '00'.substring(d.getHours().toString().length) + d.getHours() + ":" +
+            '00'.substring(d.getMinutes().toString().length) + d.getMinutes() + ":" +
+            '00'.substring(d.getSeconds().toString().length) + d.getSeconds() + "." +
+            '000'.substring(d.getMilliseconds().toString().length) + d.getMilliseconds();
+
+        console.log(currDate);
+
+
+
+
+        //Unix时间戳  返回1970年1月1日午夜以来的毫秒数！
+        var totalMilliSecond = d.valueOf();
+        console.log("Unix时间戳:" + totalMilliSecond);
+
+        totalMilliSecond = d.getTime();
+        console.log("Unix时间戳:" + totalMilliSecond);
+
+        //要UTC标准时间 GTM+0000
+        totalMilliSecond = Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate(), d.getUTCHours(), d.getUTCMinutes(), d.getUTCSeconds(), d.getUTCMilliseconds());
+        console.log("Unix时间戳:" + totalMilliSecond);
+
+
+        console.log("Unix时间戳:" + Date.parse(currDate));
+
+
+        //Unix时间戳转化为日期格式
+        var _d = d.setTime(totalMilliSecond);
+
+        console.log(d);
+
+        console.log(new Date(totalMilliSecond));
+
+
+
+    </script>
+</body>
+</html>

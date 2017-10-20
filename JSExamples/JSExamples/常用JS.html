@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>常用JS</title>
+    <script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+    <script src="常用JS.js"></script>
+    <style>
+        input {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <a href="http://www.baidu.com" title="百度一下" rel="sidebar">收藏火狐专用</a>
+    <input class="addFavorite" type="button" value="收藏">
+    <input class="setHomepage" type="button" value="设为首页" />
+    <input class="setcookie" type="button" value="设置cookie" />
+    <input class="getcookie" type="button" value="读取cookie" />
+    <input class="delcookie" type="button" value="删除cookie" />
+
+    <input class="mobileplayer" type="button" value="是否移动端" />
+    <script>
+
+        $(function () {
+
+            $('.addFavorite').bind('click', function () {
+                addFavorite(document.title, document.location.href);
+            });
+
+            $('.setHomepage').bind('click', function () {
+                setHomepage(document.location.href);
+            });
+
+            $('.setcookie').bind('click', function () {
+                setcookie("name", "mass")//秒
+            });
+
+            $('.getcookie').bind('click', function () {
+                var _value = getcookie("name");
+
+                console.log(_value);
+            });
+
+            $('.delcookie').bind('click', function () {
+                setcookie("name", null, { expires: -1 })//设置过期就可删除cookie
+                var _value = getcookie("name");
+                console.log(_value);
+            });
+
+
+            $('.mobileplayer').bind('click', function () {
+
+                var mobile = mobileplayer();
+
+                if (mobile) {
+                    alert('移动端');
+                }
+                console.log(mobile);
+            });
+        });
+    </script>
+</body>
+</html>
