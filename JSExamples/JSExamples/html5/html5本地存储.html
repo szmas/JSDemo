@@ -4,6 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
     <script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.js"></script>
 </head>
 <body>
 
@@ -11,34 +12,68 @@
     <script>
 
         //cookie  4KB左右 每个域名50个
-        //IE8 支持 本地存储 （键值对key/value） 存储 5M 的数据
+
+        //设置cookie
+        $.cookie('name', 'mas');
+
+        //日期为天  path: '/' ookie的路径用于设置能够读取 cookie的顶级目录
+        var t = new Date();//你已知的时间
+        t.setMinutes(t.getMinutes() + 1);//设置新时间比旧时间多一分钟
+        //t.setMonth(t.getMonth() + 1);//设置新时间比旧时间多一个月
+        //t.setSeconds(t.getSeconds() + 1);//设置新时间比旧时间多一秒
+        $.cookie('age', '18', { expires: t, path: '/', domain: "localhost" });
+
+
+        //获取cookie
+        var name = $.cookie('name');
+        console.log(name);
+
+
+        //删除cookie 设置过期时间为一天
+        $.cookie('name', null, { expires: -1 });
+
+        name = $.cookie('name');
+        console.log(name);
+
         //localStorage与sessionStorage的区别
 
         /*
         sessionStorage 仅在当前会话下有效
         localStorage  除非被清除，否则永久保存
+        数据是有排序的，后加入的角标靠前，最后加入的角标为0.
+        //IE8 支持 本地存储 （键值对key/value） 存储 5M 的数据
         */
 
         //设置
         localStorage.setItem("name", "mas");
+        localStorage.name = 'mas';
+        localStorage["name"] = 'jack';
+
 
         //获取
-        var name = localStorage.getItem('name');
+        name = localStorage.getItem('name');
+        name = localStorage.name;
         console.log(name);
+        console.log(localStorage["name"]);
+
+
+        //按索引取key
+        localStorage.key(0);
+        localStorage.key("");//获取最后一个键
+
+
+        //总数
+        var total = localStorage.length;
+
 
         //删除
         localStorage.removeItem('name');
 
         name = localStorage.getItem('name');
         console.log(name);
-        console.log(localStorage["name"]);
 
 
-        //按索引取值
-        localStorage.key(0);
 
-        //总数
-        var total = localStorage.length;
 
         //清除所有
         localStorage.clear();

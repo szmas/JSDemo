@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+</head>
+<body>
+    <input autofocus />
+    <p>
+        onbeforeunload必须在页面得到焦点或者input修改了<br />
+        页面加载时只执行onload<br />
+        页面关闭时先执行onbeforeunload，最后onunload<br />
+        页面刷新时先执行onbeforeunload，然后onunload，最后onload。<br />
+    </p>
+
+    <a href="http://www.baidu.com">百度</a>
+    <script>
+        $(function () {
+
+            //页面离开触发（页面没有得到焦点是不会触发）
+            window.onbeforeunload = function (e) {
+                //判断是否出现提示
+                if (true) {
+
+                    // Chrome, Safari, Firefox 4+, Opera 12+ , IE 9+
+                    return "确认离开当前页面吗？未保存的数据将会丢失！";
+                }
+                // 兼容IE8和Firefox 4之前的版本
+                event.returnValue = "确认离开当前页面吗？未保存的数据将会丢失！！";
+            }
+
+            //任何情况页面离开触发
+            window.onunload = function (e) {
+                alert('页面离开')
+            }
+
+            //页面加载完后触发
+            window.onload = function () {
+                console.log('onload');
+            }
+        });
+
+    </script>
+</body>
+</html>

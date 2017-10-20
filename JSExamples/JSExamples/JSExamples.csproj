@@ -57,26 +57,28 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="abc.html" />
+    <Content Include="d.js" />
     <Content Include="hashchange\css.html" />
     <Content Include="hashchange\demo.html" />
     <Content Include="hashchange\http.html" />
     <Content Include="hashchange\index.html" />
     <Content Include="hashchange\js.html" />
-    <Content Include="abc.txt" />
+    <Content Include="JS时间操作.html" />
     <Content Include="pjax\css.html" />
     <Content Include="pjax\http.html" />
     <Content Include="pjax\index.html" />
     <Content Include="pjax\js.html" />
-    <Content Include="滚动事件.html" />
-    <Content Include="伪元素去浮动.html" />
-    <Content Include="capture事件.html" />
-    <Content Include="css3动画关闭.html" />
-    <Content Include="元素在可视化区域.html" />
+    <Content Include="事件\滚动事件.html" />
+    <Content Include="常用JS.html" />
+    <Content Include="常用JS.js" />
+    <Content Include="样式\伪元素去浮动.html" />
+    <Content Include="事件\capture事件.html" />
+    <Content Include="事件\css3动画关闭事件.html" />
+    <Content Include="事件\元素在可视化区域.html" />
     <Content Include="拖拽\div拖拽.html" />
     <Content Include="拖拽\div拖拽宽度.html" />
-    <Content Include="拖拽\event元素位置.html" />
-    <Content Include="fontanzer.html" />
+    <Content Include="事件\event元素位置.html" />
+    <Content Include="样式\fontanzer.html" />
     <Content Include="form\ajaxFormUpload.html" />
     <Content Include="form\ajaxUpload.html" />
     <Content Include="form\uploadIframe.aspx" />
@@ -96,24 +98,25 @@
     <Content Include="iframe\doScroll.html" />
     <Content Include="iframe\doScroll_iframe.html" />
     <Content Include="iframe\sleepImg2.aspx" />
-    <Content Include="imageLazyload.html" />
+    <Content Include="事件\imageLazyload.html" />
     <Content Include="uploadfiles\bky.png" />
     <Content Include="v.mas.com\window.name_b.html" />
     <Content Include="v.mas.com\location.hash_b.html" />
-    <Content Include="函数节流.html" />
+    <Content Include="事件\函数节流.html" />
     <Content Include="i.mas.com\location.hash.html" />
     <Content Include="form\fileupload.ashx" />
     <Content Include="拖拽\左侧导航菜单.html" />
-    <Content Include="弹窗居中.html" />
+    <Content Include="事件\弹窗居中.html" />
     <Content Include="正则表达式.html" />
-    <Content Include="滚动条样式.html" />
+    <Content Include="样式\滚动条样式.html" />
+    <Content Include="事件\页面离开事件.html" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
-    <Content Include="Ajax_open.html" />
+    <Content Include="事件\Ajax_open.html" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="iframe\childIframe.html" />
