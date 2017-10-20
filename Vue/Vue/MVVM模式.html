@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <script src="https://cdn.bootcss.com/vue/2.4.2/vue.min.js"></script>
+</head>
+<body>
+    <h3>MVVM模式</h3>
+    下图不仅概括了MVVM模式（Model-View-ViewModel），还描述了在Vue.js中ViewModel是如何和View以及Model进行交互的。<br />
+
+    ViewModel是Vue.js的核心，它是一个Vue实例。Vue实例是作用于某一个HTML元素上的，这个元素可以是HTML的body元素，也可以是指定了id的某个元素。<br />
+
+    当创建了ViewModel后，双向绑定是如何达成的呢？<br />
+
+    首先，我们将上图中的DOM Listeners和Data Bindings看作两个工具，它们是实现双向绑定的关键。<br />
+    从View侧看，ViewModel中的DOM Listeners工具会帮我们监测页面上DOM元素的变化，如果有变化，则更改Model中的数据；<br />
+    从Model侧看，当我们更新Model中的数据时，Data Bindings工具会帮我们更新页面中的DOM元素。<br />
+
+
+    <!--这是我们的View-->
+    <div id="app">
+        {{ message }}
+    </div>
+
+    <script>
+        // 这是我们的Model
+        var exampleData = {
+            message: 'Hello World!'
+        }
+
+        // 创建一个 Vue 实例或 "ViewModel"
+        // 它连接 View 与 Model
+        new Vue({
+            el: '#app',
+            data: exampleData
+        })
+    </script>
+
+
+    <p>使用Vue的过程就是定义MVVM各个组成部分的过程的过程。</p>
+    <ol>
+        <li><strong>定义View</strong></li>
+        <li><strong>定义Model</strong></li>
+        <li><strong>创建一个Vue实例或"ViewModel"，它用于连接View和Model</strong></li>
+    </ol>
+    <p>在创建Vue实例时，需要传入一个<strong>选项对象</strong>，选项对象可以包含数据、挂载元素、方法、模生命周期钩子等等。</p>
+    <p>在这个示例中，<strong>选项对象</strong>的<strong>el属性</strong>指向View，<code>el: '#app'</code>表示该Vue实例将挂载到<code>&lt;div id="app"&gt;...&lt;/div&gt;</code>这个元素；<strong>data属性</strong>指向Model，<code>data: exampleData</code>表示我们的Model是exampleData对象。<br>Vue.js有多种数据绑定的语法，最基础的形式是文本插值，使用一对大括号语法，在运行时<code>{{ message }}</code>会被数据对象的message属性替换，所以页面上会输出"Hello World!"。</p>
+    <p class="note">Vue.js已经更新到2.0版本了，但由于还不是正式版，本文的代码都是1.0.25版本的。</p>
+</body>
+</html>

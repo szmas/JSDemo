@@ -1,0 +1,126 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <script src="https://cdn.bootcss.com/vue/2.4.2/vue.min.js"></script>
+    <style>
+        .active {
+            width: 100px;
+            height: 100px;
+            background: green;
+        }
+
+        .text-danger {
+            background: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <h4>class 属性绑定</h4>
+        <p>我们可以为 v-bind:class 设置一个对象，从而动态的切换 class:</p>
+
+        <div v-bind:class="{ active: isActive }"></div>
+
+        <p>text-danger 类背景颜色覆盖了 active 类的背景色：</p>
+        <div class="static"
+             v-bind:class="{ active: isActive, 'text-danger': hasError }">
+        </div>
+
+        <p>我们也可以直接绑定数据里的一个对象：</p>
+        <div v-bind:class="classObject"></div>
+    </div>
+
+    <script>
+
+        //实例中将 isActive 设置为 true 显示了一个绿色的 div 块，如果设置为 false 则不显示：
+
+        new Vue({
+            el: '#app',
+            data: {
+                isActive: true,
+                hasError: true,
+                classObject: {
+                    active: true,
+                    'text-danger': true
+                }
+            }
+        })
+    </script>
+
+    <div id="app2">
+        <p>此外，我们也可以在这里绑定返回对象的计算属性。这是一个常用且强大的模式：</p>
+        <div v-bind:class="classObject"></div>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app2',
+            data: {
+                isActive: true,
+                error: null
+            },
+            computed: {
+                classObject: function () {
+                    return {
+                        active: this.isActive && !this.error,
+                        'text-danger': this.error && this.error.type === 'fatal',
+                    }
+                }
+            }
+        })
+    </script>
+
+    <div id="app3">
+        <h4>
+            数组语法
+        </h4>
+        <p>我们可以把一个数组传给 v-bind:class ，实例如下：</p>
+
+        <div v-bind:class="[activeClass, errorClass]"></div>
+
+        <p>我们还可以使用三元表达式来切换列表中的 class ：</p>
+        <div v-bind:class="[errorClass ,isActive ? activeClass : '']"></div>
+
+
+        <h4>Vue.js style(内联样式)</h4>
+        <p>我们可以在 v-bind:style 直接设置样式：</p>
+        <div v-bind:style="{ color: activeColor, fontSize: fontSize + 'px' }">菜鸟教程</div>
+
+
+        <p>也可以直接绑定到一个样式对象，让模板更清晰：</p>
+        <div v-bind:style="styleObject">菜鸟教程</div>
+
+        <p>
+            v-bind:style 可以使用数组将多个样式对象应用到一个元素上：
+        </p>
+        <div v-bind:style="[baseStyles, overridingStyles]">菜鸟教程</div>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app3',
+            data: {
+                isActive: true,
+                activeClass: 'active',
+                errorClass: 'text-danger',
+                activeColor: 'green',
+                fontSize: 30,
+                styleObject: {
+                    color: 'green',
+                    fontSize: '30px'
+                },
+                baseStyles: {
+                    color: 'green',
+                    fontSize: '30px'
+                },
+                overridingStyles: {
+                    'font-weight': 'bold'
+                }
+            }
+        })
+    </script>
+
+</body>
+</html>

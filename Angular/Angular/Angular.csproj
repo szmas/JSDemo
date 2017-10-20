@@ -65,23 +65,22 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="AngularJSHTTP.html" />
-    <Content Include="AngularJSSelect.html" />
-    <Content Include="AngularJS作用域.html" />
-    <Content Include="AngularJS指令.html" />
-    <Content Include="AngularJS控制器.html" />
-    <Content Include="AngularJS服务.html" />
-    <Content Include="AngularJS模型.html" />
-    <Content Include="AngularJS表单.html" />
-    <Content Include="AngularJS表格.html" />
-    <Content Include="AngularJS表达式.html" />
-    <Content Include="AngularJS过滤器.html" />
+    <Content Include="8_AngularJSHTTP.html" />
+    <Content Include="9_AngularJSSelect.html" />
+    <Content Include="4_AngularJS作用域.html" />
+    <Content Include="2_AngularJS指令.html" />
+    <Content Include="5_AngularJS控制器.html" />
+    <Content Include="7_AngularJS服务.html" />
+    <Content Include="3_AngularJS模型.html" />
+    <Content Include="11_AngularJS表单.html" />
+    <Content Include="10_AngularJS表格.html" />
+    <Content Include="1_AngularJS.表达式.html" />
+    <Content Include="6_AngularJS过滤器.html" />
     <Content Include="js\data.html" />
     <Content Include="Global.asax" />
     <None Include="js\data.json" />
     <Content Include="js\personController.js" />
     <Content Include="js\sonp.js" />
-    <Content Include="块级作用域.html" />
     <Content Include="p1.html" />
     <Content Include="p2.html" />
     <Content Include="p3.html" />

@@ -57,6 +57,15 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="css\demo.css" />
+    <Content Include="Demo_v-bind.html" />
+    <Content Include="Demo_v-for.html" />
+    <Content Include="Demo_page.html" />
+    <Content Include="MVVM模式.html" />
+    <Content Include="V5.样式绑定.html" />
+    <Content Include="V6.事件处理器.html" />
+    <Content Include="V7.表单.html" />
+    <Content Include="V10.路由.html" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -68,6 +77,10 @@
     <Content Include="Global.asax" />
     <Content Include="p1.html" />
     <Content Include="Web.config" />
+    <Content Include="V3.循环语句.html" />
+    <Content Include="V2.条件与循环.html" />
+    <Content Include="V1.模板语法.html" />
+    <Content Include="V4.计算属性.html" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Global.asax.cs">
