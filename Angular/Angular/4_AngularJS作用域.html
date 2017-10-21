@@ -13,10 +13,11 @@
     </p>
     <div ng-controller="myCtrl">
         <p>
+            当你在 AngularJS 创建控制器时，你可以将 $scope 对象当作一个参数传递:<br />
             控制器中的属性对应了视图上的属性：
         </p>
         <h1>{{carname}}</h1>
-        
+
 
     </div>
 
@@ -30,7 +31,15 @@
 
     <div ng-controller="myCtrl2">
         <p>
-            如果你修改了视图，模型和控制器也会相应更新：
+            Scope 概述<br />
+            AngularJS 应用组成如下：<br />
+            View(视图), 即 HTML。<br />
+            Model(模型), 当前视图中可用的数据。<br />
+            Controller(控制器), 即 JavaScript 函数，可以添加或修改属性。<br />
+            scope 是模型。<br />
+            scope 是一个 JavaScript 对象，带有属性和方法，这些属性和方法可以在视图和控制器中使用。<br />
+
+            如果你修改了视图，模型和控制器也会相应更新：<br />
         </p>
         <input ng-model="name">
         <h1>{{greeting}}</h1>
@@ -81,7 +90,7 @@
         <ul>
             <li ng-repeat="x in names">{{x}} {{lastname}}</li>
         </ul>
-        
+
     </div>
 
     <script>

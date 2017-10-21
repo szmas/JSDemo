@@ -76,6 +76,7 @@
     <Content Include="10_AngularJS表格.html" />
     <Content Include="1_AngularJS.表达式.html" />
     <Content Include="6_AngularJS过滤器.html" />
+    <Content Include="demo.html" />
     <Content Include="js\data.html" />
     <Content Include="Global.asax" />
     <None Include="js\data.json" />
