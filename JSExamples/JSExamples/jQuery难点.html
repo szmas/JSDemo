@@ -1,0 +1,130 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+</head>
+<body>
+    <div class="d1">
+        第一个元素
+    </div>
+    <div class="d2">
+        第二个元素
+    </div>
+    <div class="father">
+        父元素
+    </div>
+
+    <p class="p1">
+        <a>点击</a>
+    </p>
+    <script>
+
+        $(function () {
+
+            /*
+
+            DOM内部插入
+
+            */
+
+            //内部之后
+            $('.d1').append('<a>在内部最后一个插入A标签</a>');
+
+            //内部之前
+            $('.d1').prepend('<a>在内部第一个插入A标签</a>');
+
+
+            //.father内部之后
+            $('.d1').appendTo('.father');
+
+            //.father内部之前
+            $('.d2').prependTo('.father');
+
+            /*
+
+            DOM外部插入
+
+
+            */
+
+
+            //外部之前
+            $('.d1').before('<div>同级之前</div>');
+
+            //外部之后
+            $('.d1').after('<div>同级之后</div>');
+
+            //目标.fater之后
+            $('.d1').insertAfter('.father');
+
+            //目标.fater之前
+            $('.d2').insertBefore('.father');
+
+
+
+            /*
+
+            DOM 插入, 包裹
+
+
+            */
+
+            //用main包裹.father
+            $('.father').wrap('<div class="main"></div>');
+
+            //.father内部包裹一层
+            $('.father').wrapInner('<div class="container"></div>');
+
+
+            //取消外部包裹层
+            $('.father').unwrap();
+
+
+
+            //动态事件绑定
+            //当p中增加span时仍然有效
+            $(".p1").on("click", 'a', function () {
+
+                $(this).append('<br/><a>点击</a>');
+            });
+
+
+            //非常有用
+
+            //序列化表单内容为字符串。
+            $("#form1").serialize();
+
+
+            //合并对象
+            $.extend({ a: 1, b: 2 }, { b: 3, c: 4 }, { c: 5, d: 6 });
+
+
+            //ajax
+
+            $.ajax({
+                type: 'get',
+                url: 'http://v.77mv.com.cn/jsonp.aspx',
+                data: {},
+                dataType: 'json',
+                processData: true,// ajax文件上传 processData: false contentType: false,
+
+                contentType: 'application/x-www-form-urlencoded',
+                crossDomain: true,//跨域请求为true
+                beforeSend: function (jqXHR, settings) {
+
+                },
+                success: function (data, textStatus, jqXHR) {
+
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+
+                },
+                complete: function (jqXHR, textStatus) {
+                }
+            });
+        });
+    </script>
+</body>
+</html>

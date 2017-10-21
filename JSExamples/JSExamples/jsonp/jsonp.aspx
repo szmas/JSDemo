@@ -1,6 +1,9 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" %>
 
 <%
+    
+    // CORS需要浏览器和服务器同时支持。目前，所有浏览器都支持该功能，IE浏览器不能低于IE10。
+    Response.AddHeader("Access-Control-Allow-Origin", "*");
     string callBack = Request.QueryString["callback"];
     if (!string.IsNullOrEmpty(callBack))
     {

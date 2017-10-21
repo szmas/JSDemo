@@ -63,6 +63,7 @@
     <Content Include="hashchange\http.html" />
     <Content Include="hashchange\index.html" />
     <Content Include="hashchange\js.html" />
+    <Content Include="jQuery难点.html" />
     <Content Include="JS时间操作.html" />
     <Content Include="pjax\css.html" />
     <Content Include="pjax\http.html" />

@@ -62,10 +62,12 @@
     <Content Include="Demo_v-for.html" />
     <Content Include="Demo_page.html" />
     <Content Include="MVVM模式.html" />
+    <Content Include="Q.html" />
     <Content Include="V5.样式绑定.html" />
     <Content Include="V6.事件处理器.html" />
     <Content Include="V7.表单.html" />
     <Content Include="V10.路由.html" />
+    <Content Include="V8.组件.html" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -76,6 +78,7 @@
   <ItemGroup>
     <Content Include="Global.asax" />
     <Content Include="p1.html" />
+    <Content Include="V9.自定义指令.html" />
     <Content Include="Web.config" />
     <Content Include="V3.循环语句.html" />
     <Content Include="V2.条件与循环.html" />

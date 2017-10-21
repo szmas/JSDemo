@@ -13,14 +13,17 @@
 </head>
 <body>
     <div id="app">
+        <!--view-->
         <p>{{ message }}</p>
 
         <div v-html="htmlmessage"></div>
     </div>
 
     <script>
-        new Vue({
+        //ViewModel
+        var vm = new Vue({
             el: '#app',
+            //Model
             data: {
                 message: 'Hello Vue.js!',
                 htmlmessage: '<h1>菜鸟教程</h1>'
