@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+    <style>
+        table, th, td {
+            border: 1px solid grey;
+            border-collapse: collapse;
+            padding: 5px;
+        }
+
+            table tr:nth-child(odd) {
+                background-color: #f1f1f1;
+            }
+
+            table tr:nth-child(even) {
+                background-color: #ffffff;
+            }
+    </style>
+</head>
+<body ng-app="myApp">
+
+
+    <div ng-controller="customersCtrl">
+        <h4>ASP.NET 中执行 SQL 获取数据</h4>
+        <table>
+            <tr ng-repeat="x in names">
+                <td>{{ x.Name }}</td>
+                <td>{{ x.Country }}</td>
+            </tr>
+        </table>
+
+    </div>
+    <script>
+        var app = angular.module('myApp', []);
+        app.controller('customersCtrl', function ($scope, $http) {
+            $http.get("js/MySQL.json")
+            .success(function (response) {
+                $scope.names = response.records;
+            });
+        });
+    </script>
+    <div ng-controller="customersCtrl2">
+        <h4>
+            跨域 HTTP 请求<br />
+            header("Access-Control-Allow-Origin: *");
+        </h4>
+
+        <table>
+            <tr ng-repeat="x in weatherinfo">
+                <td>{{ x.city }}</td>
+                <td>{{ x.WD }}</td>
+                <td>{{ x.temp }}</td>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        app.controller('customersCtrl2', function ($scope, $http) {
+            $http.jsonp("http://v.77mv.com.cn/jsonp.aspx?callback=JSON_CALLBACK")
+            .success(function (response) {
+                $scope.weatherinfo = response;
+            });
+        });
+
+    </script>
+</body>
+</html>

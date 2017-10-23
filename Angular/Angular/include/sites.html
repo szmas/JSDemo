@@ -1,0 +1,25 @@
+﻿<style>
+    table, th, td {
+        border: 1px solid grey;
+        border-collapse: collapse;
+        padding: 5px;
+    }
+
+        table tr.odd {
+            background-color: #f1f1f1;
+        }
+
+        table tr.even {
+            background-color: #ffffff;
+        }
+</style>
+<table>
+    <tr ng-repeat="x in names" class="{{$even?'even':'odd'}}">
+        <td>{{ x.Name }}</td>
+        <td>{{ x.City }}</td>
+        <td>{{x.Country}}</td>
+    </tr>
+
+
+    
+</table>

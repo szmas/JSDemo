@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+</head>
+<body ng-app="myNoteApp">
+    <h3>
+        现在是时候创建一个真正的 AngularJS 单页 Web 应用（single page web application，SPA）了。
+    </h3>
+
+    <div ng-controller="myNoteCtrl">
+
+        <textarea ng-model="message" cols="40" rows="10"></textarea>
+
+        <p>
+            <button ng-click="save()">保存</button>
+            <button ng-click="clear()">清除</button>
+        </p>
+
+        <p>剩余字数: <span ng-bind="left()"></span></p>
+
+    </div>
+
+    <script>
+
+        var app = angular.module('myNoteApp', []);
+
+        app.controller('myNoteCtrl', function ($scope) {
+
+            $scope.message = '';
+
+            $scope.save = function () {
+
+            }
+
+            $scope.clear = function () {
+
+                $scope.message = '';
+            }
+
+            $scope.left = function () {
+
+                var total = 100 - $scope.message.length;
+                if (total < 0) {
+
+                    total = 0;
+
+                }
+                return total;
+            }
+
+            $scope.$watch('message', function () {
+
+                $scope.left();
+            });
+
+        });
+
+    </script>
+</body>
+</html>

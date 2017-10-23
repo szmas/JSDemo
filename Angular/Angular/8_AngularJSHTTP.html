@@ -26,7 +26,7 @@
                 url: 'js/data.html'
             }).then(function successCallback(response) {
                 // 请求成功执行代码
-                console.log(response);
+                console.log(response.data);
             }, function errorCallback(response) {
                 // 请求失败执行代码
                 console.log('错误');
@@ -34,17 +34,47 @@
 
 
             //简写
+
+            /*
+            
+            $http.get
+            $http.head
+            $http.post
+            $http.put
+            $http.delete
+            $http.jsonp
+            $http.patch
+            
+            
+            */
+
             $http.get('js/data.json').then(function successCallback(response) {
                 $scope.names = response.data.sites;
             }, function errorCallback(response) {
+
             });
 
-            $http.post('js/data.html', { name: 'mas' }).then(function successCallback(response) {
+            $http.post('post.aspx', { name: 'mas' }).then(function successCallback(response) {
+                console.log(response.data);
             }, function errorCallback(response) {
+
             });
 
-            $http.jsonp('js/jsonp.js', { name: 'mas' }).then(function successCallback(response) {
+
+            /*
+            
+            1.angularJS中使用$http.jsonp函数
+            2.指定callback和回调函数名，函数名为JSON_CALLBACK时，会调用success回调函数，JSON_CALLBACK必须全为大写。
+            3.也可以指定其它回调函数，但必须是定义在window下的全局函数。
+            4.url中必须加上callback
+            5.当callback为JSON_CALLBACK时，只会调用success，即使window中有JSON_CALLBACK函数，也不会调用该函数。
+            
+            */
+
+            $http.jsonp('http://v.77mv.com.cn/jsonp.aspx?callback=JSON_CALLBACK', { name: 'mas' }).then(function successCallback(response) {
+                console.log(response.data);
             }, function errorCallback(response) {
+
             });
         });
     </script>

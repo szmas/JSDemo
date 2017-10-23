@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -7,30 +7,167 @@
 <body>
     <script type="text/javascript">
 
-		//Array 构造函数
-        var arr=new Array();
-		arr[0]='mas';
-		arr[1]='jarry';
-		
-		//数组字面量
-		var arr2=['mas','jarry'];
+        //Array 构造函数
+        var arr = new Array();
+        arr[0] = 'mas';
+        arr[1] = 'jarry';
 
-		//点号表示法
+        //数组字面量
+        var arr2 = ['mas', 'jarry'];
+
+        //点号表示法
         console.log(arr.__proto__);// Object 顶级（标配）对象，类似高级语言中的根类
-		console.log(arr[0]);
-		
-		//括号表示法;
-		console.log(arr2[0]);
-		
-		
-		
-		// Definitely an array!
-		// This is widely considered as the most robust way
-		// to determine if a specific value is an Array.
-		console.log(Object.prototype.toString.call(arr) === "[object Array]");
-		console.log(Object.prototype.toString.call(null));
-		console.log(Object.prototype.toString.call(undefined));
-		
+        console.log(arr[0]);
+
+        //括号表示法;
+        console.log(arr2[0]);
+
+        // Definitely an array!
+        // This is widely considered as the most robust way
+        // to determine if a specific value is an Array.
+        console.log(Object.prototype.toString.call(arr) === "[object Array]");
+        console.log(Object.prototype.toString.call(null));
+        console.log(Object.prototype.toString.call(undefined));
+
+
+        var arrDemo = [];
+
+        //插入元素
+
+        /*
+
+        堆栈  (先进后出 LIFO)
+
+        push在顶部插入元素
+
+        pop在顶部删除元素
+
+        */
+
+        //向数组的末尾添加一个或更多元素，并返回新的长度。
+        arrDemo.push({ name: 'jack', age: 18 });
+        console.log(JSON.stringify(arrDemo));
+
+        arrDemo.push({ name: 'mas', age: 19 });
+        console.log(JSON.stringify(arrDemo));
+
+        arrDemo.push({ name: 'vivian', age: 20 });
+        console.log(JSON.stringify(arrDemo));
+
+
+        //删除数组的最后一个元素并返回删除的元素。
+        arrDemo.pop();
+        console.log(JSON.stringify(arrDemo));
+        arrDemo.pop();
+        console.log(JSON.stringify(arrDemo));
+        arrDemo.pop();
+        console.log(JSON.stringify(arrDemo));
+
+        /*
+
+        队列 （先进先出 FIFO）
+
+        unshift在头部插入元素
+        pop在尾部删除元素
+
+        */
+
+        arrDemo = [];
+
+        //向数组的开头添加一个或更多元素，并返回新的长度。
+        arrDemo.unshift({ name: 'rose', age: 20 });
+        console.log(JSON.stringify(arrDemo));
+
+        arrDemo.unshift({ name: 'ben', age: 21 });
+        console.log(JSON.stringify(arrDemo));
+
+        arrDemo.unshift({ name: 'allen', age: 22 });
+        console.log(JSON.stringify(arrDemo));
+
+
+
+        //	删除数组的最后一个元素并返回删除的元素。
+        arrDemo.pop();
+        console.log(JSON.stringify(arrDemo));
+        arrDemo.pop();
+        console.log(JSON.stringify(arrDemo));
+        arrDemo.pop();
+        console.log(JSON.stringify(arrDemo));
+
+
+
+        //splice() 方法用于插入、删除或替换数组的元素。
+
+        arrDemo.splice(0, 0, { name: 'rose', age: 20 }, { name: 'ben', age: 21 });
+
+
+        //根据索引删除元素
+
+        var _dd = ['a', 'b', 'c', 'd', 'e'];
+        _dd.splice(1, 1);
+        console.log(_dd);
+
+        //根据内容删除元素
+        _dd.splice(_dd.indexOf('c'), 1);
+        console.log(_dd);
+
+
+
+        //删除并返回数组的第一个元素。
+        arrDemo.shift();
+
+
+
+        /*
+
+        裁剪数组
+
+        */
+
+        //选取数组的的一部分，并返回一个新数组。
+
+        var arrDemoCopy = arrDemo.slice(0, 2);
+
+
+        /*
+
+        合并数组
+
+        */
+
+        arrDemoCopy = arrDemo.concat(arrDemoCopy, ["d", "e"], "f", "g");
+
+
+        //拷贝  深拷贝
+
+        //注意是一个新的数组，不是指向
+
+        var arrDemoCopy1 = arrDemo.slice();
+        var arrDemoCopy2 = arrDemo.concat();
+
+
+
+
+        //合并成字符
+        var str = arrDemoCopy1.join(',');
+
+        //分割成数组
+        var arrDemoCopy3 = str.split(',');
+
+
+        //数组排序
+
+        var arrDemoCopy4 = arrDemoCopy3.sort();
+
+        //自定义方法排序
+        var array72 = [{ name: "tom", age: 19 }, { name: "jack", age: 20 }, { name: "lucy", age: 18 }];
+        array72.sort(function (user1, user2) {
+            return user1.age < user2.age;
+        });
+
+
+
+
     </script>
 </body>
 </html>

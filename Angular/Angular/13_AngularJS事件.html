@@ -1,0 +1,123 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+</head>
+<body ng-app="myApp">
+    <div ng-controller="myCtrl">
+
+        <h4>
+            ng-click 指令
+        </h4>
+        <p>ng-click 指令定义了 AngularJS 点击事件。</p>
+
+
+        <button ng-click="count = count + 1">点我！</button>
+
+        <p>{{ count }}</p>
+
+    </div>
+    <script>
+        var app = angular.module('myApp', []);
+        app.controller('myCtrl', function ($scope) {
+            $scope.count = 0;
+        });
+    </script>
+
+
+    <div ng-controller="personCtrl">
+        <h4>
+            隐藏 HTML 元素
+        </h4>
+        <p>
+            ng-hide 指令用于设置应用部分是否可见。
+        </p>
+
+        <p>
+            ng-hide="true" 设置 HTML 元素不可见。
+        </p>
+        <p>
+            ng-hide="false" 设置 HTML 元素可见。
+        </p>
+
+
+        <button ng-click="toggle()">隐藏/显示</button>
+
+        <p ng-hide="myVar">
+            <span>ng-hide</span><br>
+            名: <input type=text ng-model="firstName"><br>
+            姓: <input type=text ng-model="lastName"><br><br>
+            姓名: {{firstName + " " + lastName}}
+        </p>
+
+        <p ng-show="myVar">
+            <span>ng-show</span><br>
+            名: <input type="text" ng-model="firstName"><br>
+            姓: <input type="text" ng-model="lastName"><br>
+            <br>
+            姓名: {{firstName + " " + lastName}}
+        </p>
+
+
+    </div>
+
+    <script>
+
+        app.controller('personCtrl', function ($scope) {
+            $scope.firstName = "John";
+            $scope.lastName = "Doe";
+            $scope.myVar = false;
+            $scope.toggle = function () {
+                $scope.myVar = !$scope.myVar;
+            }
+        });
+    </script>
+
+    <div ng-controller="myCtrl2">
+
+        <input ng-blur="blur()" ng-focus="focus()" placeholder="焦点事件" />
+        {{myVar}}<br />
+
+        <input ng-copy="copy()" placeholder="拷贝事件" /><br/>
+
+        <input ng-paste="paste()" placeholder="粘贴事件" /><br />
+    </div>
+
+
+    <script>
+
+        app.controller('myCtrl2', function ($scope) {
+
+            $scope.focus = function () {
+                $scope.myVar = '得到焦点';
+            }
+
+            $scope.blur = function () {
+                $scope.myVar = '失去焦点';
+            }
+
+            $scope.copy = function () {
+                console.log('拷贝事件');
+            }
+
+            $scope.paste = function () {
+                console.log('粘贴事件');
+            }
+
+            $scope.blur = function () {
+                $scope.myVar = '失去焦点';
+            }
+
+            //用于监视对象的变化，可以获得变化前的值与变化后的值。
+            $scope.$watch('myVar', function (newVal, old) {
+
+                console.log('myVar发生改变,old=' + old + " new=" + newVal);
+            });
+        });
+
+    </script>
+
+</body>
+</html>

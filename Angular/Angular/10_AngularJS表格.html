@@ -23,18 +23,27 @@
 <body>
     <div ng-app="myApp" ng-controller="customersCtrl">
         <p>显示序号 ($index)</p>
-        <p>使用 $even 和 $odd</p>
+        <p>使用 $even偶数   和 奇数$odd</p>
+        <p>使用 $first开头   和 $last 结尾</p>
+        <p>使用 $middle 开头与结尾之间</p>
         <p>使用 uppercase 过滤器转换为大写: </p>
         <p>排序显示，可以使用 orderBy 过滤器: </p>
         <table>
             <tr ng-repeat="x in names | orderBy : 'Country'">
+
                 <td ng-if="$odd">K{{ $index + 1 }}</td>
                 <td ng-if="$even">N{{ $index + 1 }}</td>
-                <td>{{ x.Name | uppercase }}</td>
-                <td>{{ x.Country }}</td>
+                <td>{{ x.Name | uppercase }}  {{$first?'开头':''}} </td>
+                <td>{{ x.Country }}  {{$last?'结尾':''}}</td>
             </tr>
         </table>
 
+        <p ng-repeat-start="x in names">
+            {{$odd}}
+        </p>
+        <p ng-repeat-end>
+            {{$even}}
+        </p>
     </div>
     <script>
         var app = angular.module('myApp', []);

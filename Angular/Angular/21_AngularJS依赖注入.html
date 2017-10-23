@@ -1,0 +1,130 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+</head>
+<body ng-app="mainApp">
+
+    <div>
+        什么是依赖注入
+        wiki 上的解释是：依赖注入（Dependency Injection，简称DI）是一种软件设计模式，
+        在这种模式下，一个或更多的依赖（或服务）被注入（或者通过引用传递）到一个独立的对象（或客户端）中，
+        然后成为了该客户端状态的一部分。<br />
+        该模式分离了客户端依赖本身行为的创建，这使得程序设计变得松耦合，
+        并遵循了依赖反转和单一职责原则。与服务定位器模式形成直接对比的是，
+        它允许客户端了解客户端如何使用该系统找到依赖
+
+
+        <h3>一句话 --- 没事你不要来找我，有事我会去找你。</h3>
+    </div>
+
+
+    <h2>AngularJS 简单应用</h2>
+
+    <div>
+        AngularJS 提供很好的依赖注入机制。以下5个核心组件用来作为依赖注入：<br />
+        value<br />
+        factory<br />
+        service<br />
+        provider<br />
+        constant<br />
+
+    </div>
+
+    <div ng-controller="CalcController">
+        <h4>factory</h4>
+
+        <p>输入一个数字: <input type="number" ng-model="number" /></p>
+        <button ng-click="square()">X<sup>2</sup></button>
+        <p>结果: {{result}}</p>
+    </div>
+
+    <script>
+
+        // 定义一个模块
+        var mainApp = angular.module("mainApp", []);
+
+        // 创建 value 对象 "defaultInput" 并传递数据
+        mainApp.value("defaultInput", 5);
+
+
+        //factory 是一个函数用于返回值。在 service 和 controller 需要时创建。
+        mainApp.factory('MathService', function () {
+            var factory = {};
+
+            factory.multiply = function (a, b) {
+                return a * b;
+            }
+            return factory;
+        });
+
+        mainApp.service('CalcService', function (MathService) {
+            this.square = function (a) {
+                return MathService.multiply(a, a);
+            }
+        });
+
+        // 将 "defaultInput" 注入到控制器
+        // 注入 factory "MathService"
+        mainApp.controller('CalcController', function ($scope, CalcService, defaultInput) {
+            $scope.number = defaultInput;
+            $scope.result = CalcService.square($scope.number);
+
+            $scope.square = function () {
+                $scope.result = CalcService.square($scope.number);
+            }
+        });
+
+    </script>
+
+
+    <div ng-controller="CalcController">
+        <h4>factory</h4>
+
+        <p>输入一个数字: <input type="number" ng-model="number" /></p>
+        <button ng-click="square()">X<sup>2</sup></button>
+        <p>结果: {{result}}</p>
+    </div>
+
+
+    <script>
+
+        mainApp.config(function ($provide) {
+
+            // 使用 provider 创建 service 定义一个方法用于计算两数乘积
+            $provide.provider('MathService', function () {
+                this.$get = function () {
+                    var factory = {};
+
+                    factory.multiply = function (a, b) {
+                        return a * b;
+                    }
+                    return factory;
+                };
+            });
+        });
+
+        mainApp.value("defaultInput", 5);
+
+        mainApp.service('CalcService', function (MathService) {
+            this.square = function (a) {
+                return MathService.multiply(a, a);
+            }
+        });
+
+        mainApp.controller('CalcController', function ($scope, CalcService, defaultInput) {
+            $scope.number = defaultInput;
+            $scope.result = CalcService.square($scope.number);
+
+            $scope.square = function () {
+                $scope.result = CalcService.square($scope.number);
+            }
+        });
+
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+</head>
+<body ng-app="myApp">
+    <div>
+        <p>
+            通常我们使用 http 请求 (AJAX) 从服务端获取数据，返回的数据我们可以通过 使用 innerHTML 写入到 HTML 元素中。
+        </p>
+        <div ng-include="'include/index.html'"></div>
+    </div>
+
+
+    <div ng-controller="sitesCtrl">
+        <div ng-include="'/include/sites.html'"></div>
+    </div>
+
+    <h4>跨域包含</h4>
+    <div ng-include="'http://v.77mv.com.cn/jsonp.aspx'"></div>
+
+    <script>
+        var app = angular.module('myApp', []);
+        app.controller('sitesCtrl', function ($scope, $http) {
+            $http.get("js/MySQL.json").then(function (response) {
+                $scope.names = response.data.records;
+            });
+        });
+
+
+        //如果你需要包含其他域名的文件，你需要设置域名访问白名单：
+        app.config(function ($sceDelegateProvider) {
+            $sceDelegateProvider.resourceUrlWhitelist([
+                location.origin + '/**',
+                'http://v.77mv.com.cn/**'
+            ]);
+        });
+    </script>
+
+
+</body>
+</html>

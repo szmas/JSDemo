@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+</head>
+<body>
+    <p>
+        模块定义了一个应用程序。<br />
+        模块是应用程序中不同部分的容器。<br />
+        模块是应用控制器的容器。<br />
+        控制器通常属于一个模块。<br />
+    </p>
+    <!--模块-->
+    <div ng-app="myApp">
+
+        <!--控制器-->
+        <div ng-controller="myCtrl">
+
+            <!--模型 数据绑定-->
+            <input ng-model="name" />
+            <!--表达式-->
+            {{name}}
+            <!--自定义的指令-->
+            <div runoob-directive></div>
+
+        </div>
+    </div>
+
+
+    <script>
+
+        //创建模块
+        //通过 angular.module 函数来创建模块：
+
+        //定义模块，简化，无依赖，无配置函数
+        var app = angular.module("myApp", []);
+
+        //3、获得指定模块
+        var app2 = angular.module("myApp");
+
+
+
+        /*
+        
+        
+        angular.module(name,[requires],[configFn]);
+
+        name：模块名称，必须指定
+
+        requires：依赖项，要被添加到注入器服务提供这个模块使用的模块名的数组，如果需要另一个模块的功能，你需要将它添加在列表中，所有依赖的实在数组中指定依赖的模块。
+
+        configFn:模块配置阶段调用的另一个函数。
+
+        
+        */
+
+        //1、定义模块，指定模块名称，依赖对象，配置函数
+        angular.module("myApp", ['$window', '$http'], function () {
+            //服务提供者
+            $provider.value("PI", "3.14");
+        });
+
+
+
+        //添加控制器
+        //使用 ng-controller 指令来添加应用的控制器:
+        app.controller("myCtrl", function ($scope) {
+            $scope.firstName = "John";
+            $scope.lastName = "Doe";
+        });
+
+
+        //添加指令
+        //用模块来为你应用添加自定义的指令：
+        app.directive("runoobDirective", function () {
+            return {
+                template: "我在指令构造器中创建!"
+            };
+        });
+
+
+
+    </script>
+</body>
+</html>

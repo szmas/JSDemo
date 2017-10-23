@@ -1,0 +1,248 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>服务</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: microsoft yahei;
+            font-size: 14px;
+        }
+
+        body {
+            padding-top: 20px;
+        }
+
+        .main {
+            width: 90%;
+            margin: 0 auto;
+            border: 1px solid #777;
+            padding: 20px;
+        }
+
+            .main .title {
+                font-size: 20px;
+                font-weight: normal;
+                border-bottom: 1px solid #ccc;
+                margin-bottom: 15px;
+                padding-bottom: 5px;
+                color: blue;
+            }
+
+                .main .title span {
+                    display: inline-block;
+                    font-size: 20px;
+                    background: blue;
+                    color: #fff;
+                    padding: 0 8px;
+                    background: blue;
+                }
+
+        a {
+            color: blue;
+            text-decoration: none;
+        }
+
+            a:hover {
+                color: orangered;
+            }
+
+        .tab td,
+        .tab,
+        .tab th {
+            border: 1px solid #777;
+            border-collapse: collapse;
+        }
+
+            .tab td,
+            .tab th {
+                line-height: 26px;
+                height: 26px;
+                padding-left: 5px;
+            }
+
+        .abtn {
+            display: inline-block;
+            height: 20px;
+            line-height: 20px;
+            background: blue;
+            color: #fff;
+            padding: 0 5px;
+        }
+
+        .btn {
+            height: 20px;
+            line-height: 20px;
+            background: blue;
+            color: #fff;
+            padding: 0 8px;
+            border: 0;
+        }
+
+            .abtn:hover,
+            .btn:hover {
+                background: orangered;
+                color: #fff;
+            }
+
+        p {
+            padding: 5px 0;
+        }
+
+        fieldset {
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            padding: 5px 10px;
+        }
+
+            fieldset legend {
+                margin-left: 10px;
+                font-size: 16px;
+            }
+    </style>
+
+</head>
+<!--指定angular管理的范围-->
+<body ng-app="carApp">
+    <!--指定控制器的作用范围-->
+    <form ng-controller="CarController" class="main">
+        <h2 class="title"><span>汽车管理</span></h2>
+        <table border="1" width="100%" class="tab">
+            <tr>
+                <th>序列</th>
+                <th>编号</th>
+                <th>名称</th>
+                <th>价格</th>
+                <th>颜色</th>
+                <th>速度</th>
+                <th>操作</th>
+            </tr>
+            <tr ng-repeat="c in cars">
+                <td>{{$index+1}}</td>
+                <td>{{c.id}}</td>
+                <td>{{c.name}}</td>
+                <td>{{c.price}}</td>
+                <td>{{c.color}}</td>
+                <td>{{c.speed}}</td>
+                <td>
+                    <a href="#" ng-click="del(c.id)">删除</a>
+                    <a href="#" ng-click="edit(c)">编辑</a>
+                </td>
+            </tr>
+        </table>
+        <fieldset>
+            <legend>汽车详细</legend>
+            <p>
+                <label for="id">编号</label>
+                <input ng-model="car.id" id="id" ng-readonly="true" />
+            </p>
+            <p>
+                <label for="name">名称</label>
+                <input ng-model="car.name" id="name" />
+            </p>
+            <p>
+                <label for="price">价格</label>
+                <input ng-model="car.price" id="price" />
+            </p>
+            <p>
+                <label for="color">颜色</label>
+                <input ng-model="car.color" id="color" />
+            </p>
+            <p>
+                <label for="color">速度</label>
+                <input ng-model="car.speed" id="speed" />
+            </p>
+            <button ng-click="save()" class="btn">保存</button>
+            <button ng-click="clear()" class="btn">清空</button>
+        </fieldset>
+    </form>
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <!--引入angularjs框架-->
+    <script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+    <script type="text/javascript">
+        //定义模块，指定依赖项为空
+        var carApp = angular.module("carApp", []);
+
+        //定义控制器，指定控制器的名称，$scope是全局对象
+        carApp.controller("CarController", ['$scope', '$http', function ($scope, $http) {
+            $scope.cars = [];
+            $scope.car = { id: 0 };
+
+            //将参数传递的方式改成form
+            var postCfg = {
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                transformRequest: function (data) {
+                    return $.param(data);
+                }
+            };
+
+
+            $scope.save = function () {
+                /* $http({
+                    url: "CRUD.ashx",
+                    data: $scope.car,
+                    method: $scope.car.id ? "POST" : "POST"
+                })
+                    .success(function (data, status, headers, config) {
+                        if ($scope.car.id) {
+                            alert("修改成功");
+                        } else {
+                            $scope.cars.push(data);
+                        }
+                    })
+                    .error(function (data, status, headers, config) {
+                        alert(status);
+                    });
+                    */
+
+                if ($scope.car.id) {
+                    alert("修改成功");
+                } else {
+                    $http.post("CRUD.ashx", $scope.car, postCfg)
+                      .success(function (data, status, headers, config) {
+                          $scope.cars.push(data);
+                          $scope.car = {};
+                      })
+                      .error(function (data, status, headers, config) {
+                          alert(status);
+                      });
+                }
+
+            }
+
+            $scope.edit = function (c) {
+                $scope.car = c;
+            }
+            $scope.clear = function () {
+                $scope.car = {};
+            }
+
+            $http.get("CRUD.ashx")
+                .success(function (data, status, headers, config) {
+                    $scope.cars = data;
+                })
+                .error(function (data, status, headers, config) {
+                    alert(status);
+                });
+
+            $scope.del = function (id) {
+                $http.get("CRUD.ashx?delete=" + id)
+                    .success(function (data, status, headers, config) {
+
+                        for (var i = 0; i < $scope.cars.length; i++) {
+                            if ($scope.cars[i].id == id) {
+                                $scope.cars.splice(i, 1);
+                            }
+                        }
+                    })
+                    .error(function (data, status, headers, config) {
+                        alert(status);
+                    });
+            }
+        }]);
+    </script>
+</body>
+
+</html>

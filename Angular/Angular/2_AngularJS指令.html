@@ -4,18 +4,61 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
     <script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+    <style>
+        .red {
+            background: red;
+        }
+
+        .green {
+            background: green;
+        }
+
+        .yellow {
+            background: yellow;
+        }
+
+        .blue {
+            background: blue;
+        }
+    </style>
 </head>
 <body ng-app="myApp">
     <p>
-        AngularJS 通过被称为 指令 的新属性来扩展 HTML。<br/>
+        AngularJS 通过被称为 指令 的新属性来扩展 HTML。<br />
         AngularJS 通过内置的指令来为应用添加功能。<br />
         AngularJS 允许你自定义指令。<br />
     </p>
     <div>
-        ng-app 指令初始化一个 AngularJS 应用程序。<br />
-        ng-init 指令初始化应用程序数据。<br />
+        ng-app  指令初始化一个 AngularJS 应用程序。<br />
+        ng-bind	 绑定 HTML 元素到应用程序数据<br />
+        <pre>
+            { { } } 是等页面加载完后，再取值
+            ng-bind 它是在页面加载的时候，显不会显示{ {name} }这种变量出来
+            使用模块标签{{ }}加载慢或渲染慢时用户将看到标签，而ng-bind不会，但是使用模块要方便。
+        </pre>
+
+
+        ng-init  指令初始化应用程序数据。<br />
         ng-model 指令把元素值（比如输入域的值）绑定到应用程序。<br />
         ng-repeat 指令会重复一个 HTML 元素：<br />
+
+        ng-switch	规定显示或隐藏子元素的条件<br />
+
+        ng-value	规定 input 元素的值<br />
+
+        ng-submit	规定 onsubmit 事件发生时执行的表达式<br />
+
+        ng-if  如果条件为 false 移除 HTML 元素<br />
+
+        <pre>
+            ng-if 指令不同于 ng-hide， ng-hide 隐藏元素，而 ng-if 是从 DOM 中移除元素。
+    </pre>
+
+        ng-show   显示 HTML 元素<br />
+        ng-hide  隐藏 HTML 元素<br />
+
+        ng-class  指定 HTML 元素使用的 CSS 类<br />
+        ng-style   指定元素的 style 属性
     </div>
     <div ng-init="firstName='John'">
         <p>
@@ -42,7 +85,7 @@
     </div>
 
     <div ng-init="names=['Jani','Hege','Kai']">
-        <p>使用 ng-repeat 来循环数组</p>
+        <h4>使用 ng-repeat 来循环数组</h4>
         <ul>
             <li ng-repeat="x in names">
                 {{ x }}
@@ -63,6 +106,9 @@
         </ul>
 
     </div>
+    <h4>
+        自定义指令
+    </h4>
 
     <div runoob-directive></div>
     <script>
@@ -72,6 +118,121 @@
                 restrict: "A",
                 template: "<h1>自定义指令!</h1>"
             };
+        });
+    </script>
+
+    <div>
+        <h4>
+            ng-switch 指令
+        </h4>
+        <select ng-model="myVar">
+            <option>A</option>
+            <option>B</option>
+            <option>C</option>
+            <option>D</option>
+        </select>
+
+        <div ng-switch="myVar">
+            <div ng-switch-when="A">A</div>
+            <div ng-switch-when="B">B</div>
+            <div ng-switch-when="C">C</div>
+            <div ng-switch-when="D">D</div>
+        </div>
+    </div>
+
+    <div ng-controller="myCtrl">
+
+        <h4>
+            ng-submit 指令
+        </h4>
+
+        <form ng-submit="submit()" ng-init="txtName='Mas'">
+            <input ng-value="txtName" ng-model="txtName" ng-focus="focus()" ng-blur="blur()" ng-change="change()" />
+            {{txtName}}
+            <input type="submit" />
+
+        </form>
+
+    </div>
+
+    <script>
+
+        app.controller('myCtrl', function ($scope) {
+
+            $scope.submit = function () {
+                console.log('表单提交');
+            }
+
+            $scope.focus = function () {
+                console.log('得到焦点');
+            }
+
+            $scope.blur = function () {
+                console.log('失去焦点');
+            }
+
+            $scope.change = function () {
+                console.log($scope.txtName);
+            }
+
+        });
+
+    </script>
+
+    <div>
+        <h4>
+            ng-if
+        </h4>
+
+        <input type="checkbox" ng-model="ckb" />
+
+        <p ng-if="ckb">
+            显示
+        </p>
+
+    </div>
+
+    <div>
+        <h4>
+            ng-show
+        </h4>
+
+        <input type="checkbox" ng-model="ckb2" />
+
+        <p ng-show="ckb2">
+            显示
+        </p>
+
+        <p ng-hide="ckb2">
+            隐藏
+        </p>
+
+    </div>
+
+    <div ng-controller="myCtrl">
+        <h4>
+            ng-class
+        </h4>
+        <select ng-model="color">
+            <option>red</option>
+            <option>blue</option>
+            <option>green</option>
+            <option>yellow</option>
+        </select>
+        <p ng-class="color" ng-style="cls1">
+            内容
+        </p>
+    </div>
+
+    <script>
+
+        app.controller('myCtrl', function ($scope) {
+            $scope.cls1 = {
+                "color": "white",
+                //"background-color": "coral",
+                "font-size": "60px",
+                "padding": "50px"
+            }
         });
     </script>
 </body>

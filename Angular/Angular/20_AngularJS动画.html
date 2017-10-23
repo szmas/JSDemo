@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+    <script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular-animate.min.js"></script>
+
+    <style>
+        .show {
+            /*CSS 过渡*/
+            transition: all linear 0.5s;
+            background-color: lightblue;
+            height: 100px;
+            width: 100%;
+            position: relative;
+            top: 0;
+            left: 0;
+        }
+
+        .ng-hide {
+            height: 0;
+            width: 0;
+            background-color: transparent;
+            top: -200px;
+            left: 200px;
+            animation: 0.5s myChange;
+        }
+
+        /*CSS 动画*/
+        @keyframes myChange {
+            from {
+                height: 100px;
+            }
+
+            to {
+                height: 0;
+            }
+        }
+    </style>
+</head>
+<body ng-app="myApp">
+
+    <div>
+        ngAnimate 做了什么?<br />
+        ngAnimate 模型可以添加或移除 class 。<br />
+        ngAnimate 模型并不能使 HTML 元素产生动画，但是 ngAnimate 会监测事件，类似隐藏显示 HTML 元素 ，如果事件发生 ngAnimate 就会使用预定义的 class 来设置 HTML 元素的动画。<br />
+        AngularJS 添加/移除 class 的指令:<br />
+        ng-show<br />
+        ng-hide<br />
+        ng-class<br />
+        ng-view<br />
+        ng-include<br />
+        ng-repeat<br />
+        ng-if<br />
+        ng-switch<br />
+    </div>
+
+
+    <h1>隐藏 DIV: <input type="checkbox" ng-model="myCheck"></h1>
+
+    <div class="show" ng-hide="myCheck"></div>
+
+
+
+    <script>
+
+        var app = angular.module('myApp', ['ngAnimate']);
+    </script>
+</body>
+</html>

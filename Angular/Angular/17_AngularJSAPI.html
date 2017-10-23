@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+</head>
+<body>
+    <h4>AngularJS 全局 API 用于执行常见任务的 JavaScript 函数集合</h4>
+    <p>
+        <h4>转换</h4>
+        angular.lowercase()	转换字符串为小写<br />
+        angular.uppercase()	转换字符串为大写<br />
+        angular.copy()	数组或对象深度拷贝<br />
+        angular.forEach()	对象或数组的迭代函数<br />
+
+        <h4>比较</h4>
+        angular.isString()	判断给定的对象是否为字符串，如果是返回 true。<br />
+        angular.isNumber()	判断给定的对象是否为数字，如果是返回 true。<br />
+        angular.isArray()	如果引用的是数组返回 true<br />
+        angular.isDate()	如果引用的是日期返回 true<br />
+        angular.isDefined()	如果引用的已定义返回 true<br />
+        angular.isElement()	如果引用的是 DOM 元素返回 true<br />
+        angular.isFunction()	如果引用的是函数返回 true<br />
+        angular.isObject()	如果引用的是对象返回 true<br />
+        angular.isUndefined()	如果引用的未定义返回 true<br />
+        angular.equals()	如果两个对象相等返回 true<br />
+
+        <h4>JSON</h4>
+        angular.fromJson()	反序列化 JSON 字符串<br />
+        angular.toJson()	序列化 JSON 字符串<br />
+
+
+        <h4>基础</h4>
+        angular.bootstrap()	手动启动 AngularJS<br />
+        angular.element()	包裹着一部分DOM element或者是HTML字符串，把它作为一个jQuery元素来处理。<br />
+        angular.module()	创建，注册或检索 AngularJS 模块<br />
+    </p>
+    <div ng-app="myApp" ng-controller="myCtrl">
+        <p>{{ x1 }}</p>
+        <p>{{ x2 }}</p>
+        <p>{{ x3 }}</p>
+
+        <p>{{ x4 }}</p>
+        <p>{{ x5 }}</p>
+    </div>
+
+    <script>
+
+        var app = angular.module('myApp', []);
+
+        app.controller('myCtrl', function ($scope) {
+
+            $scope.x1 = "Json";
+            $scope.x2 = angular.lowercase($scope.x1);
+            $scope.x3 = angular.uppercase($scope.x1);
+
+            $scope.x4 = angular.isString($scope.x1);
+            $scope.x5 = angular.isNumber($scope.x1);
+        });
+
+    </script>
+</body>
+</html>
