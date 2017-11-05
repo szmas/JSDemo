@@ -123,7 +123,7 @@
 
     <div>
         <h4>
-            ng-switch 指令
+            ng-switch 指令  不符合条件的会被删除
         </h4>
         <select ng-model="myVar">
             <option>A</option>
@@ -140,14 +140,17 @@
         </div>
     </div>
 
-    <div ng-controller="myCtrl">
+    <div ng-controller="myCtrlForm">
 
         <h4>
-            ng-submit 指令
+            ng-submit 指令  表单提交事件响应<br />
+            ng-focus 指令  得到焦点事件响应<br />
+            ng-blur 指令  失去焦点事件响应<br />
+            ng-change 指令  文本改变事件响应<br />
         </h4>
 
-        <form ng-submit="submit()" ng-init="txtName='Mas'">
-            <input ng-value="txtName" ng-model="txtName" ng-focus="focus()" ng-blur="blur()" ng-change="change()" />
+        <form ng-submit="submit()" name="myform" ng-init="txtName='Mas'">
+            <input ng-minlength="3" ng-maxlength="10" ng-class="{'error':myform.txtName.$invalid}" name="txtName" ng-value="txtName" ng-model="txtName" ng-focus="focus()" ng-blur="blur()" ng-change="change()" />
             {{txtName}}
             <input type="submit" />
 
@@ -157,7 +160,7 @@
 
     <script>
 
-        app.controller('myCtrl', function ($scope) {
+        app.controller('myCtrlForm', function ($scope) {
 
             $scope.submit = function () {
                 console.log('表单提交');
@@ -181,7 +184,7 @@
 
     <div>
         <h4>
-            ng-if
+            ng-if  不符合条件会被删除
         </h4>
 
         <input type="checkbox" ng-model="ckb" />
@@ -194,7 +197,7 @@
 
     <div>
         <h4>
-            ng-show
+            ng-show   display:block与display:none
         </h4>
 
         <input type="checkbox" ng-model="ckb2" />
@@ -211,7 +214,9 @@
 
     <div ng-controller="myCtrl">
         <h4>
-            ng-class
+            ng-class与ng-style<br />
+            ng-class是class=''<br />
+            ng-style是style=''
         </h4>
         <select ng-model="color">
             <option>red</option>
@@ -235,5 +240,53 @@
             }
         });
     </script>
+
+
+    <div ng-controller="myCtrl">
+        <h4>
+            ng-minlength与maxlength<br />
+            文本长度限制
+        </h4>
+        <input ng-model="uname" ng-minlength="3" ng-maxlength="10" />
+        <p>
+            {{uname}}
+        </p>
+    </div>
+
+
+    <div ng-controller="myCtrl">
+        <h4>
+            ng-checked:传入true当前的复选框被选中<br />
+        </h4>
+        <div>
+            <input type="checkbox" ng-model="all"> Check all<br><br>
+            <input type="checkbox" ng-checked="all">Volvo<br>
+            <input type="checkbox" ng-checked="all">Ford<br>
+            <input type="checkbox" ng-checked="all">Mercedes
+        </div>
+        <p>
+            {{all}}
+        </p>
+    </div>
+
+    <div ng-controller="myCtrl">
+        <h4>
+            ng-disabled="true/false";
+            传入true表示禁用，传入false表示可用；<br />
+        </h4>
+        <div>
+            <form>
+                <input />
+                <input type="submit" ng-disabled="all" value="提交" />
+                <label><input type="checkbox" ng-model="all" />{{all?'启用':'禁用'}}</label><br />
+            </form>
+
+        </div>
+        <p>
+            {{all}}
+        </p>
+    </div>
+
+
 </body>
 </html>

@@ -35,6 +35,8 @@
     <script>
         $(function () {
 
+
+            //DOMMouseScroll是FF  mousewheel是chrome IE
             $(document.body).bind('mousewheel DOMMouseScroll', function (e) {
                 var delta;
                 if (e.originalEvent.wheelDelta)

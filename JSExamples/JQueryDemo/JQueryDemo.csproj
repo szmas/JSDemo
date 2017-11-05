@@ -7,12 +7,12 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{D6731168-F18A-4975-BDAA-452D0709E94B}</ProjectGuid>
+    <ProjectGuid>{DB87F17B-4237-472C-8347-84F4C6B91AE4}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Angular</RootNamespace>
-    <AssemblyName>Angular</AssemblyName>
+    <RootNamespace>JQueryDemo</RootNamespace>
+    <AssemblyName>JQueryDemo</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
@@ -57,81 +57,39 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="案例\验证\index.html" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
-    <Content Include="案例\CRUD\CRUD.ashx" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="11_AngularJSSQL.html" />
-    <Content Include="12_AngularJS_HTML_DOM.html" />
-    <Content Include="13_AngularJS事件.html" />
-    <Content Include="14_AngularJS模块.html" />
-    <Content Include="16_AngularJS输入验证.html" />
-    <Content Include="17_AngularJSAPI.html" />
-    <Content Include="18_AngularJSBootstrap.html" />
-    <Content Include="19_AngularJS包含.html" />
-    <Content Include="20_AngularJS动画.html" />
-    <Content Include="21_AngularJS依赖注入.html" />
-    <Content Include="22_AngularJS路由.html" />
-    <Content Include="23_AngularJS应用.html" />
-    <Content Include="8_AngularJSHTTP.html" />
-    <Content Include="9_AngularJSSelect.html" />
-    <Content Include="4_AngularJS作用域.html" />
-    <Content Include="2_AngularJS指令.html" />
-    <Content Include="5_AngularJS控制器.html" />
-    <Content Include="7_AngularJS服务.html" />
-    <Content Include="3_AngularJS模型.html" />
-    <Content Include="15_AngularJS表单.html" />
-    <Content Include="10_AngularJS表格.html" />
-    <Content Include="1_AngularJS.表达式.html" />
-    <Content Include="6_AngularJS过滤器.html" />
-    <Content Include="demo.html" />
-    <Content Include="img\adv1.jpg" />
-    <Content Include="img\adv2.jpg" />
-    <Content Include="img\adv3.jpg" />
-    <Content Include="img\b1.jpg" />
-    <Content Include="img\b2.jpg" />
-    <Content Include="img\b3.jpg" />
-    <Content Include="img\b4.jpg" />
-    <Content Include="img\b5.jpg" />
-    <Content Include="img\b6.jpg" />
-    <Content Include="include\index.html" />
-    <Content Include="include\sites.html" />
-    <Content Include="js\data.html" />
+    <Content Include="css\H-ui.reset.css" />
     <Content Include="Global.asax" />
-    <Content Include="案例\CRUD\bootstrap.html" />
-    <Content Include="案例\CRUD\CRUD.html" />
-    <Content Include="案例\SPA\SPA.html" />
-    <None Include="js\data.json" />
-    <None Include="js\MySQL.json" />
-    <Content Include="js\personController.js" />
-    <Content Include="js\sonp.js" />
-    <Content Include="p1.html" />
-    <Content Include="p2.html" />
-    <Content Include="p3.html" />
-    <Content Include="post.aspx" />
+    <Content Include="文字滚动.html" />
+    <Content Include="jQuery动画\contextmenu.html" />
+    <Content Include="jQuery动画\CSS制作立体导航.html" />
+    <Content Include="jQuery动画\demo001.html" />
+    <Content Include="jQuery动画\随机颜色.html" />
+    <Content Include="jQuery插件\easing\jquery.easing.1.3.js" />
+    <Content Include="jQuery插件\easing\one.html" />
+    <Content Include="jQuery插件\five.html" />
+    <Content Include="jQuery插件\four.html" />
+    <Content Include="jQuery插件\mousewheel\jquery.mousewheel.js" />
+    <Content Include="jQuery插件\mousewheel\mousewheel.html" />
+    <Content Include="jQuery插件\one.html" />
+    <Content Include="jQuery插件\three.html" />
+    <Content Include="jQuery插件\two.html" />
+    <Content Include="jQuery插件\表单验证\index.html" />
+    <Content Include="jQuery插件\表单验证\validation.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="post.aspx.cs">
-      <DependentUpon>post.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="post.aspx.designer.cs">
-      <DependentUpon>post.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="案例\CRUD\CRUD.ashx.cs">
-      <DependentUpon>CRUD.ashx</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -150,9 +108,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>8861</DevelopmentServerPort>
+          <DevelopmentServerPort>28414</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:8861/</IISUrl>
+          <IISUrl>http://localhost:28414/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

@@ -74,13 +74,13 @@
         });
     </script>
 
-    <div ng-app="myApp" ng-controller="myCtrl">
+    <div ng-app="myApp" ng-controller="myHexCtrl">
         <p>
             你可以创建自定义服务，链接到你的模块中：
         </p>
-        <p>255 的16进制是:</p>
+        <p></p>
 
-        <h1>{{hex}}</h1>
+        <h1>255 的16进制是: {{hex}}</h1>
 
     </div>
 
@@ -93,8 +93,10 @@
             }
         });
 
+
+        //向控制器注入服务hexafy
         //向某个控制器传入全局服务对象，此控制器作用域中可调用全局服务对象的方法
-        app.controller('myCtrl', function ($scope, hexafy) {
+        app.controller('myHexCtrl', function ($scope, hexafy) {
             $scope.hex = hexafy.myFunc(255);
         });
     </script>
@@ -104,9 +106,8 @@
             当你创建了自定义服务，并连接到你的应用上后，你可以在控制器，指令，过滤器或其他服务中使用它。
 
         </p>
-        在过滤器中使用服务:
 
-        <h1>{{255 | myFormat}}</h1>
+        <h1>在过滤器中使用服务:{{255 | myFormat}}</h1>
 
     </div>
 
@@ -117,6 +118,59 @@
                 return x.toString(16);
             }
         });
+
+
+        /*
+
+        自定义服务Factory
+
+
+        factory服务在使用上与service服务没有太大差距。
+        唯一的不同点，是声明服务时，factory服务是函数中先声明好一个对象，然后使用return将对象返回；
+        而service服务，则是直接在函数中，则是直接使用this将属性和方法添加到对象上面。
+
+        */
+
+        app.factory("hexafy", function () {
+            var obj = {
+                gongneng: "十进制转换为16进制",
+                myFunc: function (num) {
+                    return num.toString(16);
+                }
+            }
+            return obj;
+        });
+
+
+
+        /*
+
+        自定义服务provider
+
+
+        1、在AngularJS中，service服务、factory服务都是基于provider服务实现的；
+        2、在定义provider时，可以使用get方法，接受一个函数，函数里面采用和factory完全相同的写法；
+        如果服务需要在配置阶段，也就是声明controller之前执行的话，则可以使用provider。否则一般使用service或者factory;
+
+
+        在配置阶段使用服务，通常需要使用config在声明controller之前执行。可以用于声明一些在controller中需要使用的全局变量、方法、服务等。。
+
+        */
+
+        app.provider("hexafy", function () {
+            this.$get = function () {
+                var obj = {
+                    gongneng: "十进制转换为16进制",
+                    myFunc: function (num) {
+                        return num.toString(16);
+                    }
+                }
+                return obj;
+            }
+        })
+
+
+        //向控制器注入服务hexafy
         app.filter('myFormat', ['hexafy', function (hexafy) {
             return function (x) {
                 return hexafy.myFunc(x);

@@ -3,61 +3,64 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
-    <script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
 </head>
 <body>
-    <div id="myDiv">
-        函数节流是指一定时间内js方法只跑一次。比如人的眨眼睛，就是一定时间内眨一次。这是函数节流最形象的解释。<br />
-
-        也就是说当调用动作n毫秒后，才会执行该动作，若在这n毫秒内又调用此动作则将重新计算执行时间。
-
-    </div>
     <p>
-        我们这里说的throttle就是函数节流的意思。再说的通俗一点就是函数调用的频度控制器，是连续执行时间间隔控制。主要应用的场景比如：
-
-        鼠标移动，mousemove 事件
-        DOM 元素动态定位，window对象的resize和scroll 事件
+        函数防抖是指频繁触发的情况下，只有足够的空闲时间，才执行代码一次。<br />
+        比如生活中的坐公交，就是一定时间内，如果有人陆续刷卡上车，司机就不会开车。只有别人没刷卡了，司机才开车。
     </p>
+
+    <p>
+        window对象的resize、scroll事件<br />
+
+        拖拽时的mousemove事件<br />
+
+        射击游戏中的mousedown、keydown事件<br />
+
+        文字输入、自动完成的keyup事件<br />
+    </p>
+    <p>
+        debounce和throttle很像，debounce是空闲时间必须大于或等于 一定值的时候，才会执行调用方法。debounce是空闲时间的间隔控制。
+        比如我们做autocomplete，这时需要我们很好的控制输入文字时调用方法时间间隔。
+        一般时第一个输入的字符马上开始调用，根据一定的时间间隔重复调用执行的方法。
+        对于变态的输入，比如按住某一个建不放的时候特别有用。
+
+        debounce主要应用的场景比如：
+
+        文本输入keydown 事件，keyup 事件，例如做autocomplete
+    </p>
+
     <p style="height:18000px;">
 
     </p>
+
     <script>
-        function throttle(method, context) {
+
+
+        function debounce(method, context) {
             clearTimeout(method.tId);
             method.tId = setTimeout(function () {
                 method.call(context);
             }, 100)
         }
-
         function resizeDiv() {
             //var div = document.getElementById('myDiv');
             //div.style.height = div.offsetWidth + 'px';
             console.log("window scroll");
         }
-
         window.onscroll = function () {
-            throttle(resizeDiv);
+            debounce(resizeDiv);
         }
 
 
-        var resizeTimer = null;
-        $(window).on('scroll', function () {
-            if (resizeTimer) {
-                clearTimeout(resizeTimer)
-            }
-            resizeTimer = setTimeout(function () {
-                console.log("window scroll2");
-            }, 400);
-        });
-
 
         /*
-* 频率控制 返回函数连续调用时，fn 执行频率限定为每多少时间执行一次
-* @param fn {function}  需要调用的函数
-* @param delay  {number}    延迟时间，单位毫秒
-* @param immediate  {bool} 给 immediate参数传递false 绑定的函数先执行，而不是delay后后执行。
-* @return {function}实际调用函数
-*/
+        * 频率控制 返回函数连续调用时，fn 执行频率限定为每多少时间执行一次
+        * @param fn {function}  需要调用的函数
+        * @param delay  {number}    延迟时间，单位毫秒
+        * @param immediate  {bool} 给 immediate参数传递false 绑定的函数先执行，而不是delay后后执行。
+        * @return {function}实际调用函数
+        */
         var throttle = function (fn, delay, immediate, debounce) {
             var curr = +new Date(),//当前事件
                 last_call = 0,
@@ -106,10 +109,12 @@
         };
 
 
-        //throttle 指定时间内执行，执行N次
-        window.onscroll = throttle(function () {
+        //debounce 指定时间内没完成就取消，只执行一次
+        window.onscroll = debounce(function () {
             console.log('You are scrolling!');
         }, 1000, true);
+
+
 
     </script>
 </body>

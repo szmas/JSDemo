@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+    <style>
+        .errer {
+            border: 1px solid red;
+            outline: none;
+        }
+
+        .success {
+            border: 2px solid green;
+            outline: none;
+        }
+    </style>
+</head>
+<body ng-app="app">
+    <h4>
+        ng-submit是触发表单提交事件<br />
+        ng-click 是点击事件<br />
+
+        ng-disabled  是否启用<br />
+
+        ng-class是class=''<br />
+
+    </h4>
+    <h4>
+        ng-required  必填字段<br />
+
+        ng-minlength 文本最小长度<br />
+        ng-maxlength 文本最大长度<br />
+
+        $valid	字段内容合法的  都通过时为 true，与之相对的是 $invalid<br />
+        $invalid	字段内容是非法的  <br />
+        $touthed 字段是否被访问过  如果获得过焦点，在失去时该值为 true，与之相对的是 $untouched <br />
+        $dirty	表单有填写记录  只要有任何改变，该值为 true，与之相对的是 $pristine<br />
+        $pristine	表单没有填写记录<br />
+
+        $required	字段内容是必填的  <br />
+    </h4>
+    <h4>
+        $error 表单验证不通过的错误信息<br />
+    </h4>
+    <div ng-controller="myContol">
+
+        <form name="myForm" ng-submit="submitForm()">
+            First Name:<br>
+            <input type="text" name="username" ng-model="user.firstName" ng-minlength="3" ng-maxlength="6" ng-required="true"
+                   ng-class="{'errer':myForm.username.$invalid&&myForm.username.$dirty,'success':myForm.username.$valid}">
+            <span ng-show="myForm.username.$required&&myForm.username.$touthed">
+                字段是必须的
+            </span>
+            <span ng-show="myForm.username.$dirty&&(!myForm.username.$minlength||!myForm.username.$maxlength)">
+                字段长度在3与6之间
+            </span>
+            <span ng-show="myForm.username.$valid">
+                字段通过验证
+            </span>
+            <br>
+            Last Name:<br>
+            <input type="text" ng-model="user.lastName">
+            <br><br>
+            {{user.firstName}}----{{user.lastName}}<br>
+            <button ng-disabled="myForm.$invalid">提交</button>
+            <button ng-click="resetForm()" type="button">重置</button>
+        </form>
+    </div>
+
+    <script>
+
+        var app = angular.module('app', []);
+
+        app.controller('myContol', function ($scope) {
+
+            $scope.user = { firstName: '', lastName: '' };
+
+            $scope.submitForm = function () {
+                console.log('提交表单');
+                console.log($scope.user);
+            }
+
+            $scope.resetForm = function () {
+                $scope.user = [];
+            }
+        });
+    </script>
+</body>
+</html>

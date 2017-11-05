@@ -57,7 +57,14 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Ajax_CSRF.aspx" />
     <Content Include="d.js" />
+    <Content Include="demo.html" />
+    <Content Include="dialg\index.html" />
+    <Content Include="dialg\messagetip\jquery.messagetip.css" />
+    <Content Include="dialg\messagetip\jquery.messagetip.js" />
+    <Content Include="dialg\messagetip\version.txt" />
+    <Content Include="example.html" />
     <Content Include="hashchange\css.html" />
     <Content Include="hashchange\demo.html" />
     <Content Include="hashchange\http.html" />
@@ -69,6 +76,7 @@
     <Content Include="pjax\http.html" />
     <Content Include="pjax\index.html" />
     <Content Include="pjax\js.html" />
+    <Content Include="事件\函数防抖.html" />
     <Content Include="事件\滚动事件.html" />
     <Content Include="常用JS.html" />
     <Content Include="常用JS.js" />
@@ -111,6 +119,9 @@
     <Content Include="正则表达式.html" />
     <Content Include="样式\滚动条样式.html" />
     <Content Include="事件\页面离开事件.html" />
+    <Content Include="浏览器缓存\no-cahe.aspx" />
+    <Content Include="浏览器缓存\WebForm1.aspx" />
+    <Content Include="浏览器缓存\WebForm2.aspx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -137,6 +148,13 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Ajax_CSRF.aspx.cs">
+      <DependentUpon>Ajax_CSRF.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Ajax_CSRF.aspx.designer.cs">
+      <DependentUpon>Ajax_CSRF.aspx</DependentUpon>
+    </Compile>
     <Compile Include="form\fileupload.ashx.cs">
       <DependentUpon>fileupload.ashx</DependentUpon>
     </Compile>
@@ -192,6 +210,27 @@
     </Compile>
     <Compile Include="iframe\sleepImg.aspx.designer.cs">
       <DependentUpon>sleepImg.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="浏览器缓存\no-cahe.aspx.cs">
+      <DependentUpon>no-cahe.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="浏览器缓存\no-cahe.aspx.designer.cs">
+      <DependentUpon>no-cahe.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="浏览器缓存\WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="浏览器缓存\WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="浏览器缓存\WebForm2.aspx.cs">
+      <DependentUpon>WebForm2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="浏览器缓存\WebForm2.aspx.designer.cs">
+      <DependentUpon>WebForm2.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

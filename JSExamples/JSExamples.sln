@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.40629.0
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JSExamples", "JSExamples\JSExamples.csproj", "{79E5E660-8E50-44C1-85D3-741F82AE6475}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JQueryDemo", "JQueryDemo\JQueryDemo.csproj", "{DB87F17B-4237-472C-8347-84F4C6B91AE4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{79E5E660-8E50-44C1-85D3-741F82AE6475}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{79E5E660-8E50-44C1-85D3-741F82AE6475}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{79E5E660-8E50-44C1-85D3-741F82AE6475}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB87F17B-4237-472C-8347-84F4C6B91AE4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB87F17B-4237-472C-8347-84F4C6B91AE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB87F17B-4237-472C-8347-84F4C6B91AE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB87F17B-4237-472C-8347-84F4C6B91AE4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

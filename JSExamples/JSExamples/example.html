@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+    <style>
+        div {
+            position: relative;
+        }
+
+        span {
+            color: red;
+            font-size: 24px;
+            font-weight: bold;
+            position: absolute;
+            top: -50px;
+            left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <p style="height:30px;">
+
+    </p>
+    <div>
+        <a href="javascript:;">点赞</a>
+    </div>
+
+    <script>
+        $('a').click(function () {
+
+            var $span = $('<span>+1</spn>');
+            $(this).parent().append($span);
+
+            $span.animate({
+                'top': 50
+            }, 500, function () {
+                $(this).remove();
+            });
+
+        });
+
+    </script>
+</body>
+</html>

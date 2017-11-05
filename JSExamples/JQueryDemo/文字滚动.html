@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <link href="css/H-ui.reset.css" rel="stylesheet" />
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <style>
+        #xdemo1 {
+            margin: 20px auto;
+            width: 600px;
+        }
+
+            #xdemo1 ul li {
+                margin: 10px 0;
+            }
+
+        .main {
+            margin-top: 30px;
+            height: 400px;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div id="xdemo1"><ul><li>金小姐 154****4855 江西南昌市 2017-11-01 已发货</li><li>吴小姐 139****6321 山西省太原市 2017-11-01 已发货</li><li>吕小姐 150****5190 辽宁沈阳市 2017-11-01 已发货</li><li>方先生 131****6343 广西河池市 2017-11-01 已发货</li><li>冉小姐 188****1001 浙江省温州市 2017-11-01 已发货</li><li>曹小姐 150****6413 甘肃天水市 2017-11-01 已发货</li><li>钟小姐 158****3189 湖北天门市 2017-11-01 已发货</li><li>顾先生 130****7471 辽宁沈阳市 2017-11-01 已发货</li><li>孟小姐 154****6266 山东滨州市 2017-11-01 已发货</li><li>傅小姐 152****7997 黑龙鸡西市 2017-11-01 已发货</li><li>穆小姐 151****3644 广西河池市 2017-11-01 已发货</li><li>曲小姐 181****7312 福建莆田市 2017-11-01 已发货</li><li>郭先生 156****7439 河南省郑州市 2017-11-01 已发货</li><li>梁先生 182****8315 陕西铜川市 2017-11-01 已发货</li><li>田先生 188****6573 山东省烟台市 2017-11-01 已发货</li><li>吴小姐 156****3342 浙江省温州市 2017-11-01 已发货</li><li>宋小姐 157****4915 江苏省连云港 2017-11-01 已发货</li><li>胡小姐 156****4777 山东滨州市 2017-11-01 已发货</li><li>吴小姐 139****9766 吉林省长春市 2017-11-01 已发货</li><li>金小姐 158****2550 北京门头沟 2017-11-01 已发货</li><li>龙小姐 189****8176 河南省郑州市 2017-11-01 已发货</li><li>万小姐 187****1048 甘肃天水市 2017-11-01 已发货</li><li>赵小姐 183****2599 湖南张家界市 2017-11-01 已发货</li><li>钟小姐 183****9320 陕西铜川市 2017-11-01 已发货</li><li>魏先生 136****7414 湖南张家界市 2017-11-01 已发货</li><li>钟小姐 158****8008 辽宁省沈阳市 2017-11-01 已发货</li><li>张先生 180****3533 河南省郑州市 2017-11-01 已发货</li><li>万小姐 150****2987 黑龙鸡西市 2017-11-01 已发货</li><li>张先生 138****1531 广东省东莞市 2017-11-01 已发货</li><li>潘小姐 152****6538 广西河池市 2017-11-01 已发货</li><li>龙小姐 182****4627 陕西铜川市 2017-11-01 已发货</li><li>张先生 188****8497 甘肃天水市 2017-11-01 已发货</li></ul></div>
+    </div>
+
+    <script>
+
+        $(function () {
+            var count = 0;
+            var t = 0;
+
+            function scrollMsg() {
+                clearTimeout(t);
+                setTimeout(function () {
+
+                    if ($('#xdemo1').scrollTop() > 558) {
+                        $('.main').scrollTop(0);
+                        count = 0;
+                    }
+                    count += 1;
+                    $('.main').scrollTop(count);
+
+                    t = setTimeout(arguments.callee, 1000 / 25)
+
+                }, 100);
+
+            }
+
+            $('#xdemo1').mouseenter(function () {
+                clearTimeout(t);
+
+                console.log('ss');
+            }).mouseleave(function () {
+                scrollMsg();
+
+                console.log('xxx');
+            });
+
+
+            scrollMsg();
+
+        });
+
+    </script>
+</body>
+</html>

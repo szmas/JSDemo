@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <div id="div1" style="width: 200px;height: 200px;background-color: red;">
+        这是一个div
+    </div>
+    <script>
+
+        function func() {
+            console.log(this);
+        }
+
+        var obj = { func: func };
+
+        function func1() {
+            func();//this指向window
+        }
+
+        //① 通过 函数名() 调用的，this永远指向window
+        func();//this指向window
+
+        func1();// this 指向 window
+
+        //② 通过 对象.方法 调用的 this指向对象obj
+        obj.func();
+
+
+        window.onclick = function () {
+
+            document.getElementById('div1').onclick = function () {
+
+                func();// 最终还是使用（）调用，所以指向window
+            };
+
+
+            document.getElementById('div1').onclick = func;//广义对象，指向div1
+        }
+
+
+
+        //③ 函数作为数组的一个原始，用数组下标调用的，this指向该数组
+        var arr = [1, 2, 3, func, 4, 5];
+
+        arr[3]();
+
+
+        //④ 函数作为window内置函数的回调函数使用，this指向window
+        setTimeout(func, 1000);
+
+        //⑤ 通过 函数作为构造函数 ,使用new关键字调用，this指向新new的对象
+        var obj1 = new func();
+
+
+        //改变某个函数运行时的上下文（context）而存在的，换句话说，就是为了改变函数体内部 this 的指向。
+        func.apply(obj, [1, 2, 3]);
+        func.call(obj, 1, 2, 3);
+        var fn = func.bind(obj, 1, 2, 3);
+        fn();
+    </script>
+</body>
+</html>

@@ -14,6 +14,10 @@
             // 用new关键词调用 这个this代表Point对象本身  否则是windows
             this.x = x;
             this.y = y;
+
+            this.print = function () {
+                console.log("x=" + this.x + "，y=" + this.y);
+            }
         }
 
         //原型链
@@ -36,6 +40,36 @@
         p.GetY();
 
         var p2 = Point(10, 10);//this是windows
+
+
+        //① constructor ：返回当前 对象 的构造函数。
+        console.log(p.constructor == Point);
+
+        //② instanceof ：检测一个对象是不是一个类的实例；
+
+        console.log(p instanceof Point); //p 是通过 Point类new出来的
+        console.log(p instanceof Object); //所有对象都是Ojbect的实例
+        console.log(Point instanceof Object);//函数本身也是Object
+
+
+        /*
+
+
+
+        6、广义对象与狭义对象：
+　　    ① 狭义对象：只有属性和方法，除此之外没有任何其他内容；
+
+        var obj = {};
+        var obj = new Object();
+
+
+
+　　    ② 广义对象： 用字面量声明的基本数据类型不是对象，不能够添加属性和方法
+　　　　除了用字面量声明的基本数据类型外JS中万物皆对象。换句话说，只要能够添加属性和方法的变量，都可以称之为对象。
+
+
+
+        */
 
     </script>
 </body>
